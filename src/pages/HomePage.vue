@@ -9,12 +9,24 @@ const route = useRoute()
 const animatedButton = ref(null)
 
 const isLoaded = debounce(() => {
-  animatedButton.value.classList.add('loaded')
+  animatedButton.value.classList.add('loading')
 }, 500)
 
 onMounted(() => {
   isLoaded()
+  debounce(() => {
+    animatedButton.value.classList.add('loaded')
+    animatedButton.value.classList.remove('loading')
+  }, 100)
 })
+
+const toggleAnimation = () => {
+  // animatedButton.value.classList.remove('loaded')
+  animatedButton.value.classList.add('active')
+}
+debounce(() => {
+  animatedButton.value.classList.remove('active')
+}, 100)
 </script>
 
 <template>
@@ -36,7 +48,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="coin-button-wrapper" ref="animatedButton">
+    <div class="coin-button-wrapper" ref="animatedButton" @click="e => e.target.classList.toggle('active')">
       <div class="coin-button-outside"></div>
       <div class="coin-button-inside"></div>
     </div>
@@ -76,7 +88,8 @@ section {
   width: 100%;
   min-height: 100vh;
   //padding: 31.47% 32px 35px;
-  padding: 13.8497652582vh 32px 35px;
+  padding: 35px 32px;
+  //padding: 13.8497652582vh 32px 35px;
 
   .user-id {
     @include font-style($font-size: 12px, $font-weight: 500, $color: rgba(255,255,255, .50));
@@ -120,6 +133,9 @@ section {
     cursor: pointer;
     opacity: 0;
     &.loaded {
+      opacity: 1;
+    }
+    &.loading {
       animation: rotate-scale-up-ver 0.65s linear both;
       .coin-button-outside {
         //animation: rotate-scale-down-ver 0.65s linear both;
@@ -127,6 +143,10 @@ section {
       .coin-button-inside {
         //animation: rotate-scale-up-ver 0.65s linear both;
       }
+    }
+    &.active {
+      opacity: 1;
+      animation: rotate-scale-down-ver 0.65s linear both;
     }
     .coin-button-outside {
       @include flex(row, center, center);
@@ -253,15 +273,15 @@ section {
 @keyframes rotate-scale-down-ver {
   0% {
     //opacity: 0;
-    transform: scale(1) rotateY(0) translate(-50%, -50%);
+    transform: scale(1) rotateY(0);
   }
   50% {
     //opacity: .5;
-    transform: scale(0.5) rotateY(180deg) translate(-50%, -50%);
+    transform: scale(0.5) rotateY(180deg);
   }
   100% {
     //opacity: 1;
-    transform: scale(1) rotateY(360deg) translate(-50%, -50%);
+    transform: scale(1) rotateY(360deg);
   }
 }
 

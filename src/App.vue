@@ -26,9 +26,6 @@ watch(
   <main ref="main" :class="{ main: loc.fullPath === '/' }">
     <RouterView :key="loc.fullPath" />
   </main>
-<!--  <div>-->
-<!--    asd-->
-<!--  </div>-->
 <!--  <HelloWorld msg="Vite + Vue" />-->
 </template>
 
