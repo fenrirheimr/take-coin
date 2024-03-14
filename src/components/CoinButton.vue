@@ -61,6 +61,7 @@ onMounted(() => {
   min-height: 367px;
   cursor: pointer;
   opacity: 0;
+  outline: none;
   &.active {
     opacity: 1;
   }
