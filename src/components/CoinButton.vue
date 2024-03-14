@@ -62,6 +62,12 @@ onMounted(() => {
   cursor: pointer;
   opacity: 0;
   outline: none;
+  user-select: none;
+  &:focus,
+  &:active {
+    outline: none;
+    user-select: none;
+  }
   &.active {
     opacity: 1;
   }
