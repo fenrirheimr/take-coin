@@ -2,7 +2,11 @@
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
-import HelloWorld from './components/HelloWorld.vue'
+let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+
+tg.expand(); //расширяем на все окно
+
+console.log('>>>', tg)
 
 const loc = useRoute()
 const router = useRouter()
