@@ -6,7 +6,9 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
 
 tg.expand(); //расширяем на все окно
 
-console.log('>>>', tg.initData)
+tg.ThemeParams.bg_color = '#010201'
+
+console.log('>>>!!!', tg.initData)
 
 const loc = useRoute()
 const router = useRouter()
