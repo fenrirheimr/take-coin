@@ -1,0 +1,105 @@
+
+@mixin font-style ($font-family: 'Manrope', $font-weight: normal, $font-size: 1em, $color: #000, $line-height: 1.2em) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  color: $color;
+  line-height: $line-height;
+}
+
+@mixin flex ($flex-direction, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+@mixin position($type, $top: $position-default, $right: $position-default, $bottom: $position-default, $left: $position-default) {
+  position: $type;
+  $allowed_types: absolute relative fixed;
+  @if not index($allowed_types, $type) {
+    @warn "Unknown position: #{$type}.";
+  }
+  @each $data in top $top, right $right, bottom $bottom, left $left {
+    #{nth($data, 1)}: nth($data, 2);
+  }
+}
+@mixin absolute($top: $position-default, $right: $position-default, $bottom: $position-default, $left: $position-default) {
+  @include position(absolute, $top, $right, $bottom, $left);
+}
+@mixin relative($top: $position-default, $right: $position-default, $bottom: $position-default, $left: $position-default) {
+  @include position(relative, $top, $right, $bottom, $left);
+}
+@mixin fixed($top: $position-default, $right: $position-default, $bottom: $position-default, $left: $position-default) {
+  @include position(fixed, $top, $right, $bottom, $left);
+}
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin scrollable(
+  $thumb-background: $shade-sub-dark,
+  $track-background: $shade-divider-dark,
+  $corner-background: transparent,
+  $scrollbar-width: 6px,
+  $scrollbar-height: 6px,
+  $scrollbar-margin: 5px
+) {
+  overflow: auto;
+  // sass-lint:disable-all
+  &::-webkit-scrollbar { width: $scrollbar-width; height: $scrollbar-height; margin: $scrollbar-margin; }
+  &::-webkit-scrollbar-thumb { background: $thumb-background; border-radius: 20px; }
+  &::-webkit-scrollbar-track { background: $track-background; border-radius: 20px; }
+  &::-webkit-scrollbar-corner { background: $corner-background; }
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-background $track-background;
+  // sass-lint:enable-all
+}
+@function get-darkest-color($base-color, $darken, $desaturate, $adjust-hue) {
+  @return adjust-hue(desaturate(darken($base-color, $darken), $desaturate), $adjust-hue);
+}
+@function tint($color, $percent: $mix-percent-default){
+  @return mix(white, $color, $percent);
+}
+@function random-color($min: 0, $max: 255, $alpha: 1) {
+  @if $min < 0 {
+    $min: -1;
+  } @else {
+    $min: $min - 1;
+  }
+  @if $max > 255 {
+    $max: 256;
+  } @else {
+    $max: $max + 1;
+  }
+  $red: random($max) + $min;
+  $green: random($max) + $min;
+  $blue: random($max) + $min;
+  @return rgba($red, $green, $blue, $alpha);
+}
+@function shade($color, $percent: $mix-percent-default){
+  @return mix(black, $color, $percent);
+  //@return transparentize(rgba($color, $percent), 1)
+}
+
+@function sum($numbers...) {
+  $sum: 0;
+  @each $number in $numbers {
+    $sum: $sum + $number;
+  }
+  @return $sum;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Position
+$position-default: null !default;
+// Tint/Shade
+$mix-percent-default: 15% !default;
+$btn-width: 250px !default;
+$btn-height: 80px !default;
+$shade-sub-dark: #5b5a84;
+$shade-divider-dark: #424066;
+$white30: rgba(#fff, .3);
+$background-dark: get-darkest-color(#2b2a4d, 6, 2, -1);
+$btn-color: #352E2E;
+$btn-color-dark: shade($btn-color, 40%);

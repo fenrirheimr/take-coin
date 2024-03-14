@@ -1,43 +1,31 @@
 {
-  "name": "take-vpn",
-  "version": "0.1.0",
+  "name": "take-coin",
   "private": true,
+  "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "axios": "1.6.2",
+    "lodash": "4.17.21",
+    "pinia": "2.1.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.2.5",
+    "vue-tg": "^0.4.0",
+    "vue-types": "^5.1.1",
+    "vue3-uuid": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    "@antfu/eslint-config": "2.6.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "eslint": "8.56.0",
+    "sass": "1.69.5",
+    "vite": "^5.1.6",
+    "vite-plugin-webfont-dl": "3.9.1"
+  }
 }
