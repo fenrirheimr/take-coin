@@ -164,7 +164,7 @@ onMounted(() => {
 
 @keyframes scale-up-center {
   0% {
-    transform: scale(0.5);
+    transform: scale(0.9);
   }
   100% {
     transform: scale(1);
