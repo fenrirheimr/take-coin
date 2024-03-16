@@ -6,6 +6,13 @@ import debounce from 'lodash/debounce'
 import {ref} from "vue";
 
 const route = useRoute()
+let tg = window.Telegram.WebApp;
+const id = tg.initDataUnsafe.user.id // уникальный идентификатор пользователя
+// tg.initDataUnsafe.user.isBot // бот ли пользователь (true/false)
+// tg.initDataUnsafe.user.first_name // имя пользователя
+// tg.initDataUnsafe.user.last_name // "фамилия" пользователя
+const username = tg.initDataUnsafe.user.username // username пользователя
+// tg.initDataUnsafe.user.language_code // код языка пользователя
 
 </script>
 
@@ -16,6 +23,8 @@ const route = useRoute()
         <div class="coin"></div>
         <div class="counter-value">FAQ</div>
       </div>
+      <div>id: {{ id }}</div>
+      <div>username: {{ username }}</div>
     </div>
   </section>
 </template>
