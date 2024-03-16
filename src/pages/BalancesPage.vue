@@ -1,59 +1,20 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import takeVpnButton from '@/components/takeVpnButton.vue'
 import CoinButton from '@/components/CoinButton.vue'
 import debounce from 'lodash/debounce'
 import {ref} from "vue";
 
-const router = useRouter()
+const route = useRoute()
 
 </script>
 
 <template>
   <section>
-    <take-vpn-button title="Перейти в TakeVPN"/>
-    <div class="user-id">
-      ID: 000001
-    </div>
-
     <div class="content-wrapper">
-      <div class="title">Takeсoin</div>
       <div class="counter-wrapper">
         <div class="coin"></div>
-        <div class="counter-value">999,999</div>
-      </div>
-
-      <div class="user-rating">
-        Рейтинг: <span>#0000001</span>
-      </div>
-    </div>
-
-    <CoinButton />
-
-    <div class="navigation-wrapper">
-      <div class="energy-wrapper">
-        <div class="icon icon-energy"></div>
-        <div class="energy-value">
-          <div class="to">1 000</div>
-          <div class="from">/ 10 000</div>
-        </div>
-      </div>
-
-      <div class="navigation">
-        <div class="item" @click="router.push({ path: '/faq' })">
-          <div class="icon icon-faq"></div>
-          <div class="title">FAQ</div>
-        </div>
-        <div class="divider"/>
-        <div class="item" @click="router.push({ path: '/friends' })">
-          <div class="icon icon-friends"></div>
-          <div class="title">Друзья</div>
-        </div>
-        <div class="divider"/>
-        <div class="item" @click="router.push({ path: '/balances' })">
-          <div class="icon icon-balances"></div>
-          <div class="title">Монеты</div>
-        </div>
+        <div class="counter-value">Balances</div>
       </div>
     </div>
   </section>

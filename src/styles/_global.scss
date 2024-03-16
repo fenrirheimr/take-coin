@@ -29,30 +29,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  a {
-    color: #352E2E;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
-    //margin: 0 5px;
-    &:hover {
-      color: #F8F8F2;
-      &:before {
-        display: block;
-      }
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      bottom: -5px;
-      left: -5px;
-      background: #FF5555;
-      display: none;
-      z-index: -1;
-    }
-  }
 }
 
 #app {

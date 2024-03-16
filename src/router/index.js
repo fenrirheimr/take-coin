@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../pages/HomePage.vue'
-// import FriendsPage from '../pages/FriendsPage.vue'
-// import BalancesPage from '../pages/BalancesPage.vue'
+import FaqPage from '../pages/FaqPage.vue'
+import FriendsPage from '../pages/FriendsPage.vue'
+import BalancesPage from '../pages/BalancesPage.vue'
 
 const routes = [
   {
@@ -9,7 +10,7 @@ const routes = [
     name: 'home',
     component: HomePage,
     meta: {
-      title: 'На главную',
+      title: 'Главная',
       spinner: true,
       duration: 1500,
     },
@@ -18,26 +19,30 @@ const routes = [
       // { path: 'js', component: JsView },
     ],
   },
-  // {
-  //   path: '/friends',
-  //   name: 'friends',
-  //   component: FriendsPage,
-  //   meta: {
-  //     title: 'Друзья',
-  //     spinner: true,
-  //     duration: 500,
-  //   },
-  // },
-  // {
-  //   path: '/balances',
-  //   name: 'balances',
-  //   component: BalancesPage,
-  //   meta: {
-  //     title: 'Балансы',
-  //     spinner: true,
-  //     duration: 500,
-  //   },
-  // },
+  {
+    path: '/friends',
+    name: 'friends',
+    component: FriendsPage,
+    meta: {
+      title: 'Друзья',
+    },
+  },
+  {
+    path: '/faq',
+    name: 'faq',
+    component: FaqPage,
+    meta: {
+      title: 'FAQ',
+    },
+  },
+  {
+    path: '/balances',
+    name: 'balances',
+    component: BalancesPage,
+    meta: {
+      title: 'Балансы',
+    },
+  },
 ]
 
 const router = createRouter({
