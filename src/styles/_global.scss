@@ -21,6 +21,10 @@ html, body {
 }
 
 body {
+  touch-action: none !important;
+}
+
+body {
   @include scrollable(#352E2E, transparent);
   margin: 0;
   padding: 0;

@@ -2,12 +2,6 @@
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
-let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-let tg2 = window.Telegram.WebView; //получаем объект webapp телеграма
-
-tg.expand(); //расширяем на все окно
-
-tg.headerColor = '#010201'
 // web_app_set_header_color {color_key: 'bg_color'}
 // console.log('>>>!!!', tg)
 // tg2.onEvent(web_app_set_header_color, {bg_color: '#010201'})
