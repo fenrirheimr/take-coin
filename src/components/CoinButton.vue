@@ -1,25 +1,24 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import debounce from "lodash/debounce.js";
+import debounce from 'lodash/debounce.js'
 
 const nums = ref([])
 const coinButton = ref(null)
 
-const animateNums = (e) => {
+function animateNums(e) {
   coinButton.value.classList.remove('loaded')
   coinButton.value.classList.add('active')
-  coinButton.value.classList.add('active')
-  let pos = coinButton.value.getBoundingClientRect();
+  const pos = coinButton.value.getBoundingClientRect()
 
   coinButton.value.classList.add('animated')
   nums.value.push({
     x: e.clientX - pos.left,
     y: e.clientY - pos.top,
-    show: true
-  });
+    show: true,
+  })
 }
-const animateNumsEnd = (i) => {
-  nums.value[i].show = false;
+function animateNumsEnd(i) {
+  nums.value[i].show = false
   coinButton.value.classList.remove('animated')
 }
 const isLoaded = debounce(() => {
@@ -29,30 +28,27 @@ const isLoaded = debounce(() => {
 onMounted(() => {
   isLoaded()
 })
-
 </script>
 
 <template>
-
-  <div class="root-coin-button" ref="coinButton" @click="animateNums">
-    <div class="coin-button-outside"></div>
-    <div class="coin-button-inside"></div>
-    <transition-group v-for="(val, i) in nums" @key="'num' + i">
-        <span
-            class="num"
-            :ref="'num-' + i"
-            v-if="val.show === true"
-            :style="{'top': val.y + 'px', 'left': val.x + 'px'}"
-            @animationend="animateNumsEnd(i)">
-          +1
-        </span>
+  <div ref="coinButton" class="root-coin-button" @click="animateNums">
+    <div class="coin-button-outside" />
+    <div class="coin-button-inside" />
+    <transition-group v-for="(val, i) in nums">
+      <span
+        v-if="val.show === true"
+        :ref="`num-${i}`"
+        class="num"
+        :style="{ top: `${val.y}px`, left: `${val.x}px` }"
+        @animationend="animateNumsEnd(i)"
+      >
+        +1
+      </span>
     </transition-group>
   </div>
-
 </template>
 
 <style scoped lang="scss">
-
 .root-coin-button {
   @include flex(row, center, center);
   position: relative;
@@ -144,7 +140,7 @@ onMounted(() => {
   }
   50% {
     opacity: .5;
-    transform: scale(2) rotateY(180deg);
+    transform: scale(1.5) rotateY(180deg);
   }
   100% {
     opacity: 1;
@@ -186,5 +182,4 @@ onMounted(() => {
   0%   { opacity: 1; }
   100% { opacity: 0; }
 }
-
 </style>

@@ -5,10 +5,10 @@ import VueTelegram from 'vue-tg'
 import router from './router'
 import App from './App.vue'
 
-let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+const tg = window.Telegram.WebApp // получаем объект webapp телеграма
 // let tg2 = window.Telegram.WebView; //получаем объект webapp телеграма
 
-tg.expand(); //расширяем на все окно/
+tg.expand() // расширяем на все окно/
 
 // tg.initData //получаем данные от пользователя в виде строки (работает только при запуске из меню команд бота).
 // tg.initDataUnsafe // получаем данные от пользователя в виде объекта (работает только при запуске из меню команд бота).
@@ -18,7 +18,6 @@ tg.expand(); //расширяем на все окно/
 // tg.ready() // метод позволяет отследить, когда приложение готово к отображению.
 // tg.expand() // метод позволяет растянуть окно на всю высоту.
 // tg.close() // метод закрывает приложение.
-
 
 tg.headerColor = '#010201'
 

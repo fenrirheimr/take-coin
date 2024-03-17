@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const endpoint = {
-  baseURL: 'https://portfolio-6278.restdb.io/rest',
+  baseURL: 'http://replic1.rgwebservice.ru:85',
 }
 
 // export function withAuthorization(token, config = {}) {
@@ -14,12 +14,15 @@ const endpoint = {
 //   }
 // }
 
-export const withAuthorization = (authorization, config = {}) => ({
-  ...config,
-  headers: {
-    ...config.headers,
-    Authorization: `Bearer ${authorization}`
+export function withAuthorization(authorization, config = {}) {
+  return {
+    ...config,
+    headers: {
+      ...config.headers,
+      Authorization: `Bearer ${authorization}`,
+    },
   }
-})
+}
 
-export const PORTFOLIO = axios.create(endpoint)
+// export const PORTFOLIO = axios.create(endpoint)
+export const BACKEND = axios.create(endpoint)

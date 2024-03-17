@@ -1,61 +1,98 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import takeVpnButton from '@/components/takeVpnButton.vue'
+import { userStore } from '@/store/user'
+import { passportStore } from '@/store/passport'
+import { coinStore } from '@/store/coin'
+
+import Spinner from '@/components/Spinner.vue'
+import TakeVpnButton from '@/components/TakeVpnButton.vue'
 import CoinButton from '@/components/CoinButton.vue'
-import debounce from 'lodash/debounce'
-import {ref} from "vue";
 
 const router = useRouter()
 
+let isLoaded = ref(false)
+
+onMounted(async () => {
+  const username = passportStore().getUserName
+  await userStore().userData(username)
+  isLoaded.value = userStore().isLoaded
+  coinStore().setCoinsValue()
+})
+
+const handleCoin = () => {
+  coinStore().incrementCoinsValue()
+  coinStore().decrementDayCoinsValue()
+  console.log('handleCoin')
+}
+
+console.log('userStore isLoaded', isLoaded.value)
 </script>
 
 <template>
-  <section>
-    <take-vpn-button title="Перейти в TakeVPN"/>
+  <section v-if="isLoaded">
+    <TakeVpnButton title="Перейти в TakeVPN" />
     <div class="user-id">
-      ID: 000001
+      ID: {{ userStore().getUserData.user_id }}
     </div>
 
     <div class="content-wrapper">
-      <div class="title">Takeсoin</div>
+      <div class="title">
+        Takeсoin
+      </div>
       <div class="counter-wrapper">
-        <div class="coin"></div>
-        <div class="counter-value">999,999</div>
+        <div class="coin" />
+        <div class="counter-value">
+          {{ coinStore().getCoinsValue }}
+        </div>
       </div>
 
       <div class="user-rating">
-        Рейтинг: <span>#0000001</span>
+        Рейтинг: <span>#{{ userStore().getUserData.rating }}</span>
       </div>
     </div>
 
-    <CoinButton />
+    <CoinButton @click="handleCoin" />
 
     <div class="navigation-wrapper">
       <div class="energy-wrapper">
-        <div class="icon icon-energy"></div>
+        <div class="icon icon-energy" />
         <div class="energy-value">
-          <div class="to">1 000</div>
-          <div class="from">/ 10 000</div>
+          <div class="to">
+            {{ coinStore().dayCoinsValue }}
+          </div>
+          <div class="from">
+            / 10 000
+          </div>
         </div>
       </div>
 
       <div class="navigation">
         <div class="item" @click="router.push({ path: '/faq' })">
-          <div class="icon icon-faq"></div>
-          <div class="title">FAQ</div>
+          <div class="icon icon-faq" />
+          <div class="title">
+            FAQ
+          </div>
         </div>
-        <div class="divider"/>
+        <div class="divider" />
         <div class="item" @click="router.push({ path: '/friends' })">
-          <div class="icon icon-friends"></div>
-          <div class="title">Друзья</div>
+          <div class="icon icon-friends" />
+          <div class="title">
+            Друзья
+          </div>
         </div>
-        <div class="divider"/>
+        <div class="divider" />
         <div class="item" @click="router.push({ path: '/balances' })">
-          <div class="icon icon-balances"></div>
-          <div class="title">Монеты</div>
+          <div class="icon icon-balances" />
+          <div class="title">
+            Монеты
+          </div>
         </div>
       </div>
     </div>
+  </section>
+  <section v-else>
+    <Spinner />
   </section>
 </template>
 
@@ -64,13 +101,16 @@ section {
   @include flex(column, flex-start, center);
   width: 100%;
   min-height: 100vh;
-  //padding: 31.47% 32px 35px;
   padding: 35px 32px;
-  //padding: 13.8497652582vh 32px 35px;
+
+  &.loading {
+    background: red;
+  }
 
   .user-id {
     @include font-style($font-size: 12px, $font-weight: 500, $color: rgba(255,255,255, .50));
     margin-top: 25px;
+    height: 16px;
   }
   .content-wrapper {
     @include flex(column, flex-start, center);
@@ -89,6 +129,7 @@ section {
       }
       .counter-value {
         @include font-style($font-size: 50px, $font-weight: 800, $color: #fff);
+        height: 60px;
       }
     }
 
@@ -100,8 +141,6 @@ section {
       }
     }
   }
-
-
 
   .navigation-wrapper {
     @include flex(row, flex-start, center);

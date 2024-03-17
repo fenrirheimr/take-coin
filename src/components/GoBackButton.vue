@@ -1,34 +1,31 @@
 <script setup>
-import { ref } from 'vue'
-import ArrowLeft from '@/components/icons/ArrowLeft.vue'
+import { useRouter } from 'vue-router'
+import ArrowRightLong from '@/components/icons/ArrowRightLong.vue'
 
 defineProps({
   title: String,
-  route: Object
+  route: Object,
 })
 
+const router = useRouter()
 </script>
 
 <template>
-  <div class="root-take-vpn-button">
-    <span>{{ title }}</span>
-    <ArrowLeft class="arrow" :width="8" :height="12" />
+  <div class="root-go-back-button" @click="router.push({ path: '/' })">
+    <ArrowRightLong class="arrow" :width="39" :height="24" />
+    <span>На главную</span>
   </div>
 </template>
 
 <style scoped lang="scss">
-.root-take-vpn-button {
-  @include flex(row, center, center);
+.root-go-back-button {
+  @include flex(row, flex-start, center);
   @include font-style($font-size: 16px, $font-weight: 600, $color: rgba(255,255,255, .80));
   gap: 11px;
-  width: 100%;
   height: 55px;
-  //max-width: 83.7150127226%;
-  background: rgba(255,255,255, .17);
-  border: 1px solid rgba(255,255,255, .72);
   border-radius: 8px;
-  margin: 0 auto;
-
+  align-self: flex-start;
+  margin: 0 32px;
   cursor: pointer;
   &:active,
   &:focus, {

@@ -1,20 +1,17 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import takeVpnButton from '@/components/takeVpnButton.vue'
-import CoinButton from '@/components/CoinButton.vue'
-import debounce from 'lodash/debounce'
-import {ref} from "vue";
 
 const route = useRoute()
-
 </script>
 
 <template>
   <section>
     <div class="content-wrapper">
       <div class="counter-wrapper">
-        <div class="coin"></div>
-        <div class="counter-value">Friends</div>
+        <div class="coin" />
+        <div class="counter-value">
+          Friends
+        </div>
       </div>
     </div>
   </section>
@@ -26,7 +23,7 @@ section {
   width: 100%;
   min-height: 100vh;
   //padding: 31.47% 32px 35px;
-  padding: 35px 32px;
+  padding: 0 32px 35px;
   //padding: 13.8497652582vh 32px 35px;
 
   .user-id {
@@ -61,8 +58,6 @@ section {
       }
     }
   }
-
-
 
   .navigation-wrapper {
     @include flex(row, flex-start, center);

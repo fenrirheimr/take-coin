@@ -1,27 +1,27 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import takeVpnButton from '@/components/takeVpnButton.vue'
-import CoinButton from '@/components/CoinButton.vue'
-import debounce from 'lodash/debounce'
-import {ref} from "vue";
 
 const route = useRoute()
-let tg = window.Telegram.WebApp;
-const id = tg.initDataUnsafe.user.id // уникальный идентификатор пользователя
+const tg = window.Telegram.WebApp
+console.log(tg.initDataUnsafe)
+const id = '111111111111' || tg.initDataUnsafe?.user?.id
+const username = 'fenrir' || tg.initDataUnsafe?.user?.username
+// уникальный идентификатор пользователя
 // tg.initDataUnsafe.user.isBot // бот ли пользователь (true/false)
 // tg.initDataUnsafe.user.first_name // имя пользователя
 // tg.initDataUnsafe.user.last_name // "фамилия" пользователя
-const username = tg.initDataUnsafe.user.username // username пользователя
+// username пользователя
 // tg.initDataUnsafe.user.language_code // код языка пользователя
-
 </script>
 
 <template>
   <section>
     <div class="content-wrapper">
       <div class="counter-wrapper">
-        <div class="coin"></div>
-        <div class="counter-value">FAQ</div>
+        <div class="coin" />
+        <div class="counter-value">
+          FAQ
+        </div>
       </div>
       <div>id: {{ id }}</div>
       <div>username: {{ username }}</div>
@@ -35,7 +35,7 @@ section {
   width: 100%;
   min-height: 100vh;
   //padding: 31.47% 32px 35px;
-  padding: 35px 32px;
+  padding: 0 32px 35px;
   //padding: 13.8497652582vh 32px 35px;
 
   .user-id {
@@ -70,8 +70,6 @@ section {
       }
     }
   }
-
-
 
   .navigation-wrapper {
     @include flex(row, flex-start, center);
