@@ -40,8 +40,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -4vw;
-    margin-left: -4vw;
+    margin-top: -10vw;
+    margin-left: -10vw;
     width: 20vw;
     height: 20vw;
     border-radius: 50%;
