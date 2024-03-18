@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const endpoint = {
-  baseURL: 'http://replic1.rgwebservice.ru:85',
+  baseURL: 'https://balance.rgwebservice.ru',
 }
 
 // export function withAuthorization(token, config = {}) {

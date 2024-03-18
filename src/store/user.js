@@ -22,24 +22,31 @@ export const userStore = defineStore('user', {
       console.log('user getCoinsValue', state.user.balance_personal)
       return state.user?.balance_personal
     },
+    getToken() {
+      console.log('1', passportStore()?.getAuthData)
+      return passportStore()?.getAuthData?.access_token
+    },
   },
   actions: {
     async userData(userId) {
-      const token = passportStore().getAuthData.access_token
+      try {
+        const token = this.getToken
 
-      const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
-        params: {
-          user_id: userId,
-        },
-      }))
+        console.log('>>>', token)
 
-      const count = JSON.parse(localStorage.getItem('balancePersonal') || 0)
+        const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
+          params: {
+            user_id: userId,
+          },
+        }))
 
-      this.user = {
-        ...data,
-        balance_personal: data.balance_personal > count ? data.balance_personal : count
+        const count = JSON.parse(localStorage.getItem('balancePersonal') || 0)
+
+        this.user = {...data}
+        this.setIsLoaded()
+      } catch (e) {
+        console.log('e', e)
       }
-      this.setIsLoaded()
     },
     setIsLoaded() {
       this.loaded = true

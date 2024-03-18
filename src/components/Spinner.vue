@@ -42,8 +42,8 @@
     left: 50%;
     margin-top: -4vw;
     margin-left: -4vw;
-    width: 8vw;
-    height: 8vw;
+    width: 20vw;
+    height: 20vw;
     border-radius: 50%;
     animation: rotate 1s linear infinite;
     z-index: 1001;

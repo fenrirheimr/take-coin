@@ -17,7 +17,7 @@ onMounted(async () => {
   const username = passportStore().getUserName
   await userStore().userData(username)
   isLoaded.value = userStore().isLoaded
-  coinStore().setCoinsValue()
+  // coinStore().setCoinsValue()
 })
 
 const handleCoin = () => {
@@ -43,7 +43,7 @@ console.log('userStore isLoaded', isLoaded.value)
       <div class="counter-wrapper">
         <div class="coin" />
         <div class="counter-value">
-          {{ coinStore().getCoinsValue }}
+          {{ userStore().getCoinsValue }}
         </div>
       </div>
 
@@ -115,6 +115,7 @@ section {
   .content-wrapper {
     @include flex(column, flex-start, center);
     margin-top: 5px;
+    width: 100%;
     .title {
       @include font-style($font-size: 16px, $font-weight: 500, $color: #fff);
     }

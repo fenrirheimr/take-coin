@@ -7,7 +7,7 @@ export const passportStore = defineStore('passport', {
     return {
       username: null,
       password: null,
-      auth: {},
+      auth: null,
     }
   },
   getters: {
@@ -15,7 +15,8 @@ export const passportStore = defineStore('passport', {
       return state.username
     },
     getAuthData(state) {
-      return state.auth
+      if (state.auth !== null)
+        return state.auth
     },
   },
   actions: {
