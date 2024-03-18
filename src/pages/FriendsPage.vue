@@ -3,12 +3,14 @@ import { useRoute } from 'vue-router'
 
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
 import Alert from '@/components/icons/Alert.vue'
+import GoBackButton from "@/components/GoBackButton.vue";
 
 const route = useRoute()
 </script>
 
 <template>
   <section>
+    <GoBackButton />
     <div class="content-wrapper">
       <div class="title">
         Бонусы за друзей

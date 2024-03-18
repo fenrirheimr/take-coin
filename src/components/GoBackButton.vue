@@ -25,7 +25,7 @@ const router = useRouter()
   height: 55px;
   border-radius: 8px;
   align-self: flex-start;
-  margin: 0 32px;
+  margin-bottom: 10px;
   cursor: pointer;
   &:active,
   &:focus, {

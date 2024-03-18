@@ -31,7 +31,6 @@ watch(
 
 <template>
   <main ref="main" :class="{ main: loc.fullPath === '/' }">
-    <GoBackButton v-if="loc.fullPath !== '/'" />
     <RouterView :key="loc.fullPath" />
   </main>
 </template>
