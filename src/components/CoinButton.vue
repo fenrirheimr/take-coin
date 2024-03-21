@@ -28,12 +28,82 @@ const isLoaded = debounce(() => {
 onMounted(() => {
   isLoaded()
 })
+
+const paths =
+    [
+      "/intro/0001.png",
+      "/intro/0002.png",
+      "/intro/0003.png",
+      "/intro/0004.png",
+      "/intro/0005.png",
+      "/intro/0006.png",
+      "/intro/0007.png",
+      "/intro/0008.png",
+      "/intro/0009.png",
+      "/intro/0010.png",
+      "/intro/0011.png",
+      "/intro/0012.png",
+      "/intro/0013.png",
+      "/intro/0014.png",
+      "/intro/0015.png",
+      "/intro/0016.png",
+      "/intro/0017.png",
+      "/intro/0018.png",
+      "/intro/0019.png",
+      "/intro/0020.png",
+      "/intro/0021.png",
+      "/intro/0022.png",
+      "/intro/0023.png",
+      "/intro/0024.png",
+      "/intro/0025.png",
+      "/intro/0026.png",
+      "/intro/0027.png",
+      "/intro/0028.png",
+      "/intro/0029.png",
+      "/intro/0030.png",
+      "/intro/0031.png",
+      "/intro/0032.png",
+      "/intro/0033.png",
+      "/intro/0034.png",
+      "/intro/0035.png",
+      "/intro/0036.png",
+      "/intro/0037.png",
+      "/intro/0038.png",
+      "/intro/0039.png",
+      "/intro/0040.png",
+      "/intro/0041.png",
+      "/intro/0042.png",
+      "/intro/0043.png",
+      "/intro/0044.png",
+      "/intro/0045.png",
+      "/intro/0046.png",
+      "/intro/0047.png",
+      "/intro/0048.png",
+      "/intro/0049.png",
+      "/intro/0050.png",
+      "/intro/0051.png",
+      "/intro/0052.png",
+      "/intro/0053.png",
+    ];
+
+// const block = document.querySelector(".coin-button-outside");
+// let i = 0;
+// const timer = setInterval(function(){
+//   console.log('>>>', coinButton.value)
+//   // If we've reached the end of the array...
+//   if(i >= paths.length){
+//     clearInterval(timer);     // Stop the timer
+//     return;                   // Exit the function
+//   }
+//   coinButton.value.style.backgroundImage = `url('${paths[i++]}')` // Sete the path to the current counter and then increase the counter
+// }, 250);
+
 </script>
 
 <template>
   <div ref="coinButton" class="root-coin-button" @click="animateNums">
-    <div class="coin-button-outside" />
-    <div class="coin-button-inside" />
+<!--    <div class="coin-button-outside" />-->
+<!--    <div class="coin-button-inside" />-->
     <transition-group v-for="(val, i) in nums">
       <span
         v-if="val.show === true"
@@ -57,9 +127,65 @@ onMounted(() => {
   min-height: 367px;
   cursor: pointer;
   opacity: 0;
+  background-size: contain;
   outline: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  //background-image: url('@/assets/intro/0001.png');
+  background-image:
+      url('@/assets/intro/0001.png'),
+      url('@/assets/intro/0002.png'),
+      url('@/assets/intro/0003.png'),
+      url('@/assets/intro/0004.png'),
+      url('@/assets/intro/0005.png'),
+      url('@/assets/intro/0006.png'),
+      url('@/assets/intro/0007.png'),
+      url('@/assets/intro/0008.png'),
+      url('@/assets/intro/0009.png'),
+      url('@/assets/intro/0010.png'),
+      url('@/assets/intro/0011.png'),
+      url('@/assets/intro/0012.png'),
+      url('@/assets/intro/0013.png'),
+      url('@/assets/intro/0014.png'),
+      url('@/assets/intro/0015.png'),
+      url('@/assets/intro/0016.png'),
+      url('@/assets/intro/0017.png'),
+      url('@/assets/intro/0018.png'),
+      url('@/assets/intro/0019.png'),
+      url('@/assets/intro/0020.png'),
+      url('@/assets/intro/0021.png'),
+      url('@/assets/intro/0022.png'),
+      url('@/assets/intro/0023.png'),
+      url('@/assets/intro/0024.png'),
+      url('@/assets/intro/0025.png'),
+      url('@/assets/intro/0026.png'),
+      url('@/assets/intro/0027.png'),
+      url('@/assets/intro/0028.png'),
+      url('@/assets/intro/0029.png'),
+      url('@/assets/intro/0030.png'),
+      url('@/assets/intro/0031.png'),
+      url('@/assets/intro/0032.png'),
+      url('@/assets/intro/0033.png'),
+      url('@/assets/intro/0034.png'),
+      url('@/assets/intro/0035.png'),
+      url('@/assets/intro/0036.png'),
+      url('@/assets/intro/0037.png'),
+      url('@/assets/intro/0038.png'),
+      url('@/assets/intro/0039.png'),
+      url('@/assets/intro/0040.png'),
+      url('@/assets/intro/0041.png'),
+      url('@/assets/intro/0042.png'),
+      url('@/assets/intro/0043.png'),
+      url('@/assets/intro/0044.png'),
+      url('@/assets/intro/0045.png'),
+      url('@/assets/intro/0046.png'),
+      url('@/assets/intro/0047.png'),
+      url('@/assets/intro/0048.png'),
+      url('@/assets/intro/0049.png'),
+      url('@/assets/intro/0050.png'),
+      url('@/assets/intro/0051.png'),
+      url('@/assets/intro/0052.png'),
+      url('@/assets/intro/0053.png');
   &:focus,
   &:active {
     outline: none;
@@ -68,12 +194,24 @@ onMounted(() => {
   }
   &.active {
     opacity: 1;
+    background-image: url('@/assets/intro/0001.png');
   }
   &.loaded {
-    animation: rotate-scale-up-ver 0.65s linear both;
+    opacity: 1;
+    //animation: imageLoad 3s linear both;
+    animation-name: imageLoad;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    //animation-iteration-count: infinite;
+    animation-timing-function: steps(1, end);
   }
   &.animated {
-    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    //animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-name: imageLoad;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    //animation-iteration-count: infinite;
+    animation-timing-function: steps(1, end);
   }
   .coin-button-outside {
     @include flex(row, center, center);
@@ -182,4 +320,327 @@ onMounted(() => {
   0%   { opacity: 1; }
   100% { opacity: 0; }
 }
+
+@keyframes imageLoad {
+  0% {
+    background-image: url('@/assets/intro/0001.png');
+  }
+  2% {
+    background-image: url('@/assets/intro/0002.png');
+  }
+  4% {
+    background-image: url('@/assets/intro/0003.png');
+  }
+  6% {
+    background-image: url('@/assets/intro/0004.png');
+  }
+  8% {
+    background-image: url('@/assets/intro/0005.png');
+  }
+  10% {
+    background-image: url('@/assets/intro/0006.png');
+  }
+  12% {
+    background-image: url('@/assets/intro/0007.png');
+  }
+  14% {
+    background-image: url('@/assets/intro/0008.png');
+  }
+  16% {
+    background-image: url('@/assets/intro/0009.png');
+  }
+  18% {
+    background-image: url('@/assets/intro/0010.png');
+  }
+  20% {
+    background-image: url('@/assets/intro/0011.png');
+  }
+  22% {
+    background-image: url('@/assets/intro/0012.png');
+  }
+  24% {
+    background-image: url('@/assets/intro/0013.png');
+  }
+  26% {
+    background-image: url('@/assets/intro/0014.png');
+  }
+  28% {
+    background-image: url('@/assets/intro/0015.png');
+  }
+  30% {
+    background-image: url('@/assets/intro/0016.png');
+  }
+  32% {
+    background-image: url('@/assets/intro/0017.png');
+  }
+  34% {
+    background-image: url('@/assets/intro/0018.png');
+  }
+  36% {
+    background-image: url('@/assets/intro/0019.png');
+  }
+  38% {
+    background-image: url('@/assets/intro/0020.png');
+  }
+  40% {
+    background-image: url('@/assets/intro/0021.png');
+  }
+  42% {
+    background-image: url('@/assets/intro/0022.png');
+  }
+  44% {
+    background-image: url('@/assets/intro/0023.png');
+  }
+  46% {
+    background-image: url('@/assets/intro/0024.png');
+  }
+  48% {
+    background-image: url('@/assets/intro/0025.png');
+  }
+  50% {
+    background-image: url('@/assets/intro/0026.png');
+  }
+  52% {
+    background-image: url('@/assets/intro/0027.png');
+  }
+  54% {
+    background-image: url('@/assets/intro/0028.png');
+  }
+  56% {
+    background-image: url('@/assets/intro/0029.png');
+  }
+  58% {
+    background-image: url('@/assets/intro/0030.png');
+  }
+  60% {
+    background-image: url('@/assets/intro/0031.png');
+  }
+  62% {
+    background-image: url('@/assets/intro/0032.png');
+  }
+  64% {
+    background-image: url('@/assets/intro/0033.png');
+  }
+  64% {
+    background-image: url('@/assets/intro/0034.png');
+  }
+  68% {
+    background-image: url('@/assets/intro/0035.png');
+  }
+  70% {
+    background-image: url('@/assets/intro/0036.png');
+  }
+  72% {
+    background-image: url('@/assets/intro/0037.png');
+  }
+  74% {
+    background-image: url('@/assets/intro/0038.png');
+  }
+  76% {
+    background-image: url('@/assets/intro/0039.png');
+  }
+  78% {
+    background-image: url('@/assets/intro/0040.png');
+  }
+  80% {
+    background-image: url('@/assets/intro/0041.png');
+  }
+  82% {
+    background-image: url('@/assets/intro/0042.png');
+  }
+  84% {
+    background-image: url('@/assets/intro/0043.png');
+  }
+  86% {
+    background-image: url('@/assets/intro/0044.png');
+  }
+  88% {
+    background-image: url('@/assets/intro/0045.png');
+  }
+  90% {
+    background-image: url('@/assets/intro/0046.png');
+  }
+  92% {
+    background-image: url('@/assets/intro/0047.png');
+  }
+  94% {
+    background-image: url('@/assets/intro/0048.png');
+  }
+  96% {
+    background-image: url('@/assets/intro/0049.png');
+  }
+  97% {
+    background-image: url('@/assets/intro/0050.png');
+  }
+  98% {
+    background-image: url('@/assets/intro/0051.png');
+  }
+  99% {
+    background-image: url('@/assets/intro/0052.png');
+  }
+  100% {
+    background-image: url('@/assets/intro/0053.png');
+  }
+}
+//@keyframes imageLoad {
+//  0% {
+//    background-image: url('@/assets/intro/0001.png'), url('@/assets/intro/0002.png');
+//  }
+//  2% {
+//    background-image: url('@/assets/intro/0002.png'), url('@/assets/intro/0003.png');
+//  }
+//  4% {
+//    background-image: url('@/assets/intro/0003.png'), url('@/assets/intro/0004.png');
+//  }
+//  6% {
+//    background-image: url('@/assets/intro/0004.png'), url('@/assets/intro/0005.png');
+//  }
+//  8% {
+//    background-image: url('@/assets/intro/0005.png'), url('@/assets/intro/0006.png');
+//  }
+//  10% {
+//    background-image: url('@/assets/intro/0006.png'), url('@/assets/intro/0007.png');
+//  }
+//  12% {
+//    background-image: url('@/assets/intro/0007.png'), url('@/assets/intro/0008.png');
+//  }
+//  14% {
+//    background-image: url('@/assets/intro/0008.png'), url('@/assets/intro/0009.png');
+//  }
+//  16% {
+//    background-image: url('@/assets/intro/0009.png'), url('@/assets/intro/0010.png');
+//  }
+//  18% {
+//    background-image: url('@/assets/intro/0010.png'), url('@/assets/intro/0011.png');
+//  }
+//  20% {
+//    background-image: url('@/assets/intro/0011.png'), url('@/assets/intro/0012.png');
+//  }
+//  22% {
+//    background-image: url('@/assets/intro/0012.png'), url('@/assets/intro/0013.png');
+//  }
+//  24% {
+//    background-image: url('@/assets/intro/0013.png'), url('@/assets/intro/0014.png');
+//  }
+//  26% {
+//    background-image: url('@/assets/intro/0014.png'), url('@/assets/intro/0015.png');
+//  }
+//  28% {
+//    background-image: url('@/assets/intro/0015.png'), url('@/assets/intro/0016.png');
+//  }
+//  30% {
+//    background-image: url('@/assets/intro/0016.png'), url('@/assets/intro/0017.png');
+//  }
+//  32% {
+//    background-image: url('@/assets/intro/0017.png'), url('@/assets/intro/0018.png');
+//  }
+//  34% {
+//    background-image: url('@/assets/intro/0018.png'), url('@/assets/intro/0019.png');
+//  }
+//  36% {
+//    background-image: url('@/assets/intro/0019.png'), url('@/assets/intro/0020.png');
+//  }
+//  38% {
+//    background-image: url('@/assets/intro/0020.png'), url('@/assets/intro/0021.png');
+//  }
+//  40% {
+//    background-image: url('@/assets/intro/0021.png'), url('@/assets/intro/0022.png');
+//  }
+//  42% {
+//    background-image: url('@/assets/intro/0022.png'), url('@/assets/intro/0023.png');
+//  }
+//  44% {
+//    background-image: url('@/assets/intro/0023.png'), url('@/assets/intro/0024.png');
+//  }
+//  46% {
+//    background-image: url('@/assets/intro/0024.png'), url('@/assets/intro/0025.png');
+//  }
+//  48% {
+//    background-image: url('@/assets/intro/0025.png'), url('@/assets/intro/0025.png');
+//  }
+//  50% {
+//    background-image: url('@/assets/intro/0026.png'), url('@/assets/intro/0027.png');
+//  }
+//  52% {
+//    background-image: url('@/assets/intro/0027.png'), url('@/assets/intro/0028.png');
+//  }
+//  54% {
+//    background-image: url('@/assets/intro/0028.png'), url('@/assets/intro/0029.png');
+//  }
+//  56% {
+//    background-image: url('@/assets/intro/0029.png'), url('@/assets/intro/0030.png');
+//  }
+//  58% {
+//    background-image: url('@/assets/intro/0030.png'), url('@/assets/intro/0031.png');
+//  }
+//  60% {
+//    background-image: url('@/assets/intro/0031.png'), url('@/assets/intro/0032.png');
+//  }
+//  62% {
+//    background-image: url('@/assets/intro/0032.png'), url('@/assets/intro/0033.png');
+//  }
+//  64% {
+//    background-image: url('@/assets/intro/0033.png'), url('@/assets/intro/0034.png');
+//  }
+//  64% {
+//    background-image: url('@/assets/intro/0034.png'), url('@/assets/intro/0035.png');
+//  }
+//  68% {
+//    background-image: url('@/assets/intro/0035.png'), url('@/assets/intro/0036.png');
+//  }
+//  70% {
+//    background-image: url('@/assets/intro/0036.png'), url('@/assets/intro/0037.png');
+//  }
+//  72% {
+//    background-image: url('@/assets/intro/0037.png'), url('@/assets/intro/0038.png');
+//  }
+//  74% {
+//    background-image: url('@/assets/intro/0038.png'), url('@/assets/intro/0039.png');
+//  }
+//  76% {
+//    background-image: url('@/assets/intro/0039.png'), url('@/assets/intro/0040.png');
+//  }
+//  78% {
+//    background-image: url('@/assets/intro/0040.png'), url('@/assets/intro/0041.png');
+//  }
+//  80% {
+//    background-image: url('@/assets/intro/0041.png'), url('@/assets/intro/0042.png');
+//  }
+//  82% {
+//    background-image: url('@/assets/intro/0042.png'), url('@/assets/intro/0043.png');
+//  }
+//  84% {
+//    background-image: url('@/assets/intro/0043.png'), url('@/assets/intro/0044.png');
+//  }
+//  86% {
+//    background-image: url('@/assets/intro/0044.png'), url('@/assets/intro/0045.png');
+//  }
+//  88% {
+//    background-image: url('@/assets/intro/0045.png'), url('@/assets/intro/0046.png');
+//  }
+//  90% {
+//    background-image: url('@/assets/intro/0046.png'), url('@/assets/intro/0047.png');
+//  }
+//  92% {
+//    background-image: url('@/assets/intro/0047.png'), url('@/assets/intro/0048.png');
+//  }
+//  94% {
+//    background-image: url('@/assets/intro/0048.png'), url('@/assets/intro/0049.png');
+//  }
+//  96% {
+//    background-image: url('@/assets/intro/0049.png'), url('@/assets/intro/0050.png');
+//  }
+//  97% {
+//    background-image: url('@/assets/intro/0050.png'), url('@/assets/intro/0051.png');
+//  }
+//  98% {
+//    background-image: url('@/assets/intro/0051.png'), url('@/assets/intro/0052.png');
+//  }
+//  99% {
+//    background-image: url('@/assets/intro/0052.png'), url('@/assets/intro/0053.png');
+//  }
+//  100% {
+//    background-image: url('@/assets/intro/0053.png');
+//  }
+//}
 </style>

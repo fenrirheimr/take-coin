@@ -17,16 +17,14 @@ onMounted(async () => {
   const username = passportStore().getUserName
   await userStore().userData(username)
   isLoaded.value = userStore().isLoaded
-  // coinStore().setCoinsValue()
+  coinStore().calculateLimit()
 })
 
 const handleCoin = () => {
   coinStore().incrementCoinsValue()
-  coinStore().decrementDayCoinsValue()
-  console.log('handleCoin')
+  coinStore().decrementLimitValue()
 }
 
-console.log('userStore isLoaded', isLoaded.value)
 </script>
 
 <template>
@@ -58,12 +56,7 @@ console.log('userStore isLoaded', isLoaded.value)
       <div class="energy-wrapper">
         <div class="icon icon-energy" />
         <div class="energy-value">
-          <div class="to">
-            {{ coinStore().dayCoinsValue }}
-          </div>
-          <div class="from">
-            / 10 000
-          </div>
+          {{ coinStore().dayLimit }}
         </div>
       </div>
 
@@ -166,12 +159,7 @@ section {
         }
       }
       .energy-value {
-        .to {
-          @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
-        }
-        .from {
-          @include font-style($font-size: 12px, $font-weight: 500, $color: rgba(255,255,255, .70));
-        }
+        @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
       }
     }
 

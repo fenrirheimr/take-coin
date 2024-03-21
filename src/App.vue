@@ -3,22 +3,25 @@ import { RouterView, useRoute, useRouter } from 'vue-router'
 import { onMounted, ref, watch } from 'vue'
 import { passportStore } from '@/store/passport'
 
-import GoBackButton from '@/components/GoBackButton.vue'
-
 defineProps({
   title: String,
 })
 
+const tg = window.Telegram.WebApp
+let userId;
 onMounted(async () => {
-  const username = '2'
+  userId = tg?.initDataUnsafe?.user?.id || '2'
   const password = '111111'
-  await passportStore().userAuth(username, password)
+  await passportStore().userAuth(userId, password)
 })
 
 const loc = useRoute()
 const router = useRouter()
 const currentRouter = ref(null)
 const main = ref(null)
+
+
+console.log('>>', tg)
 
 watch(
   loc,

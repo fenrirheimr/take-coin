@@ -1,19 +1,20 @@
 import { defineStore } from 'pinia'
+import debounce from 'lodash/debounce.js'
 import { userStore } from './user'
 import { passportStore } from './passport'
 import { BACKEND, withAuthorization } from '@/remotes'
-
-// const us = userStore()
 
 export const coinStore = defineStore('coin', {
   namespaced: true,
   state: () => {
     return {
-      // coinsValue: null,
       coinsValue: 0,
-      dayCoinsValue: JSON.parse(localStorage.getItem('dayCoinsValue') || 1000),
-      // dayCoinsValue: JSON.parse(localStorage.getItem('dayCoinsValue') || 1000),
+      // initLimit: userStore().getUserData.limit,
+      dayLimit: userStore().getUserData.limit,
+      // limit: JSON.parse(localStorage.getItem('dayLimitValue') || 1000),
       totalCoinsValue: 10000,
+      counter: null,
+      counterRun: false
     }
   },
   getters: {
@@ -31,7 +32,6 @@ export const coinStore = defineStore('coin', {
       const token = passportStore().getAuthData.access_token
       const userId = userStore().getUserData.user_id
 
-      console.log('incrementCoinsValue', this.coinsValue)
       await BACKEND.post('/api/update-personal-balance', {
         user_id: userId,
         amount: 1
@@ -39,21 +39,34 @@ export const coinStore = defineStore('coin', {
 
       await userStore().userData(userId)
     },
-
-
-    async decrementDayCoinsValue() {
-      this.dayCoinsValue--
-      // localStorage.setItem('dayCoinsValue', JSON.stringify(this.dayCoinsValue))
-
-      const token = passportStore().getAuthData.access_token
+    async decrementLimitValue() {
+      this.dayLimit--
       const userId = userStore().getUserData.user_id
 
-      await BACKEND.post('/api/update-subscribes-balance', {
-        user_id: userId,
-        amount: 1
-      }, withAuthorization(token))
+      // await BACKEND.post('/api/update-subscribes-balance', {
+      //   user_id: userId,
+      //   amount: 1
+      // }, withAuthorization(token))
 
+      console.log('dayLimit', this.dayLimit)
       await userStore().userData(userId)
+      if (this.dayLimit < userStore().getUserData.limit && !this.counterRun) {
+        this.counterRun = true
+        this.calculateLimit()
+      }
+      //
+
+    },
+    calculateLimit() {
+      this.counter = setInterval(() => {
+        if (this.dayLimit < userStore().getUserData.limit) {
+          this.dayLimit++
+        } else {
+          this.counterRun = false
+          clearInterval(this.counter);
+        }
+        },1000,
+      );
     }
   }
 })

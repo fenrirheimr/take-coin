@@ -6,8 +6,8 @@ defineProps({
   title: String,
   route: Object,
 })
-
 const router = useRouter()
+
 </script>
 
 <template>

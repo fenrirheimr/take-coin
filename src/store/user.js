@@ -19,11 +19,10 @@ export const userStore = defineStore('user', {
       return state.loaded
     },
     getCoinsValue(state) {
-      console.log('user getCoinsValue', state.user.balance_personal)
+      console.log('user getCoinsValue', state.user)
       return state.user?.balance_personal
     },
     getToken() {
-      console.log('1', passportStore()?.getAuthData)
       return passportStore()?.getAuthData?.access_token
     },
   },
@@ -32,15 +31,11 @@ export const userStore = defineStore('user', {
       try {
         const token = this.getToken
 
-        console.log('>>>', token)
-
         const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
           params: {
             user_id: userId,
           },
         }))
-
-        const count = JSON.parse(localStorage.getItem('balancePersonal') || 0)
 
         this.user = {...data}
         this.setIsLoaded()
