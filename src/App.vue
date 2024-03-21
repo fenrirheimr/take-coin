@@ -34,6 +34,7 @@ watch(
 
 <template>
   <main ref="main" :class="{ main: loc.fullPath === '/' }">
+    <div class="hidden"></div>
     <RouterView :key="loc.fullPath" />
   </main>
 </template>
@@ -51,6 +52,63 @@ main {
   &.main {
     overflow: hidden;
     min-height: 100%;
+  }
+  .hidden {
+    display: none !important;
+    background-image:
+        url('@/assets/intro/0001.png'),
+        url('@/assets/intro/0002.png'),
+        url('@/assets/intro/0003.png'),
+        url('@/assets/intro/0004.png'),
+        url('@/assets/intro/0005.png'),
+        url('@/assets/intro/0006.png'),
+        url('@/assets/intro/0007.png'),
+        url('@/assets/intro/0008.png'),
+        url('@/assets/intro/0009.png'),
+        url('@/assets/intro/0010.png'),
+        url('@/assets/intro/0011.png'),
+        url('@/assets/intro/0012.png'),
+        url('@/assets/intro/0013.png'),
+        url('@/assets/intro/0014.png'),
+        url('@/assets/intro/0015.png'),
+        url('@/assets/intro/0016.png'),
+        url('@/assets/intro/0017.png'),
+        url('@/assets/intro/0018.png'),
+        url('@/assets/intro/0019.png'),
+        url('@/assets/intro/0020.png'),
+        url('@/assets/intro/0021.png'),
+        url('@/assets/intro/0022.png'),
+        url('@/assets/intro/0023.png'),
+        url('@/assets/intro/0024.png'),
+        url('@/assets/intro/0025.png'),
+        url('@/assets/intro/0026.png'),
+        url('@/assets/intro/0027.png'),
+        url('@/assets/intro/0028.png'),
+        url('@/assets/intro/0029.png'),
+        url('@/assets/intro/0030.png'),
+        url('@/assets/intro/0031.png'),
+        url('@/assets/intro/0032.png'),
+        url('@/assets/intro/0033.png'),
+        url('@/assets/intro/0034.png'),
+        url('@/assets/intro/0035.png'),
+        url('@/assets/intro/0036.png'),
+        url('@/assets/intro/0037.png'),
+        url('@/assets/intro/0038.png'),
+        url('@/assets/intro/0039.png'),
+        url('@/assets/intro/0040.png'),
+        url('@/assets/intro/0041.png'),
+        url('@/assets/intro/0042.png'),
+        url('@/assets/intro/0043.png'),
+        url('@/assets/intro/0044.png'),
+        url('@/assets/intro/0045.png'),
+        url('@/assets/intro/0046.png'),
+        url('@/assets/intro/0047.png'),
+        url('@/assets/intro/0048.png'),
+        url('@/assets/intro/0049.png'),
+        url('@/assets/intro/0050.png'),
+        url('@/assets/intro/0051.png'),
+        url('@/assets/intro/0052.png'),
+        url('@/assets/intro/0053.png');
   }
 }
 </style>
