@@ -321,326 +321,326 @@ const paths =
   100% { opacity: 0; }
 }
 
-@keyframes imageLoad {
-  0% {
-    background-image: url('@/assets/intro/0001.png');
-  }
-  2% {
-    background-image: url('@/assets/intro/0002.png');
-  }
-  4% {
-    background-image: url('@/assets/intro/0003.png');
-  }
-  6% {
-    background-image: url('@/assets/intro/0004.png');
-  }
-  8% {
-    background-image: url('@/assets/intro/0005.png');
-  }
-  10% {
-    background-image: url('@/assets/intro/0006.png');
-  }
-  12% {
-    background-image: url('@/assets/intro/0007.png');
-  }
-  14% {
-    background-image: url('@/assets/intro/0008.png');
-  }
-  16% {
-    background-image: url('@/assets/intro/0009.png');
-  }
-  18% {
-    background-image: url('@/assets/intro/0010.png');
-  }
-  20% {
-    background-image: url('@/assets/intro/0011.png');
-  }
-  22% {
-    background-image: url('@/assets/intro/0012.png');
-  }
-  24% {
-    background-image: url('@/assets/intro/0013.png');
-  }
-  26% {
-    background-image: url('@/assets/intro/0014.png');
-  }
-  28% {
-    background-image: url('@/assets/intro/0015.png');
-  }
-  30% {
-    background-image: url('@/assets/intro/0016.png');
-  }
-  32% {
-    background-image: url('@/assets/intro/0017.png');
-  }
-  34% {
-    background-image: url('@/assets/intro/0018.png');
-  }
-  36% {
-    background-image: url('@/assets/intro/0019.png');
-  }
-  38% {
-    background-image: url('@/assets/intro/0020.png');
-  }
-  40% {
-    background-image: url('@/assets/intro/0021.png');
-  }
-  42% {
-    background-image: url('@/assets/intro/0022.png');
-  }
-  44% {
-    background-image: url('@/assets/intro/0023.png');
-  }
-  46% {
-    background-image: url('@/assets/intro/0024.png');
-  }
-  48% {
-    background-image: url('@/assets/intro/0025.png');
-  }
-  50% {
-    background-image: url('@/assets/intro/0026.png');
-  }
-  52% {
-    background-image: url('@/assets/intro/0027.png');
-  }
-  54% {
-    background-image: url('@/assets/intro/0028.png');
-  }
-  56% {
-    background-image: url('@/assets/intro/0029.png');
-  }
-  58% {
-    background-image: url('@/assets/intro/0030.png');
-  }
-  60% {
-    background-image: url('@/assets/intro/0031.png');
-  }
-  62% {
-    background-image: url('@/assets/intro/0032.png');
-  }
-  64% {
-    background-image: url('@/assets/intro/0033.png');
-  }
-  64% {
-    background-image: url('@/assets/intro/0034.png');
-  }
-  68% {
-    background-image: url('@/assets/intro/0035.png');
-  }
-  70% {
-    background-image: url('@/assets/intro/0036.png');
-  }
-  72% {
-    background-image: url('@/assets/intro/0037.png');
-  }
-  74% {
-    background-image: url('@/assets/intro/0038.png');
-  }
-  76% {
-    background-image: url('@/assets/intro/0039.png');
-  }
-  78% {
-    background-image: url('@/assets/intro/0040.png');
-  }
-  80% {
-    background-image: url('@/assets/intro/0041.png');
-  }
-  82% {
-    background-image: url('@/assets/intro/0042.png');
-  }
-  84% {
-    background-image: url('@/assets/intro/0043.png');
-  }
-  86% {
-    background-image: url('@/assets/intro/0044.png');
-  }
-  88% {
-    background-image: url('@/assets/intro/0045.png');
-  }
-  90% {
-    background-image: url('@/assets/intro/0046.png');
-  }
-  92% {
-    background-image: url('@/assets/intro/0047.png');
-  }
-  94% {
-    background-image: url('@/assets/intro/0048.png');
-  }
-  96% {
-    background-image: url('@/assets/intro/0049.png');
-  }
-  97% {
-    background-image: url('@/assets/intro/0050.png');
-  }
-  98% {
-    background-image: url('@/assets/intro/0051.png');
-  }
-  99% {
-    background-image: url('@/assets/intro/0052.png');
-  }
-  100% {
-    background-image: url('@/assets/intro/0053.png');
-  }
-}
 //@keyframes imageLoad {
 //  0% {
-//    background-image: url('@/assets/intro/0001.png'), url('@/assets/intro/0002.png');
+//    background-image: url('@/assets/intro/0001.png');
 //  }
 //  2% {
-//    background-image: url('@/assets/intro/0002.png'), url('@/assets/intro/0003.png');
+//    background-image: url('@/assets/intro/0002.png');
 //  }
 //  4% {
-//    background-image: url('@/assets/intro/0003.png'), url('@/assets/intro/0004.png');
+//    background-image: url('@/assets/intro/0003.png');
 //  }
 //  6% {
-//    background-image: url('@/assets/intro/0004.png'), url('@/assets/intro/0005.png');
+//    background-image: url('@/assets/intro/0004.png');
 //  }
 //  8% {
-//    background-image: url('@/assets/intro/0005.png'), url('@/assets/intro/0006.png');
+//    background-image: url('@/assets/intro/0005.png');
 //  }
 //  10% {
-//    background-image: url('@/assets/intro/0006.png'), url('@/assets/intro/0007.png');
+//    background-image: url('@/assets/intro/0006.png');
 //  }
 //  12% {
-//    background-image: url('@/assets/intro/0007.png'), url('@/assets/intro/0008.png');
+//    background-image: url('@/assets/intro/0007.png');
 //  }
 //  14% {
-//    background-image: url('@/assets/intro/0008.png'), url('@/assets/intro/0009.png');
+//    background-image: url('@/assets/intro/0008.png');
 //  }
 //  16% {
-//    background-image: url('@/assets/intro/0009.png'), url('@/assets/intro/0010.png');
+//    background-image: url('@/assets/intro/0009.png');
 //  }
 //  18% {
-//    background-image: url('@/assets/intro/0010.png'), url('@/assets/intro/0011.png');
+//    background-image: url('@/assets/intro/0010.png');
 //  }
 //  20% {
-//    background-image: url('@/assets/intro/0011.png'), url('@/assets/intro/0012.png');
+//    background-image: url('@/assets/intro/0011.png');
 //  }
 //  22% {
-//    background-image: url('@/assets/intro/0012.png'), url('@/assets/intro/0013.png');
+//    background-image: url('@/assets/intro/0012.png');
 //  }
 //  24% {
-//    background-image: url('@/assets/intro/0013.png'), url('@/assets/intro/0014.png');
+//    background-image: url('@/assets/intro/0013.png');
 //  }
 //  26% {
-//    background-image: url('@/assets/intro/0014.png'), url('@/assets/intro/0015.png');
+//    background-image: url('@/assets/intro/0014.png');
 //  }
 //  28% {
-//    background-image: url('@/assets/intro/0015.png'), url('@/assets/intro/0016.png');
+//    background-image: url('@/assets/intro/0015.png');
 //  }
 //  30% {
-//    background-image: url('@/assets/intro/0016.png'), url('@/assets/intro/0017.png');
+//    background-image: url('@/assets/intro/0016.png');
 //  }
 //  32% {
-//    background-image: url('@/assets/intro/0017.png'), url('@/assets/intro/0018.png');
+//    background-image: url('@/assets/intro/0017.png');
 //  }
 //  34% {
-//    background-image: url('@/assets/intro/0018.png'), url('@/assets/intro/0019.png');
+//    background-image: url('@/assets/intro/0018.png');
 //  }
 //  36% {
-//    background-image: url('@/assets/intro/0019.png'), url('@/assets/intro/0020.png');
+//    background-image: url('@/assets/intro/0019.png');
 //  }
 //  38% {
-//    background-image: url('@/assets/intro/0020.png'), url('@/assets/intro/0021.png');
+//    background-image: url('@/assets/intro/0020.png');
 //  }
 //  40% {
-//    background-image: url('@/assets/intro/0021.png'), url('@/assets/intro/0022.png');
+//    background-image: url('@/assets/intro/0021.png');
 //  }
 //  42% {
-//    background-image: url('@/assets/intro/0022.png'), url('@/assets/intro/0023.png');
+//    background-image: url('@/assets/intro/0022.png');
 //  }
 //  44% {
-//    background-image: url('@/assets/intro/0023.png'), url('@/assets/intro/0024.png');
+//    background-image: url('@/assets/intro/0023.png');
 //  }
 //  46% {
-//    background-image: url('@/assets/intro/0024.png'), url('@/assets/intro/0025.png');
+//    background-image: url('@/assets/intro/0024.png');
 //  }
 //  48% {
-//    background-image: url('@/assets/intro/0025.png'), url('@/assets/intro/0025.png');
+//    background-image: url('@/assets/intro/0025.png');
 //  }
 //  50% {
-//    background-image: url('@/assets/intro/0026.png'), url('@/assets/intro/0027.png');
+//    background-image: url('@/assets/intro/0026.png');
 //  }
 //  52% {
-//    background-image: url('@/assets/intro/0027.png'), url('@/assets/intro/0028.png');
+//    background-image: url('@/assets/intro/0027.png');
 //  }
 //  54% {
-//    background-image: url('@/assets/intro/0028.png'), url('@/assets/intro/0029.png');
+//    background-image: url('@/assets/intro/0028.png');
 //  }
 //  56% {
-//    background-image: url('@/assets/intro/0029.png'), url('@/assets/intro/0030.png');
+//    background-image: url('@/assets/intro/0029.png');
 //  }
 //  58% {
-//    background-image: url('@/assets/intro/0030.png'), url('@/assets/intro/0031.png');
+//    background-image: url('@/assets/intro/0030.png');
 //  }
 //  60% {
-//    background-image: url('@/assets/intro/0031.png'), url('@/assets/intro/0032.png');
+//    background-image: url('@/assets/intro/0031.png');
 //  }
 //  62% {
-//    background-image: url('@/assets/intro/0032.png'), url('@/assets/intro/0033.png');
+//    background-image: url('@/assets/intro/0032.png');
 //  }
 //  64% {
-//    background-image: url('@/assets/intro/0033.png'), url('@/assets/intro/0034.png');
+//    background-image: url('@/assets/intro/0033.png');
 //  }
 //  64% {
-//    background-image: url('@/assets/intro/0034.png'), url('@/assets/intro/0035.png');
+//    background-image: url('@/assets/intro/0034.png');
 //  }
 //  68% {
-//    background-image: url('@/assets/intro/0035.png'), url('@/assets/intro/0036.png');
+//    background-image: url('@/assets/intro/0035.png');
 //  }
 //  70% {
-//    background-image: url('@/assets/intro/0036.png'), url('@/assets/intro/0037.png');
+//    background-image: url('@/assets/intro/0036.png');
 //  }
 //  72% {
-//    background-image: url('@/assets/intro/0037.png'), url('@/assets/intro/0038.png');
+//    background-image: url('@/assets/intro/0037.png');
 //  }
 //  74% {
-//    background-image: url('@/assets/intro/0038.png'), url('@/assets/intro/0039.png');
+//    background-image: url('@/assets/intro/0038.png');
 //  }
 //  76% {
-//    background-image: url('@/assets/intro/0039.png'), url('@/assets/intro/0040.png');
+//    background-image: url('@/assets/intro/0039.png');
 //  }
 //  78% {
-//    background-image: url('@/assets/intro/0040.png'), url('@/assets/intro/0041.png');
+//    background-image: url('@/assets/intro/0040.png');
 //  }
 //  80% {
-//    background-image: url('@/assets/intro/0041.png'), url('@/assets/intro/0042.png');
+//    background-image: url('@/assets/intro/0041.png');
 //  }
 //  82% {
-//    background-image: url('@/assets/intro/0042.png'), url('@/assets/intro/0043.png');
+//    background-image: url('@/assets/intro/0042.png');
 //  }
 //  84% {
-//    background-image: url('@/assets/intro/0043.png'), url('@/assets/intro/0044.png');
+//    background-image: url('@/assets/intro/0043.png');
 //  }
 //  86% {
-//    background-image: url('@/assets/intro/0044.png'), url('@/assets/intro/0045.png');
+//    background-image: url('@/assets/intro/0044.png');
 //  }
 //  88% {
-//    background-image: url('@/assets/intro/0045.png'), url('@/assets/intro/0046.png');
+//    background-image: url('@/assets/intro/0045.png');
 //  }
 //  90% {
-//    background-image: url('@/assets/intro/0046.png'), url('@/assets/intro/0047.png');
+//    background-image: url('@/assets/intro/0046.png');
 //  }
 //  92% {
-//    background-image: url('@/assets/intro/0047.png'), url('@/assets/intro/0048.png');
+//    background-image: url('@/assets/intro/0047.png');
 //  }
 //  94% {
-//    background-image: url('@/assets/intro/0048.png'), url('@/assets/intro/0049.png');
+//    background-image: url('@/assets/intro/0048.png');
 //  }
 //  96% {
-//    background-image: url('@/assets/intro/0049.png'), url('@/assets/intro/0050.png');
+//    background-image: url('@/assets/intro/0049.png');
 //  }
 //  97% {
-//    background-image: url('@/assets/intro/0050.png'), url('@/assets/intro/0051.png');
+//    background-image: url('@/assets/intro/0050.png');
 //  }
 //  98% {
-//    background-image: url('@/assets/intro/0051.png'), url('@/assets/intro/0052.png');
+//    background-image: url('@/assets/intro/0051.png');
 //  }
 //  99% {
-//    background-image: url('@/assets/intro/0052.png'), url('@/assets/intro/0053.png');
+//    background-image: url('@/assets/intro/0052.png');
 //  }
 //  100% {
 //    background-image: url('@/assets/intro/0053.png');
 //  }
 //}
+@keyframes imageLoad {
+  0% {
+    background-image: url('@/assets/intro/0001.png'), url('@/assets/intro/0002.png');
+  }
+  2% {
+    background-image: url('@/assets/intro/0002.png'), url('@/assets/intro/0003.png');
+  }
+  4% {
+    background-image: url('@/assets/intro/0003.png'), url('@/assets/intro/0004.png');
+  }
+  6% {
+    background-image: url('@/assets/intro/0004.png'), url('@/assets/intro/0005.png');
+  }
+  8% {
+    background-image: url('@/assets/intro/0005.png'), url('@/assets/intro/0006.png');
+  }
+  10% {
+    background-image: url('@/assets/intro/0006.png'), url('@/assets/intro/0007.png');
+  }
+  12% {
+    background-image: url('@/assets/intro/0007.png'), url('@/assets/intro/0008.png');
+  }
+  14% {
+    background-image: url('@/assets/intro/0008.png'), url('@/assets/intro/0009.png');
+  }
+  16% {
+    background-image: url('@/assets/intro/0009.png'), url('@/assets/intro/0010.png');
+  }
+  18% {
+    background-image: url('@/assets/intro/0010.png'), url('@/assets/intro/0011.png');
+  }
+  20% {
+    background-image: url('@/assets/intro/0011.png'), url('@/assets/intro/0012.png');
+  }
+  22% {
+    background-image: url('@/assets/intro/0012.png'), url('@/assets/intro/0013.png');
+  }
+  24% {
+    background-image: url('@/assets/intro/0013.png'), url('@/assets/intro/0014.png');
+  }
+  26% {
+    background-image: url('@/assets/intro/0014.png'), url('@/assets/intro/0015.png');
+  }
+  28% {
+    background-image: url('@/assets/intro/0015.png'), url('@/assets/intro/0016.png');
+  }
+  30% {
+    background-image: url('@/assets/intro/0016.png'), url('@/assets/intro/0017.png');
+  }
+  32% {
+    background-image: url('@/assets/intro/0017.png'), url('@/assets/intro/0018.png');
+  }
+  34% {
+    background-image: url('@/assets/intro/0018.png'), url('@/assets/intro/0019.png');
+  }
+  36% {
+    background-image: url('@/assets/intro/0019.png'), url('@/assets/intro/0020.png');
+  }
+  38% {
+    background-image: url('@/assets/intro/0020.png'), url('@/assets/intro/0021.png');
+  }
+  40% {
+    background-image: url('@/assets/intro/0021.png'), url('@/assets/intro/0022.png');
+  }
+  42% {
+    background-image: url('@/assets/intro/0022.png'), url('@/assets/intro/0023.png');
+  }
+  44% {
+    background-image: url('@/assets/intro/0023.png'), url('@/assets/intro/0024.png');
+  }
+  46% {
+    background-image: url('@/assets/intro/0024.png'), url('@/assets/intro/0025.png');
+  }
+  48% {
+    background-image: url('@/assets/intro/0025.png'), url('@/assets/intro/0025.png');
+  }
+  50% {
+    background-image: url('@/assets/intro/0026.png'), url('@/assets/intro/0027.png');
+  }
+  52% {
+    background-image: url('@/assets/intro/0027.png'), url('@/assets/intro/0028.png');
+  }
+  54% {
+    background-image: url('@/assets/intro/0028.png'), url('@/assets/intro/0029.png');
+  }
+  56% {
+    background-image: url('@/assets/intro/0029.png'), url('@/assets/intro/0030.png');
+  }
+  58% {
+    background-image: url('@/assets/intro/0030.png'), url('@/assets/intro/0031.png');
+  }
+  60% {
+    background-image: url('@/assets/intro/0031.png'), url('@/assets/intro/0032.png');
+  }
+  62% {
+    background-image: url('@/assets/intro/0032.png'), url('@/assets/intro/0033.png');
+  }
+  64% {
+    background-image: url('@/assets/intro/0033.png'), url('@/assets/intro/0034.png');
+  }
+  64% {
+    background-image: url('@/assets/intro/0034.png'), url('@/assets/intro/0035.png');
+  }
+  68% {
+    background-image: url('@/assets/intro/0035.png'), url('@/assets/intro/0036.png');
+  }
+  70% {
+    background-image: url('@/assets/intro/0036.png'), url('@/assets/intro/0037.png');
+  }
+  72% {
+    background-image: url('@/assets/intro/0037.png'), url('@/assets/intro/0038.png');
+  }
+  74% {
+    background-image: url('@/assets/intro/0038.png'), url('@/assets/intro/0039.png');
+  }
+  76% {
+    background-image: url('@/assets/intro/0039.png'), url('@/assets/intro/0040.png');
+  }
+  78% {
+    background-image: url('@/assets/intro/0040.png'), url('@/assets/intro/0041.png');
+  }
+  80% {
+    background-image: url('@/assets/intro/0041.png'), url('@/assets/intro/0042.png');
+  }
+  82% {
+    background-image: url('@/assets/intro/0042.png'), url('@/assets/intro/0043.png');
+  }
+  84% {
+    background-image: url('@/assets/intro/0043.png'), url('@/assets/intro/0044.png');
+  }
+  86% {
+    background-image: url('@/assets/intro/0044.png'), url('@/assets/intro/0045.png');
+  }
+  88% {
+    background-image: url('@/assets/intro/0045.png'), url('@/assets/intro/0046.png');
+  }
+  90% {
+    background-image: url('@/assets/intro/0046.png'), url('@/assets/intro/0047.png');
+  }
+  92% {
+    background-image: url('@/assets/intro/0047.png'), url('@/assets/intro/0048.png');
+  }
+  94% {
+    background-image: url('@/assets/intro/0048.png'), url('@/assets/intro/0049.png');
+  }
+  96% {
+    background-image: url('@/assets/intro/0049.png'), url('@/assets/intro/0050.png');
+  }
+  97% {
+    background-image: url('@/assets/intro/0050.png'), url('@/assets/intro/0051.png');
+  }
+  98% {
+    background-image: url('@/assets/intro/0051.png'), url('@/assets/intro/0052.png');
+  }
+  99% {
+    background-image: url('@/assets/intro/0052.png'), url('@/assets/intro/0053.png');
+  }
+  100% {
+    background-image: url('@/assets/intro/0053.png');
+  }
+}
 </style>
