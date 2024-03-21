@@ -10,7 +10,9 @@ defineProps({
 const tg = window.Telegram.WebApp
 let userId;
 onMounted(async () => {
-  userId = tg?.initDataUnsafe?.user?.id || '2'
+  // заменить после подключения нормального бота
+  // userId = tg?.initDataUnsafe?.user?.id
+  userId = '2'
   const password = '111111'
   await passportStore().userAuth(userId, password)
 })
