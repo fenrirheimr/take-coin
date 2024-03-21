@@ -47,7 +47,7 @@ main {
   min-width: 393px; // TODO: убрать после
   max-width: 768px; // TODO: убрать после
   margin: 0 auto;
-  min-height: 100%;
+  min-height: 100vh;
   padding-top: 0;
   &.main {
     overflow: hidden;
