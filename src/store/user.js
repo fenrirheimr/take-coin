@@ -30,11 +30,19 @@ export const userStore = defineStore('user', {
       try {
         const token = this.getToken
 
-        const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
-          params: {
-            user_id: userId,
-          },
-        }))
+        try {
+          const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
+            params: {
+              user_id: userId,
+            },
+          }))
+        } catch (e) {
+          const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
+            params: {
+              user_id: 2,
+            },
+          }))
+        }
 
         this.user = {...data}
         this.setIsLoaded()
