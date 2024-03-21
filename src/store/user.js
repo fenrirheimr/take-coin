@@ -19,7 +19,6 @@ export const userStore = defineStore('user', {
       return state.loaded
     },
     getCoinsValue(state) {
-      console.log('user getCoinsValue', state.user)
       return state.user?.balance_personal
     },
     getToken() {

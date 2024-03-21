@@ -9,9 +9,7 @@ export const coinStore = defineStore('coin', {
   state: () => {
     return {
       coinsValue: 0,
-      // initLimit: userStore().getUserData.limit,
       dayLimit: userStore().getUserData.limit,
-      // limit: JSON.parse(localStorage.getItem('dayLimitValue') || 1000),
       totalCoinsValue: 10000,
       counter: null,
       counterRun: false
@@ -48,7 +46,6 @@ export const coinStore = defineStore('coin', {
       //   amount: 1
       // }, withAuthorization(token))
 
-      console.log('dayLimit', this.dayLimit)
       await userStore().userData(userId)
       if (this.dayLimit < userStore().getUserData.limit && !this.counterRun) {
         this.counterRun = true
