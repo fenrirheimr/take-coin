@@ -74,22 +74,27 @@ onMounted(() => {
     opacity: 1;
   }
   &.loaded {
-    opacity: 1;
-    animation: rotate-in-diag 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: rotate-scale-up-ver 0.65s linear both;
   }
   &.animated {
     animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 }
 
-@keyframes rotate-in-diag {
+@keyframes rotate-scale-up-ver {
   0% {
     transform: rotate3d(1, 1, 0, -360deg);
     opacity: 0;
+    transform: scale(1) rotateY(0);
+  }
+  50% {
+    opacity: .5;
+    transform: scale(1.5) rotateY(180deg);
   }
   100% {
     transform: rotate3d(1, 1, 0, 0deg);
     opacity: 1;
+    transform: scale(1) rotateY(360deg);
   }
 }
 
