@@ -101,6 +101,8 @@ section {
   width: 100%;
   min-height: 100vh;
   padding: 35px 32px;
+  position: relative;
+  z-index: 2;
 
   &.loading {
     background: red;
