@@ -27,6 +27,8 @@ export const userStore = defineStore('user', {
   },
   actions: {
     async userData(userId) {
+      console.log('userId')
+      alert('userId', userId)
       try {
         const token = this.getToken
 
