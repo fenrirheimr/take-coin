@@ -51,10 +51,10 @@ main {
   max-width: 768px; // TODO: убрать после
   margin: 0 auto;
   min-height: 100vh;
+  height: 100vh;
   padding-top: 0;
   &.main {
     overflow: hidden;
-    min-height: 100%;
   }
 }
 </style>

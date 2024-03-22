@@ -54,7 +54,7 @@ onMounted(() => {
   margin-top: 40px;
   min-width: 367px;
   min-height: 367px;
-  width: 70%;
+  width: 60%;
   aspect-ratio : 1 / 1;
   //height: 80vw;
   cursor: pointer;
