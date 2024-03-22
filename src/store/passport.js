@@ -5,9 +5,8 @@ export const passportStore = defineStore('passport', {
   namespaced: true,
   state: () => {
     return {
-      username: null,
-      password: null,
       auth: null,
+      username: null
     }
   },
   getters: {
@@ -20,16 +19,21 @@ export const passportStore = defineStore('passport', {
     },
   },
   actions: {
-    async userAuth(username, password) {
-      this.username = username
-      this.password = password
+    async userAuth() {
+      // userId = '2'
+      // const password = '111111'
+      const userId = '2'
+      const password = '111111'
 
       const formData = new FormData()
-      formData.append('username', this.username)
-      formData.append('password', this.password)
+      formData.append('username', userId)
+      formData.append('password', password)
       const { data } = await BACKEND.post('/auth/token', formData, withAuthorization(null))
 
       this.auth = { ...data }
     },
+    setTgUserName(name) {
+      this.username = name
+    }
   },
 })
