@@ -166,6 +166,7 @@ section {
       }
       .energy-value {
         @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
+        z-index: 1;
       }
     }
 
