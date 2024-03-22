@@ -51,12 +51,11 @@ onMounted(() => {
 .root-coin-button {
   @include flex(row, center, center);
   position: relative;
-  margin-top: 40px;
-  min-width: 367px;
-  min-height: 367px;
-  width: 60%;
+  margin-top: 5vh;
+  max-width: 367px;
+  max-height: 367px;
+  width: 100%;
   aspect-ratio : 1 / 1;
-  //height: 80vw;
   cursor: pointer;
   opacity: 0;
   background-size: contain;
@@ -64,6 +63,14 @@ onMounted(() => {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   background-image: url('@/assets/img/0001.png');
+  @media (max-height: 660px) {
+    max-width: 280px;
+    max-height: 280px;
+  }
+  @media (max-height: 680px) {
+    max-width: 280px;
+    max-height: 280px;
+  }
   &:focus,
   &:active {
     outline: none;
