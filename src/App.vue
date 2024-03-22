@@ -8,9 +8,16 @@ defineProps({
 })
 
 const tg = window.Telegram.WebApp
+
+passportStore().userAuth()
+// const id = '286133104'
+// passportStore().setTgUserId(id)
+passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 onMounted(async () => {
-  await passportStore().userAuth()
-  await passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
+  // await passportStore().userAuth()
+  // const id = '286133104'
+  // await passportStore().setTgUserId(id)
+  // await passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 })
 
 const loc = useRoute()

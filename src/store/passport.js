@@ -33,6 +33,7 @@ export const passportStore = defineStore('passport', {
       this.auth = { ...data }
     },
     setTgUserId(id) {
+      console.log('setTgUserId', id)
       this.tgUserId = id
     }
   },
