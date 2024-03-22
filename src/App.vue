@@ -9,23 +9,23 @@ defineProps({
 
 const tg = window.Telegram.WebApp
 
+function setThemeClass() {
+  document.documentElement.className = Telegram.WebApp.colorScheme;
+}
+
+Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+setThemeClass();
+
 passportStore().userAuth()
 // const id = '286133104'
 // passportStore().setTgUserId(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
-onMounted(async () => {
-  // await passportStore().userAuth()
-  // const id = '286133104'
-  // await passportStore().setTgUserId(id)
-  // await passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
-})
 
 const loc = useRoute()
 const router = useRouter()
 const currentRouter = ref(null)
 const main = ref(null)
 
-console.log('>>>', tg)
 
 watch(
   loc,
@@ -46,7 +46,6 @@ watch(
 main {
   @include flex(column, center, flex-start);
   position: relative;
-  //background: #010201 radial-gradient(50% 50% at 50% 50%, #28C629 0%, #BDFF00 100%);
   background: #010201;
   background-size: cover;
   width: 100vw;
@@ -60,7 +59,6 @@ main {
     width: 4000vw;
     height: 200vh;
     background: url('@/assets/img/gradient.png') no-repeat fixed bottom;
-    //filter: blur(163.7px);
     position: absolute;
     top: 90vh;
     left: 50%;

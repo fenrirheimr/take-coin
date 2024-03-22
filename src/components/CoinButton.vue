@@ -6,9 +6,10 @@ const nums = ref([])
 const coinButton = ref(null)
 
 function animateNums(e) {
-  coinButton.value.classList.remove('animated')
+  if (coinButton.value.classList.contains('animated')) {
+    coinButton.value.classList.remove('animated')
+  }
   coinButton.value.classList.remove('loaded')
-  coinButton.value.classList.add('active')
   const pos = coinButton.value.getBoundingClientRect()
 
   coinButton.value.classList.add('animated')
@@ -27,6 +28,7 @@ function animateNumsEnd(i) {
 }
 const isLoaded = debounce(() => {
   coinButton.value.classList.add('loaded')
+  coinButton.value.classList.add('active')
 }, 500)
 
 onMounted(() => {
