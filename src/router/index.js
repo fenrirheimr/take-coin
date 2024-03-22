@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../pages/HomePage.vue'
-import FaqPage from '../pages/FaqPage.vue'
 import FriendsPage from '../pages/FriendsPage.vue'
 import BalancesPage from '../pages/BalancesPage.vue'
 
@@ -25,14 +24,6 @@ const routes = [
     component: FriendsPage,
     meta: {
       title: 'Друзья',
-    },
-  },
-  {
-    path: '/faq',
-    name: 'faq',
-    component: FaqPage,
-    meta: {
-      title: 'FAQ',
     },
   },
   {

@@ -6,12 +6,12 @@ export const passportStore = defineStore('passport', {
   state: () => {
     return {
       auth: null,
-      username: null
+      tgUserId: null
     }
   },
   getters: {
-    getUserName(state) {
-      return state.username
+    getTgUserId(state) {
+      return state.tgUserId
     },
     getAuthData(state) {
       if (state.auth !== null)
@@ -32,8 +32,8 @@ export const passportStore = defineStore('passport', {
 
       this.auth = { ...data }
     },
-    setTgUserName(name) {
-      this.username = name
+    setTgUserId(id) {
+      this.tgUserId = id
     }
   },
 })

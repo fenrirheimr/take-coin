@@ -26,7 +26,7 @@ export const userStore = defineStore('user', {
     },
   },
   actions: {
-    async userData(userId) {
+    async userData(tgUserId) {
       console.log('userId')
       // alert('userId', userId)
       try {
@@ -34,7 +34,7 @@ export const userStore = defineStore('user', {
 
         const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
           params: {
-            user_id: userId,
+            user_id: tgUserId,
           },
         }))
 

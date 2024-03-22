@@ -14,9 +14,9 @@ const router = useRouter()
 let isLoaded = ref(false)
 
 onMounted(async () => {
-  const username = passportStore().getUserName
-  console.log('>>>', username)
-  await userStore().userData(username)
+  const tgUserId = passportStore().getTgUserId
+  console.log('>>>', tgUserId)
+  await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
   coinStore().calculateLimit()
 })
@@ -36,7 +36,7 @@ const goToFaq = () => {
   <section v-if="isLoaded">
     <TakeVpnButton title="Перейти в TakeVPN" />
     <div class="user-id">
-      ID: {{ userStore().getUserData.user_id }}
+      ID: {{ passportStore().getTgUserId }}
     </div>
 
     <div class="content-wrapper">
