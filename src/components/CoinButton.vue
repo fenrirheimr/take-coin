@@ -6,6 +6,7 @@ const nums = ref([])
 const coinButton = ref(null)
 
 function animateNums(e) {
+  coinButton.value.classList.remove('animated')
   coinButton.value.classList.remove('loaded')
   coinButton.value.classList.add('active')
   const pos = coinButton.value.getBoundingClientRect()
@@ -16,10 +17,13 @@ function animateNums(e) {
     y: e.clientY - pos.top,
     show: true,
   })
+  setTimeout(() => {
+
+  }, 650)
 }
 function animateNumsEnd(i) {
+  // coinButton.value.classList.remove('animated')
   nums.value[i].show = false
-  coinButton.value.classList.remove('animated')
 }
 const isLoaded = debounce(() => {
   coinButton.value.classList.add('loaded')
@@ -90,7 +94,6 @@ onMounted(() => {
 
 @keyframes rotate-scale-up-ver {
   0% {
-    transform: rotate3d(1, 1, 0, -360deg);
     opacity: 0;
     transform: scale(1) rotateY(0);
   }
@@ -99,7 +102,6 @@ onMounted(() => {
     transform: scale(1.5) rotateY(180deg);
   }
   100% {
-    transform: rotate3d(1, 1, 0, 0deg);
     opacity: 1;
     transform: scale(1) rotateY(360deg);
   }
