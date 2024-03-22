@@ -16,6 +16,7 @@ onMounted(async () => {
   // const password = '111111'
   await passportStore().userAuth()
   await passportStore().setTgUserName(tg?.initDataUnsafe?.user?.id)
+  alert(tg?.initDataUnsafe?.user?.id)
 })
 
 const loc = useRoute()

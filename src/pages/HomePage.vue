@@ -15,6 +15,7 @@ let isLoaded = ref(false)
 
 onMounted(async () => {
   const username = passportStore().getUserName
+  console.log('>>>', username)
   await userStore().userData(username)
   isLoaded.value = userStore().isLoaded
   coinStore().calculateLimit()
