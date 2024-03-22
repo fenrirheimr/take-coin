@@ -10,9 +10,9 @@ defineProps({
 const tg = window.Telegram.WebApp
 
 passportStore().userAuth()
-const id = '286133104'
-passportStore().setTgUserId(id)
-// passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
+// const id = '286133104'
+// passportStore().setTgUserId(id)
+passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 onMounted(async () => {
   // await passportStore().userAuth()
   // const id = '286133104'
