@@ -15,9 +15,9 @@ let isLoaded = ref(false)
 
 onMounted(async () => {
   const tgUserId = passportStore().getTgUserId
-  console.log('>>>', tgUserId)
   await userStore().userData(tgUserId)
-  isLoaded.value = userStore().isLoaded
+  // isLoaded.value = userStore().isLoaded
+  isLoaded.value = true
   coinStore().calculateLimit()
 })
 
