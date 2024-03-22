@@ -25,6 +25,10 @@ const handleCoin = () => {
   coinStore().decrementLimitValue()
 }
 
+const goToFaq = () => {
+  window.location.href = "https://takecoin.notion.site/Takecoin-f971d96521da4247866d199f40f3acd7"
+}
+
 </script>
 
 <template>
@@ -61,7 +65,7 @@ const handleCoin = () => {
       </div>
 
       <div class="navigation">
-        <div class="item" @click="router.push({ path: '/faq' })">
+        <div class="item" @click="goToFaq">
           <div class="icon icon-faq" />
           <div class="title">
             FAQ

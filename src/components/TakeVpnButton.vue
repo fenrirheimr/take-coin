@@ -5,10 +5,15 @@ defineProps({
   title: String,
   route: Object,
 })
+
+const goToTakeVPN_bot = () => {
+  window.location.href = "https://t.me/TakeVPN_bot"
+}
 </script>
 
+
 <template>
-  <div class="root-take-vpn-button">
+  <div class="root-take-vpn-button" @click="goToTakeVPN_bot">
     <span>{{ title }}</span>
     <ArrowLeft class="arrow" :width="8" :height="12" />
   </div>
