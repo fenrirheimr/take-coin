@@ -100,7 +100,7 @@ section {
   @include flex(column, flex-start, center);
   width: 100%;
   min-height: 100vh;
-  padding: 35px 32px;
+  padding: 0 32px 35px;
   position: relative;
   z-index: 2;
 

@@ -90,7 +90,7 @@ section {
   width: 100%;
   min-height: 100vh;
   //min-height: calc(100vh - 55px);
-  padding: 35px 32px;
+  padding: 0 32px 35px;
   position: relative;
   z-index: 2;
 
