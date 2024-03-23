@@ -30,10 +30,15 @@ passportStore().userAuth()
 // passportStore().setTgUserId(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 
+const showAlert = () => {
+  alert(loc.fullPath)
+}
+
 </script>
 
 <template>
   <main ref="main" :class="{ main: loc.fullPath === '/', inner: loc.fullPath !== '/' }">
+    {{ showAlert() }}
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
