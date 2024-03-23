@@ -7,20 +7,6 @@ defineProps({
   title: String,
 })
 
-const tg = window.Telegram.WebApp
-
-function setThemeClass() {
-  document.documentElement.className = Telegram.WebApp.colorScheme;
-}
-
-Telegram.WebApp.onEvent('themeChanged', setThemeClass);
-setThemeClass();
-
-passportStore().userAuth()
-// const id = '286133104'
-// passportStore().setTgUserId(id)
-passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
-
 const loc = useRoute()
 const router = useRouter()
 const currentRouter = ref(null)
@@ -28,12 +14,22 @@ const main = ref(null)
 
 
 watch(
-  loc,
-  () => {
-    currentRouter.value = router.options.routes.filter(e => e.name !== loc.name)
-  },
-  { deep: true, immediate: true },
+    loc,
+    () => {
+      currentRouter.value = router.options.routes.filter(e => e.name !== loc.name)
+    },
+    { deep: true, immediate: true },
 )
+
+console.log('loc', loc.fullPath, currentRouter)
+
+const tg = window.Telegram.WebApp
+
+passportStore().userAuth()
+// const id = '286133104'
+// passportStore().setTgUserId(id)
+passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
+
 </script>
 
 <template>
@@ -76,6 +72,7 @@ main {
       background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
       background-size: contain;
       position: absolute;
+      top: auto;
       bottom: 0;
       z-index: 0;
     }
