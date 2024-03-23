@@ -33,7 +33,8 @@ passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 </script>
 
 <template>
-  <main ref="main" :class="{ main: loc.fullPath === '/'}">
+<!--  <main ref="main" :class="{ main: loc.fullPath === '/'}">-->
+  <main ref="main" :class="loc.fullPath === '/' ? 'main' : 'inner'">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
