@@ -33,14 +33,15 @@ passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 </script>
 
 <template>
-<!--  <main ref="main" :class="{ main: loc.fullPath === '/'}">-->
-  <main ref="main" :class="loc.fullPath === '/' ? 'main' : 'inner'">
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
+<!--  <main ref="main" :class="loc.fullPath === '/' ? 'main' : 'inner'">-->
+  <router-view v-slot="{ Component }">
+    <transition name="fade">
+      <main ref="main" :class="{ inner: loc.fullPath !== '/'}">
         <component :is="Component" />
-      </transition>
-    </router-view>
-  </main>
+      </main>
+    </transition>
+  </router-view>
+
 </template>
 
 <style scoped lang="scss">
@@ -78,18 +79,18 @@ main {
       z-index: 0;
     }
   }
-  &.main {
-    &:before {
-      display: block;
-      content: ' ';
-      width: 100vw;
-      height: 100vh;
-      background: url('@/assets/img/gradient.png') no-repeat top center;
-      position: absolute;
-      top: 10vh;
-      z-index: 0;
-    }
-  }
+  //&.main {
+  //  &:before {
+  //    display: block;
+  //    content: ' ';
+  //    width: 100vw;
+  //    height: 100vh;
+  //    background: url('@/assets/img/gradient.png') no-repeat top center;
+  //    position: absolute;
+  //    top: 10vh;
+  //    z-index: 0;
+  //  }
+  //}
 }
 
 .fade-enter-active,
