@@ -17,9 +17,9 @@ Telegram.WebApp.onEvent('themeChanged', setThemeClass);
 setThemeClass();
 
 passportStore().userAuth()
-// const id = '286133104'
-// passportStore().setTgUserId(id)
-passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
+const id = '286133104'
+passportStore().setTgUserId(id)
+// passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 
 const loc = useRoute()
 const router = useRouter()
@@ -38,13 +38,16 @@ watch(
 
 <template>
   <main ref="main" :class="{ main: loc.fullPath === '/' }">
-    <RouterView :key="loc.fullPath" />
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
 </template>
 
 <style scoped lang="scss">
 main {
-  @include flex(column, center, flex-start);
   position: relative;
   background: #010201;
   background-size: cover;
@@ -53,20 +56,39 @@ main {
   height: 100vh;
   padding-top: 0;
   z-index: 1;
+  overflow: hidden;
   &:before {
     display: block;
     content: ' ';
-    width: 4000vw;
-    height: 200vh;
-    background: url('@/assets/img/gradient.png') no-repeat fixed bottom;
+    width: 100vw;
+    height: 100vh;
+    background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
+    background-size: contain;
     position: absolute;
-    top: 90vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
     z-index: 0;
   }
   &.main {
-    overflow: hidden;
+    &:before {
+      display: block;
+      content: ' ';
+      width: 100vw;
+      height: 100vh;
+      background: url('@/assets/img/gradient.png') no-repeat top center;
+      position: absolute;
+      top: 10vh;
+      z-index: 0;
+    }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -47,19 +47,58 @@ const route = useRoute()
         </div>
       </div>
     </div>
+
+    <div class="content-wrapper">
+      <div class="title">
+        Статистика
+      </div>
+
+      <div class="stat-summary">
+        <div class="item">
+          <div class="icon icon-faq" />
+          <div class="title">
+            FAQ
+          </div>
+        </div>
+        <div class="divider" />
+        <div class="item">
+          <div class="icon icon-friends" />
+          <div class="title">
+            Друзья
+          </div>
+        </div>
+        <div class="divider" />
+        <div class="item">
+          <div class="icon icon-balances" />
+          <div class="title">
+            Монеты
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="invite-button-wrapper">
+      <div class="root-action-button">
+        <div class="text">Пригласить друга</div>
+      </div>
+    </div>
   </section>
 </template>
 
 <style scoped lang="scss">
 section {
-  @include flex(column, flex-start, center);
+  @include flex(column, flex-start, flex-start);
   width: 100%;
-  min-height: calc(100vh - 55px);
-  padding: 0 32px 35px;
+  min-height: 100vh;
+  //min-height: calc(100vh - 55px);
+  padding: 35px 32px;
+  position: relative;
+  z-index: 2;
 
   .content-wrapper {
     @include flex(column, flex-start, flex-start);
     width: 100%;
+    margin-bottom: 50px;
+
     & > .title {
       @include font-style($font-size: 32px, $font-weight: 800, $color: #fff);
       margin-bottom: 37px;
@@ -107,6 +146,71 @@ section {
             }
           }
         }
+      }
+    }
+
+    .stat-summary {
+      @include flex(row, space-between, center);
+      width: 100%;
+      margin-left: auto;
+      border: 1px solid rgba(255,255,255, .72);
+      border-radius: 5px;
+      padding: 5px 20px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(20.4px);
+      .item {
+        @include flex(column, space-between, center);
+        width: 33.3%;
+        height: 60px;
+        position: relative;
+        &:before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          content: ' ';
+          display: block;
+          width: 58px;
+          height: 58px;
+          background-size: cover;
+          z-index: 0;
+          filter: blur(12.35px);
+          background-image: url('data:image/svg+xml,<svg width="89" height="89" viewBox="0 0 89 89" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_35)"><circle cx="44.6919" cy="44.5" r="19.5" fill="%23FFF500"/></g><defs><filter id="filter0_f_674_35" x="0.491894" y="0.299999" width="88.4" height="88.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="12.35" result="effect1_foregroundBlur_674_35"/></filter></defs></svg>')
+        }
+
+        .title {
+          @include font-style($font-size: 10px, $font-weight: 500, $color: #fff);
+          z-index: 1;
+        }
+      }
+      .divider {
+        width: 1px;
+        height: 50px;
+        background: #fff;
+      }
+    }
+  }
+
+  .invite-button-wrapper {
+    @include flex(row, center, center);
+    width: 100%;
+    margin-top: auto;
+    .root-action-button {
+      @include flex(row, center, center);
+      width: 100%;
+      background: linear-gradient(90deg, #00BD01 0%, #28C629 100%);
+      backdrop-filter: blur(20.4px);
+      border-radius: 8px;
+      padding: 16px 0;
+      cursor: pointer;
+      user-select: none;
+      .text {
+        @include font-style($font-size: 24px, $font-weight: 800, $color: #fff);
+      }
+
+      &:active,
+      &:focus, {
+        animation: blink .5s both
       }
     }
   }
