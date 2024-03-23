@@ -89,10 +89,24 @@ section {
   @include flex(column, flex-start, flex-start);
   width: 100%;
   min-height: 100vh;
-  //min-height: calc(100vh - 55px);
   padding: 0 32px 35px;
+  background-size: cover;
   position: relative;
   z-index: 2;
+
+  &:before {
+    display: block;
+    content: ' ';
+    width: 100vw;
+    height: 100vh;
+    background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
+    background-size: contain;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
 
   .content-wrapper {
     @include flex(column, flex-start, flex-start);

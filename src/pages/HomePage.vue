@@ -101,11 +101,20 @@ section {
   width: 100%;
   min-height: 100vh;
   padding: 10px 32px 35px;
+  background-size: cover;
   position: relative;
   z-index: 2;
 
-  &.loading {
-    background: red;
+  &:before {
+    display: block;
+    content: ' ';
+    width: 100vw;
+    height: 100vh;
+    background: url('@/assets/img/gradient.png') no-repeat top center;
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    z-index: 0;
   }
 
   .user-id {
