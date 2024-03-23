@@ -37,7 +37,7 @@ watch(
 </script>
 
 <template>
-  <main ref="main" :class="{ main: loc.fullPath === '/' }">
+  <main ref="main" :class="{ main: loc.fullPath === '/', inner: loc.fullPath !== '/' }">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
@@ -62,11 +62,23 @@ main {
     content: ' ';
     width: 100vw;
     height: 100vh;
-    background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
-    background-size: contain;
+    background: url('@/assets/img/gradient.png') no-repeat top center;
     position: absolute;
-    bottom: 0;
+    top: 10vh;
     z-index: 0;
+  }
+  &.inner {
+    &:before {
+      display: block;
+      content: ' ';
+      width: 100vw;
+      height: 100vh;
+      background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
+      background-size: contain;
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+    }
   }
   &.main {
     &:before {
