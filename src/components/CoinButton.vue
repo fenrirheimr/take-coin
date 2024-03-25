@@ -100,13 +100,18 @@ onMounted(() => {
       display: block;
       content: ' ';
       position: absolute;
-      background: #FDB623 center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-size: contain;
+      background-image: url('@/assets/img/btn-yellow-blur.png');
+      //background: #FDB623 center;
       filter: blur(100px);
       z-index: 0;
 
-      max-width: 367px;
-      max-height: 367px;
-      width: 100%;
+      //max-width: 367px;
+      //max-height: 367px;
+      width: 110vw;
       aspect-ratio : 1 / 1;
     }
 

@@ -1,15 +1,30 @@
 <script setup>
+import {onMounted, ref} from "vue";
 import { useRoute } from 'vue-router'
+
+import {passportStore} from "@/store/passport.js";
+import { userStore } from '@/store/user'
 
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
 import Alert from '@/components/icons/Alert.vue'
 import GoBackButton from "@/components/GoBackButton.vue";
 
+
+
 const route = useRoute()
+
+let isLoaded = ref(false)
+
+const tgUserId = passportStore().getTgUserId
+
+onMounted(async () => {
+  await userStore().userData(tgUserId)
+  isLoaded.value = userStore().isLoaded
+})
 </script>
 
 <template>
-  <section>
+  <section v-if="isLoaded">
     <GoBackButton />
     <div class="content-wrapper">
       <div class="title">
@@ -56,28 +71,28 @@ const route = useRoute()
       <div class="stat-summary">
         <div class="item">
           <div class="title">
-            Друзей приведено
+            Друзей<br />приведено
           </div>
           <div class="value">
-            1500
+            {{ userStore().getUserData.friends_invited }}
           </div>
         </div>
         <div class="divider" />
         <div class="item">
           <div class="title">
-            Начислено с добычи монет
+            Начислено с<br />добычи монет
           </div>
           <div class="value">
-            999k
+            {{ userStore().getUserData.balance_friends }}
           </div>
         </div>
         <div class="divider" />
         <div class="item">
           <div class="title">
-            Начислено с покупок TakeVPN
+            Начислено с<br />покупок TakeVPN
           </div>
           <div class="value">
-            105k
+            {{ userStore().getUserData.balance_subscribes }}
           </div>
         </div>
       </div>
@@ -181,7 +196,7 @@ section {
       .item {
         @include flex(column, space-between, center);
         width: 33.3%;
-        height: 60px;
+        height: 55px;
         position: relative;
         &:before {
           position: absolute;
@@ -201,6 +216,12 @@ section {
         .title {
           @include font-style($font-size: 10px, $font-weight: 500, $color: #fff);
           z-index: 1;
+          text-align: center;
+        }
+        .value {
+          @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
+          z-index: 1;
+          text-align: center;
         }
       }
       .divider {

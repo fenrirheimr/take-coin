@@ -37,6 +37,7 @@ export const userStore = defineStore('user', {
     },
     async userData(tgUserId) {
       const token = this.getToken
+      console.log('?')
       try {
         const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
           params: {

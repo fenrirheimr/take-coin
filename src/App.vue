@@ -12,9 +12,9 @@ const main = ref(null)
 const tg = window.Telegram.WebApp
 
 passportStore().userAuth()
-// const id = '286133104'
-// passportStore().setTgUserId(id)
-passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
+const id = '286133104'
+passportStore().setTgUserId(id)
+// passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 
 </script>
 
