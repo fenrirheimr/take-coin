@@ -34,6 +34,8 @@ export const coinStore = defineStore('coin', {
         user_id: userId,
         amount: 1
       }, withAuthorization(token))
+
+      await userStore().userData(userId)
     },
     async decrementLimitValue() {
       this.dayLimit--
@@ -50,7 +52,7 @@ export const coinStore = defineStore('coin', {
           this.calculateLimit()
         } else {
           this.counterRun = false
-          // clearInterval(this.counter);
+          clearInterval(this.counter);
         }
         },1000,
       );
