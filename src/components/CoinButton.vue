@@ -90,6 +90,7 @@ onMounted(() => {
       background-size: contain;
       background-image: url('@/assets/img/btn-yellow.png');
       z-index: 1;
+      border-radius: 51%;
 
       max-width: 367px;
       max-height: 367px;
@@ -98,21 +99,23 @@ onMounted(() => {
 
       user-select: none;
       touch-action: none;
+
+      box-shadow: 0 40px 270px 60px #fdb623;
     }
 
     &:after {
-      display: block;
+      display: none;
       content: ' ';
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      //background-size: contain;
-      //background-image: url('@/assets/img/btn-yellow-blur.png');
-      background: #FDB623;
-      //background-position: center;
-      //background-repeat: no-repeat;
-      filter: blur(100px);
+      background-size: contain;
+      background-image: url('@/assets/img/btn-yellow-blur.png');
+      //background: #FDB623;
+      background-position: center;
+      background-repeat: no-repeat;
+      //filter: blur(100px);
       z-index: 0;
 
       //max-width: 367px;
@@ -120,7 +123,7 @@ onMounted(() => {
       //width: 100vw;
       width: 535px;
       height: 467px;
-      border-radius: 50%;
+      //border-radius: 50%;
 
       user-select: none;
       touch-action: none;
