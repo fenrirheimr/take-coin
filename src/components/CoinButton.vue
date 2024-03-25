@@ -74,7 +74,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     background-size: contain;
-    background-image: url('@/assets/img/btn-gree.png');
+    background-image: url('@/assets/img/btn-yellow.png');
     z-index: 1;
   }
 
@@ -84,8 +84,8 @@ onMounted(() => {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #A3D734;
-    filter: blur(60.1px);
+    background: #FDB623;
+    filter: blur(100px);
     z-index: 0;
   }
   @media (max-height: 660px) {
