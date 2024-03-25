@@ -38,18 +38,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="coinButton" class="root-coin-button" @click="animateNums">
-    <transition-group v-for="(val, i) in nums">
+  <div class="root-coin-button">
+    <div class="coin-button" ref="coinButton" @click="animateNums">
+      <transition-group v-for="(val, i) in nums">
       <span
-        v-if="val.show === true"
-        :ref="`num-${i}`"
-        class="num"
-        :style="{ top: `${val.y}px`, left: `${val.x}px` }"
-        @animationend="animateNumsEnd(i)"
+          v-if="val.show === true"
+          :ref="`num-${i}`"
+          class="num"
+          :style="{ top: `${val.y}px`, left: `${val.x}px` }"
+          @animationend="animateNumsEnd(i)"
       >
         +1
       </span>
-    </transition-group>
+      </transition-group>
+    </div>
   </div>
 </template>
 
@@ -57,59 +59,74 @@ onMounted(() => {
 .root-coin-button {
   @include flex(row, center, center);
   position: relative;
-  margin-top: 5vh;
-  max-width: 367px;
-  max-height: 367px;
   width: 100%;
+  height: 100%;
+  max-height: 367px;
   aspect-ratio : 1 / 1;
-  cursor: pointer;
-  opacity: 0;
-  outline: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  &:before {
-    display: block;
-    content: ' ';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-    background-image: url('@/assets/img/btn-yellow.png');
-    z-index: 1;
-  }
+  margin-top: 5vh;
 
-  &:after {
-    display: block;
-    content: ' ';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #FDB623;
-    filter: blur(100px);
-    z-index: 0;
-  }
-  @media (max-height: 660px) {
-    max-width: 280px;
-    max-height: 280px;
-  }
-  @media (max-height: 680px) {
-    max-width: 280px;
-    max-height: 280px;
-  }
-  &:focus,
-  &:active {
+  .coin-button {
+    //@include flex(row, center, center);
+    cursor: pointer;
+    opacity: 0;
     outline: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-  }
-  &.active {
-    opacity: 1;
-  }
-  &.loaded {
-    animation: rotate-scale-up-ver 0.65s linear both;
-  }
-  &.animated {
-    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    max-width: 367px;
+    max-height: 367px;
+    width: 100%;
+    aspect-ratio : 1 / 1;
+    &:before {
+      display: block;
+      content: ' ';
+      position: absolute;
+      background-size: contain;
+      background-image: url('@/assets/img/btn-yellow.png');
+      z-index: 1;
+
+      max-width: 367px;
+      max-height: 367px;
+      width: 100%;
+      aspect-ratio : 1 / 1;
+    }
+
+    &:after {
+      display: block;
+      content: ' ';
+      position: absolute;
+      background: #FDB623 center;
+      filter: blur(100px);
+      z-index: 0;
+
+      max-width: 367px;
+      max-height: 367px;
+      width: 100%;
+      aspect-ratio : 1 / 1;
+    }
+
+    @media (max-height: 660px) {
+      max-width: 280px;
+      max-height: 280px;
+    }
+    @media (max-height: 680px) {
+      max-width: 280px;
+      max-height: 280px;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    &.active {
+      opacity: 1;
+    }
+    &.loaded {
+      animation: rotate-scale-up-ver 0.65s linear both;
+    }
+    &.animated {
+      animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
   }
 }
 
