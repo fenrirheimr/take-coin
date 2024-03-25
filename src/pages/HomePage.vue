@@ -23,7 +23,7 @@ onMounted(async () => {
   isLoaded.value = userStore().isLoaded
   isError.value = userStore().isError
   // checkIsError()
-  coinStore().calculateLimit()
+  // coinStore().calculateLimit()
 })
 function checkIsError() {
   if (isError.value === true) {

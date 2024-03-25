@@ -21,10 +21,9 @@ function animateNums(e) {
   })
   setTimeout(() => {
 
-  }, 650)
+  }, 350)
 }
 function animateNumsEnd(i) {
-  // coinButton.value.classList.remove('animated')
   nums.value[i].show = false
 }
 const isLoaded = debounce(() => {
@@ -40,10 +39,7 @@ onMounted(() => {
 
 <template>
   <div class="root-coin-button">
-    <div class="coin-button" ref="coinButton"
-
-         @touchstart="animateNums"
-    >
+    <div class="coin-button" ref="coinButton" @touchstart="animateNums">
       <transition-group v-for="(val, i) in nums">
       <span
           v-if="val.show === true"
@@ -90,7 +86,7 @@ onMounted(() => {
       background-size: contain;
       background-image: url('@/assets/img/btn-yellow.png');
       z-index: 1;
-      border-radius: 51%;
+      //border-radius: 50%;
 
       max-width: 367px;
       max-height: 367px;
@@ -100,33 +96,27 @@ onMounted(() => {
       user-select: none;
       touch-action: none;
 
-      box-shadow: 0 40px 270px 60px #fdb623;
+      //box-shadow: 0 40px 270px 60px #fdb623;
     }
-
     &:after {
-      display: none;
+      display: block;
       content: ' ';
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      background-size: contain;
-      background-image: url('@/assets/img/btn-yellow-blur.png');
-      //background: #FDB623;
-      background-position: center;
-      background-repeat: no-repeat;
-      //filter: blur(100px);
+      transform: translate(-50%,-50%);
       z-index: 0;
+      border-radius: 50%;
 
-      //max-width: 367px;
-      //max-height: 367px;
-      //width: 100vw;
-      width: 535px;
-      height: 467px;
-      //border-radius: 50%;
+      max-width: 367px;
+      max-height: 367px;
+      width: 80%;
+      aspect-ratio : 1 / 1;
 
       user-select: none;
       touch-action: none;
+
+      box-shadow: 0 40px 270px 60px #fdb623;
     }
 
     @media (max-height: 660px) {
@@ -151,7 +141,9 @@ onMounted(() => {
       animation: rotate-scale-up-ver 0.65s linear both;
     }
     &.animated {
-      animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      &:before {
+        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      }
     }
   }
 }

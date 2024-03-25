@@ -34,33 +34,23 @@ export const coinStore = defineStore('coin', {
         user_id: userId,
         amount: 1
       }, withAuthorization(token))
-
-      await userStore().userData(userId)
     },
     async decrementLimitValue() {
       this.dayLimit--
-      const userId = userStore().getUserData.user_id
-
-      // await BACKEND.post('/api/update-subscribes-balance', {
-      //   user_id: userId,
-      //   amount: 1
-      // }, withAuthorization(token))
-
-      await userStore().userData(userId)
       if (this.dayLimit < userStore().getUserData.limit && !this.counterRun) {
         this.counterRun = true
         this.calculateLimit()
       }
-      //
-
     },
     calculateLimit() {
-      this.counter = setInterval(() => {
+      // this.counter = setInterval(() => {
+      setTimeout(() => {
         if (this.dayLimit < userStore().getUserData.limit) {
           this.dayLimit++
+          this.calculateLimit()
         } else {
           this.counterRun = false
-          clearInterval(this.counter);
+          // clearInterval(this.counter);
         }
         },1000,
       );
