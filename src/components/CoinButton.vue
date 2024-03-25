@@ -72,6 +72,7 @@ onMounted(() => {
 
   .coin-button {
     //@include flex(row, center, center);
+    position: relative;
     cursor: pointer;
     opacity: 0;
     outline: none;
@@ -94,6 +95,9 @@ onMounted(() => {
       max-height: 367px;
       width: 100%;
       aspect-ratio : 1 / 1;
+
+      user-select: none;
+      touch-action: none;
     }
 
     &:after {
@@ -103,16 +107,23 @@ onMounted(() => {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-size: contain;
-      background-image: url('@/assets/img/btn-yellow-blur.png');
-      //background: #FDB623 center;
+      //background-size: contain;
+      //background-image: url('@/assets/img/btn-yellow-blur.png');
+      background: #FDB623;
+      //background-position: center;
+      //background-repeat: no-repeat;
       filter: blur(100px);
       z-index: 0;
 
       //max-width: 367px;
       //max-height: 367px;
-      width: 110vw;
-      aspect-ratio : 1 / 1;
+      //width: 100vw;
+      width: 535px;
+      height: 467px;
+      border-radius: 50%;
+
+      user-select: none;
+      touch-action: none;
     }
 
     @media (max-height: 660px) {
