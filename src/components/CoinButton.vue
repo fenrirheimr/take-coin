@@ -6,6 +6,7 @@ const nums = ref([])
 const coinButton = ref(null)
 
 function animateNums(e) {
+
   if (coinButton.value.classList.contains('animated')) {
     coinButton.value.classList.remove('animated')
   }
@@ -14,8 +15,8 @@ function animateNums(e) {
 
   coinButton.value.classList.add('animated')
   nums.value.push({
-    x: e.clientX - pos.left,
-    y: e.clientY - pos.top,
+    x: e.touches[0].clientX - pos.left,
+    y: e.touches[0].clientY - pos.top,
     show: true,
   })
   setTimeout(() => {
@@ -39,7 +40,10 @@ onMounted(() => {
 
 <template>
   <div class="root-coin-button">
-    <div class="coin-button" ref="coinButton" @click="animateNums">
+    <div class="coin-button" ref="coinButton"
+
+         @touchstart="animateNums"
+    >
       <transition-group v-for="(val, i) in nums">
       <span
           v-if="val.show === true"
@@ -64,6 +68,7 @@ onMounted(() => {
   max-height: 367px;
   aspect-ratio : 1 / 1;
   margin-top: 5vh;
+  user-select: none;
 
   .coin-button {
     //@include flex(row, center, center);
@@ -71,6 +76,7 @@ onMounted(() => {
     opacity: 0;
     outline: none;
     user-select: none;
+    touch-action: none;
     -webkit-tap-highlight-color: transparent;
     max-width: 367px;
     max-height: 367px;
@@ -112,6 +118,7 @@ onMounted(() => {
       max-width: 280px;
       max-height: 280px;
     }
+
     &:focus,
     &:active {
       outline: none;

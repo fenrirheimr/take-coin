@@ -8,7 +8,7 @@ export const userStore = defineStore('user', {
     return {
       error: false,
       loaded: false,
-      user: {},
+      user: null,
     }
   },
   getters: {
@@ -29,32 +29,27 @@ export const userStore = defineStore('user', {
     },
   },
   actions: {
-    async userData(tgUserId) {
-      console.log('userId', tgUserId)
-      // alert('userId', userId)
-      try {
-        const token = this.getToken
 
+    async userFetch(tgUserId) {
+      console.log('>>>')
+
+
+    },
+    async userData(tgUserId) {
+      const token = this.getToken
+      try {
         const { data } = await BACKEND.get('/api/user-data', withAuthorization(token, {
           params: {
             user_id: tgUserId,
           },
         }))
-
         this.user = {...data}
         this.setIsLoaded(true, false)
       } catch (error) {
-        // console.log('e >>>>>>>>>>>>', e)
         this.setIsLoaded(false, true)
-        // if (error.response) {
-        //   console.log(error.response.data);
-        //   console.log(error.response.status);
-        //   console.log(error.response.headers);
-        // }
       }
     },
     setIsLoaded(loaded, error) {
-      console.log('e?', error)
       this.loaded = loaded
       this.error = error
     }
