@@ -6,7 +6,7 @@ export const userStore = defineStore('user', {
   namespaced: true,
   state: () => {
     return {
-      loading: true,
+      error: false,
       loaded: false,
       user: {},
     }
@@ -14,6 +14,9 @@ export const userStore = defineStore('user', {
   getters: {
     getUserData(state) {
       return state.user
+    },
+    isError(state) {
+      return state.error
     },
     isLoaded(state) {
       return state.loaded
@@ -39,13 +42,21 @@ export const userStore = defineStore('user', {
         }))
 
         this.user = {...data}
-        this.setIsLoaded()
-      } catch (e) {
-        console.log('e', e)
+        this.setIsLoaded(true, false)
+      } catch (error) {
+        // console.log('e >>>>>>>>>>>>', e)
+        this.setIsLoaded(false, true)
+        // if (error.response) {
+        //   console.log(error.response.data);
+        //   console.log(error.response.status);
+        //   console.log(error.response.headers);
+        // }
       }
     },
-    setIsLoaded() {
-      this.loaded = true
+    setIsLoaded(loaded, error) {
+      console.log('e?', error)
+      this.loaded = loaded
+      this.error = error
     }
   }
 })

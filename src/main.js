@@ -2,6 +2,7 @@ import '@/styles/_global.scss'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import VueTelegram from 'vue-tg'
+import cors from 'cors'
 import router from './router'
 import App from './App.vue'
 
@@ -9,6 +10,12 @@ const tg = window.Telegram.WebApp // получаем объект webapp тел
 // let tg2 = window.Telegram.WebView; //получаем объект webapp телеграма
 
 tg.expand() // расширяем на все окно/
+
+const corsOptions ={
+  origin: 'http://localhost:5173',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
 
 // tg.initData //получаем данные от пользователя в виде строки (работает только при запуске из меню команд бота).
 // tg.initDataUnsafe // получаем данные от пользователя в виде объекта (работает только при запуске из меню команд бота).
@@ -26,4 +33,5 @@ const app = createApp(App)
 app.use(VueTelegram)
 app.use(createPinia())
 app.use(router)
+// app.use(cors(corsOptions))
 app.mount('#app')

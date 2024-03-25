@@ -55,23 +55,29 @@ const route = useRoute()
 
       <div class="stat-summary">
         <div class="item">
-          <div class="icon icon-faq" />
           <div class="title">
-            FAQ
+            Друзей приведено
+          </div>
+          <div class="value">
+            1500
           </div>
         </div>
         <div class="divider" />
         <div class="item">
-          <div class="icon icon-friends" />
           <div class="title">
-            Друзья
+            Начислено с добычи монет
+          </div>
+          <div class="value">
+            999k
           </div>
         </div>
         <div class="divider" />
         <div class="item">
-          <div class="icon icon-balances" />
           <div class="title">
-            Монеты
+            Начислено с покупок TakeVPN
+          </div>
+          <div class="value">
+            105k
           </div>
         </div>
       </div>

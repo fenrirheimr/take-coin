@@ -64,11 +64,30 @@ onMounted(() => {
   aspect-ratio : 1 / 1;
   cursor: pointer;
   opacity: 0;
-  background-size: contain;
   outline: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  background-image: url('@/assets/img/0001.png');
+  &:before {
+    display: block;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-image: url('@/assets/img/btn-gree.png');
+    z-index: 1;
+  }
+
+  &:after {
+    display: block;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #A3D734;
+    filter: blur(60.1px);
+    z-index: 0;
+  }
   @media (max-height: 660px) {
     max-width: 280px;
     max-height: 280px;

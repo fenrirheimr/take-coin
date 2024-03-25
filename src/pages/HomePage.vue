@@ -10,17 +10,41 @@ import TakeVpnButton from '@/components/TakeVpnButton.vue'
 import CoinButton from '@/components/CoinButton.vue'
 
 const router = useRouter()
+let counter
 
 let isLoaded = ref(false)
+let isError = ref(false)
+
+const tgUserId = passportStore().getTgUserId
 
 onMounted(async () => {
-  const tgUserId = passportStore().getTgUserId
   console.log('mounted', tgUserId)
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
+  isError.value = userStore().isError
+  checkIsError()
   // isLoaded.value = true
   coinStore().calculateLimit()
+  console.log('mounted >>>>>>>>>>>>', isError.value)
 })
+function checkIsError() {
+  if (isError.value === true) {
+    console.log('error >>>>>>>>>>>>', isError.value)
+
+    counter = setInterval(async () => {
+          await userStore().userData(tgUserId)
+          // if (this.dayLimit < userStore().getUserData.limit) {
+          //   this.dayLimit++
+          // } else {
+          //   this.counterRun = false
+          //   clearInterval(this.counter);
+          // }
+        },1000,
+    );
+  } else {
+    clearInterval(counter);
+  }
+}
 
 const handleCoin = () => {
   coinStore().incrementCoinsValue()
@@ -31,10 +55,26 @@ const goToFaq = () => {
   window.location.href = "https://takecoin.notion.site/Takecoin-f971d96521da4247866d199f40f3acd7"
 }
 
+// import axios from 'axios';
+//
+// const response = await axios.get('https://api.notion.com/v1/blocks/f971d965-21da-4247-866d-199f40f3acd7/children', {
+//   params: {
+//     'page_size': '100'
+//   },
+//   withCredentials: false,
+//   headers: {
+//     'Authorization': 'Bearer 91nIVJlI6ISeyRnb192YiwiIwkTMukDNuYDMy4SNiojIwlmIsIiNz4yNzUzLpJXYmF2UgAjLw4CMukDMx8SZt9mcoNEIp82ajV2RgU2apxGIswUTUh0SoAiNz4yNzUzL0l2SiV2VlxGcwFEIpQjNfZDO4BCe15WaMByOxEDWoACMuUzLhxGbpp3bNJiOiQnbldWYfJXZzVnI7pjIzRGbllmRkVmdpJXZENXdvlmdlJHciwiIyImakJiOig2chhmIsUWdyRnOiMXY0xWZEN3clN2byBlbhNmIsAjM3cTM0IjNxETM3EjOiUWbpRVZj5WazJCL9JSOzE2NiZGZiRTZ5MTL0gDOi1iMlJGNtETM3ITLmVzN2QGNiJjI6ICRJVGbiFGdzJCLiAjLzQjL0IiOi42bpNnclZ1akNnIsICduVWasNWLzpmI6ISZwlHVrR2cisnOiEGdhRWY0VWTnl2c0FGdzJCL91nIu9Wa0NWdk9mcwJiOiIXZpRnI7pjI05WZt52bylmduV0ZpNHdhR3ciwSf7pjIzVGd1JWayRHdBVGdhZXayBnIs03e6IycElUbvR3c1NmIs0XZzxWYmpjIklkclN3dvJnQzFGaiwSZ1JHd6IiclN3dvJnQw9GdrNXZENXaiwSZzxWYmpjIlxWai9WTzlmIsUWdyRnOiIXZzd3byJ0cpJCLlNHbhZmOiIXZzd3byJUZslmYv10cpJCLlNHbhZmOiUmdpRXYOVGbpJ2bNNXaiwSZzxWYmpjIu9mc0NWZsV0cpJCLicDNx4CMuMTMuMjMiojIu9WazJXZWRnbllGbjJye6ISbvR3c1NmI7pjIyV2c1Jye',
+//     "Notion-Version": "2022-06-28",
+//     "Content-Type": "application/json",
+//   }
+// });
+
+// console.log('response', response)
+
 </script>
 
 <template>
-  <section v-if="isLoaded">
+  <section v-if="isLoaded && !isError">
     <TakeVpnButton title="Перейти в TakeVPN" />
     <div class="user-id">
       ID: {{ passportStore().getTgUserId }}
