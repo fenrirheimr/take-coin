@@ -23,7 +23,7 @@ onMounted(async () => {
   isLoaded.value = userStore().isLoaded
   isError.value = userStore().isError
   // checkIsError()
-  // coinStore().calculateLimit()
+  coinStore().calculateLimit()
 })
 function checkIsError() {
   if (isError.value === true) {
@@ -84,7 +84,7 @@ const goToFaq = () => {
       </div>
     </div>
 
-    <CoinButton @click="handleCoin" />
+    <CoinButton @touchstart="handleCoin" />
 
     <div class="navigation-wrapper">
       <div class="energy-wrapper">

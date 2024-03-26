@@ -9,7 +9,9 @@ export const coinStore = defineStore('coin', {
   state: () => {
     return {
       coinsValue: 0,
+      // initLimit: userStore().getUserData.limit,
       dayLimit: userStore().getUserData.limit,
+      // limit: JSON.parse(localStorage.getItem('dayLimitValue') || 1000),
       totalCoinsValue: 10000,
       counter: null,
       counterRun: false
@@ -39,19 +41,20 @@ export const coinStore = defineStore('coin', {
     },
     async decrementLimitValue() {
       this.dayLimit--
+      const userId = userStore().getUserData.user_id
+
+      console.log('dayLimit', this.dayLimit)
+      await userStore().userData(userId)
       if (this.dayLimit < userStore().getUserData.limit && !this.counterRun) {
         this.counterRun = true
         this.calculateLimit()
       }
     },
     calculateLimit() {
-      // this.counter = setInterval(() => {
-      setTimeout(() => {
+      this.counter = setInterval(() => {
         if (this.dayLimit < userStore().getUserData.limit) {
           this.dayLimit++
-          this.calculateLimit()
         } else {
-          this.counterRun = false
           clearInterval(this.counter);
         }
         },1000,
