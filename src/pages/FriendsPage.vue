@@ -4,23 +4,58 @@ import { useRoute } from 'vue-router'
 
 import {passportStore} from "@/store/passport.js";
 import { userStore } from '@/store/user'
+import { modalStore } from '@/store/modal'
 
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
 import Alert from '@/components/icons/Alert.vue'
 import GoBackButton from "@/components/GoBackButton.vue";
+import ActionButton from "@/components/ActionButton.vue";
+import Modal from '@/components/Modal.vue'
 
 
 
 const route = useRoute()
 
 let isLoaded = ref(false)
+let showModal = ref(false)
 
 const tgUserId = passportStore().getTgUserId
+
+const root = document.querySelector('#app')
 
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
 })
+
+const toggleModal = (data) => {
+  modalStore().setModalData(data)
+  showModal.value = !showModal.value
+  root.classList.toggle('blurred')
+}
+
+const handleInviteFriends = () => {
+  console.log('handleInviteFriends')
+  toggleModal()
+}
+
+const modalData = {
+  title: 'Получайте больше монет',
+  text: 'Получайте <span class="colored">в 2 раза больше</span>, если ваши приглашенные друзья активируют подписку TakeVPN',
+  hasButton: true,
+  callback: () => {
+    handleInviteFriends();
+  },
+}
+const modalData2 = {
+  title: 'Максимальное количество бонусов',
+  text: 'Приглашенные друзья уже активировали подписку TakeVPN - вы получается максимальное количество дополнительных коинов',
+  hasButton: true,
+  callback: () => {
+    handleInviteFriends();
+  },
+}
+
 </script>
 
 <template>
@@ -56,7 +91,7 @@ onMounted(async () => {
           </div>
         </div>
         <div class="bonuses-item">
-          <div class="open-modal-link">
+          <div class="open-modal-link" @click="toggleModal(modalData2)">
             <Alert :width="10" :height="10"/> как получать больше?
           </div>
         </div>
@@ -97,12 +132,48 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div class="invite-button-wrapper">
-      <div class="root-action-button">
-        <div class="text">Пригласить друга</div>
+    <div class="friend-table">
+      <div class="friend-table__row header">
+        <div class="friend-table__col first">Друг&nbsp;ID</div>
+        <div class="friend-table__col second">За&nbsp;добычу Takecoin</div>
+        <div class="friend-table__col third">За&nbsp;подписку TakeVPN</div>
+        <div class="friend-table__col fourth">Статус подписки</div>
+        <div class="friend-table__col fifth">Последняя добыча</div>
+      </div>
+      <div class="friend-table__row">
+        <div class="friend-table__col first">№000001</div>
+        <div class="friend-table__col second">153</div>
+        <div class="friend-table__col third">5</div>
+        <div class="friend-table__col fourth">-</div>
+        <div class="friend-table__col fifth">вчера</div>
+      </div>
+      <div class="friend-table__row">
+        <div class="friend-table__col first">№000001</div>
+        <div class="friend-table__col second">153</div>
+        <div class="friend-table__col third">5</div>
+        <div class="friend-table__col fourth">-</div>
+        <div class="friend-table__col fifth">вчера</div>
+      </div>
+      <div class="friend-table__row">
+        <div class="friend-table__col first">№000001</div>
+        <div class="friend-table__col second">153</div>
+        <div class="friend-table__col third">5</div>
+        <div class="friend-table__col fourth">-</div>
+        <div class="friend-table__col fifth">вчера</div>
+      </div>
+      <div class="friend-table__row">
+        <div class="friend-table__col first">№000001</div>
+        <div class="friend-table__col second">153</div>
+        <div class="friend-table__col third">5</div>
+        <div class="friend-table__col fourth">-</div>
+        <div class="friend-table__col fifth">вчера</div>
       </div>
     </div>
+    <div class="invite-button-wrapper">
+      <ActionButton @click="toggleModal(modalData)" size="large" />
+    </div>
   </section>
+  <Modal :show="showModal" @close="toggleModal" />
 </template>
 
 <style scoped lang="scss">
@@ -190,12 +261,12 @@ section {
       margin-left: auto;
       border: 1px solid rgba(255,255,255, .72);
       border-radius: 5px;
-      padding: 5px 20px;
+      padding: 5px;
       background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(20.4px);
       .item {
         @include flex(column, space-between, center);
-        width: 33.3%;
+        width: 33.3333333%;
         height: 55px;
         position: relative;
         &:before {
@@ -232,28 +303,58 @@ section {
     }
   }
 
+  .friend-table {
+    @include flex(column, center, center);
+    width: 100%;
+    .friend-table__row {
+      @include flex(row, space-between, center);
+      width: 100%;
+      flex-wrap: nowrap;
+      .friend-table__col {
+        @include font-style($font-size: 12px, $font-weight: 500, $color: rgba(255, 255, 255, 0.8));
+        padding: 7px 7px 0;
+        text-align: center;
+        border-left: 1px solid #fff;
+        &.first {
+          border-left: 0;
+          padding-left: 0;
+          min-width: 65px;
+          width: 18.0055401662%;
+          text-align: left;
+        }
+        &.second {
+          min-width: 70px;
+          width: 19.3905817175%;
+        }
+        &.third {
+          min-width: 75px;
+          width: 20.7756232687%;
+        }
+        &.fourth {
+          min-width: 65px;
+          width: 18.0055401662%;
+        }
+        &.fifth {
+          padding-right: 0;
+          min-width: 65px;
+          width: 18.0055401662%;
+        }
+      }
+      &.header {
+        border-bottom: 1px solid #fff;
+        .friend-table__col {
+          font-size: 10px;
+          color: #fff;
+          padding-bottom: 7px;
+        }
+      }
+    }
+  }
+
   .invite-button-wrapper {
     @include flex(row, center, center);
     width: 100%;
     margin-top: auto;
-    .root-action-button {
-      @include flex(row, center, center);
-      width: 100%;
-      background: linear-gradient(90deg, #00BD01 0%, #28C629 100%);
-      backdrop-filter: blur(20.4px);
-      border-radius: 8px;
-      padding: 16px 0;
-      cursor: pointer;
-      user-select: none;
-      .text {
-        @include font-style($font-size: 24px, $font-weight: 800, $color: #fff);
-      }
-
-      &:active,
-      &:focus, {
-        animation: blink .5s both
-      }
-    }
   }
 
   .icon {

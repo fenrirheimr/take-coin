@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  overflow-y: auto !important;
-}
-
 html, body {
   overflow: hidden;
   min-height: 100vh;
@@ -23,16 +18,21 @@ html, body {
   background: #010201 !important;
 }
 
-body {
-  touch-action: none !important;
+html {
+  height: 100%;
+  overflow-y: auto !important;
 }
 
 body {
   @include scrollable(#352E2E, transparent);
+  touch-action: none !important;
 }
 
 #app {
   margin: 0;
   padding: 0;
   height: 100%;
+  &.blurred {
+    filter: blur(5px);
+  }
 }

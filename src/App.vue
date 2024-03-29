@@ -36,6 +36,9 @@ main {
   height: 100vh;
   padding-top: 0;
   overflow: hidden;
+  section {
+    overflow: hidden !important;
+  }
 }
 
 .fade-enter-active,
