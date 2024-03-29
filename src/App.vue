@@ -36,9 +36,6 @@ main {
   //height: 100vh;
   padding-top: 0;
   //overflow: hidden;
-  section {
-    overflow-y: auto !important;
-  }
 }
 
 .fade-enter-active,

@@ -157,6 +157,7 @@ section {
   background-size: cover;
   position: relative;
   z-index: 2;
+  overflow-y: auto !important;
 
   &:before {
     display: block;
