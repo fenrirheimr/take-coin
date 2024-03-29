@@ -37,7 +37,7 @@ main {
   padding-top: 0;
   //overflow: hidden;
   section {
-    //overflow: hidden !important;
+    overflow-y: auto !important;
   }
 }
 
