@@ -35,9 +35,9 @@ main {
   min-height: 100vh;
   height: 100vh;
   padding-top: 0;
-  overflow: hidden;
+  //overflow: hidden;
   section {
-    overflow: hidden !important;
+    //overflow: hidden !important;
   }
 }
 

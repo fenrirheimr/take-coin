@@ -306,6 +306,7 @@ section {
   .friend-table {
     @include flex(column, center, center);
     width: 100%;
+    margin-bottom: 50px;
     .friend-table__row {
       @include flex(row, space-between, center);
       width: 100%;
