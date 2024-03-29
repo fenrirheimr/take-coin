@@ -33,7 +33,7 @@ main {
   background: #010201;
   width: 100vw;
   min-height: 100vh;
-  height: 100vh;
+  //height: 100vh;
   padding-top: 0;
   //overflow: hidden;
   section {

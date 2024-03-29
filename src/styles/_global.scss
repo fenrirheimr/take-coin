@@ -7,7 +7,7 @@
 html, body {
   overflow: hidden;
   min-height: 100vh;
-  overflow-y: overlay;
+  //overflow-y: overlay;
   margin: 0;
   padding: 0;
 
@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  @include scrollable(#352E2E, transparent);
+  //@include scrollable(#352E2E, transparent);
   touch-action: none !important;
 }
 
