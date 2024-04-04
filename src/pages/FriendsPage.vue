@@ -190,8 +190,8 @@ section {
   &:before {
     display: block;
     content: ' ';
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
     background-size: contain;
     position: absolute;

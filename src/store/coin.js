@@ -51,6 +51,7 @@ export const coinStore = defineStore('coin', {
       }
     },
     calculateLimit() {
+      console.log("calculateLimit")
       this.counter = setInterval(() => {
         if (this.dayLimit < userStore().getUserData.limit) {
           this.dayLimit++

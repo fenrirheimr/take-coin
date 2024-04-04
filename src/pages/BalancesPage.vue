@@ -26,6 +26,8 @@ const root = document.querySelector('#app')
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
+  // console.log('>>>', userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes)
+  // console.log('>>>', typeof userStore().getCoinsValue)
 })
 
 const toggleModal = (data) => {
@@ -57,7 +59,7 @@ const modalData = {
       <div class="counter-wrapper">
         <div class="coin" />
         <div class="counter-value">
-          {{ userStore().getCoinsValue }}
+          {{ userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes }}
         </div>
       </div>
     </div>
@@ -162,8 +164,8 @@ section {
   &:before {
     display: block;
     content: ' ';
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: url('@/assets/img/gradient-inner.png') no-repeat bottom center;
     background-size: contain;
     position: absolute;
@@ -241,7 +243,7 @@ section {
             background: rgba(255,255,255, .12);
             border-color: rgba(255,255,255, .72);
           }
-          &:active,
+          //&:active,
           &:focus, {
             animation: blink .5s both
           }

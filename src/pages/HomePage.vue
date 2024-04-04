@@ -87,14 +87,21 @@ const goToFaq = () => {
     <CoinButton @touchstart="handleCoin" />
 
     <div class="navigation-wrapper">
-      <div class="energy-wrapper">
-        <div class="icon icon-energy" />
-        <div class="energy-value">
-          {{ coinStore().dayLimit }}
-        </div>
-      </div>
+<!--      <div class="energy-wrapper">-->
+<!--        <div class="icon icon-energy" />-->
+<!--        <div class="energy-value">-->
+<!--          {{ coinStore().dayLimit }}-->
+<!--        </div>-->
+<!--      </div>-->
 
       <div class="navigation">
+        <div class="item energy-wrapper">
+          <div class="icon icon-energy" />
+          <div class="energy-value">
+            {{ coinStore().dayLimit }}
+          </div>
+        </div>
+        <div class="divider" />
         <div class="item" @click="goToFaq">
           <div class="icon icon-faq" />
           <div class="title">
@@ -135,10 +142,10 @@ section {
   overflow-y: auto !important;
 
   &:before {
-    display: block;
+    display: none;
     content: ' ';
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 90vh;
     background: url('@/assets/img/gradient.png') no-repeat top center;
     position: absolute;
     top: 10vh;
@@ -190,38 +197,35 @@ section {
     width: 100%;
     margin-top: auto;
 
-    .energy-wrapper {
-      @include flex(row, center, center);
-      .icon-energy {
-        position: relative;
-        &:before {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          content: ' ';
-          display: block;
-          width: 48px;
-          height: 48px;
-          background-size: cover;
-          background-image: url('data:image/svg+xml,<svg width="104" height="116" viewBox="0 0 104 116" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_44)"><circle cx="46.1919" cy="58" r="24" fill="%23FFE833"/></g><defs><filter id="filter0_f_674_44" x="-10.9081" y="0.900002" width="114.2" height="114.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="16.55" result="effect1_foregroundBlur_674_44"/></filter></defs></svg>');
-        }
-      }
-      .energy-value {
-        @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
-        z-index: 1;
-      }
-    }
+    //.energy-wrapper {
+    //  @include flex(row, center, center);
+    //  .icon-energy {
+    //    position: relative;
+    //    &:before {
+    //      position: absolute;
+    //      top: 50%;
+    //      left: 50%;
+    //      transform: translate(-50%, -50%);
+    //      content: ' ';
+    //      display: block;
+    //      width: 48px;
+    //      height: 48px;
+    //      background-size: cover;
+    //      background-image: url('data:image/svg+xml,<svg width="104" height="116" viewBox="0 0 104 116" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_44)"><circle cx="46.1919" cy="58" r="24" fill="%23FFE833"/></g><defs><filter id="filter0_f_674_44" x="-10.9081" y="0.900002" width="114.2" height="114.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="16.55" result="effect1_foregroundBlur_674_44"/></filter></defs></svg>');
+    //    }
+    //  }
+    //}
 
     .navigation {
       @include flex(row, space-between, center);
-      width: 228px;
+      width: 100%;
       margin-left: auto;
       border: 1px solid rgba(255,255,255, .72);
       border-radius: 5px;
       padding: 5px 20px;
       background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(20.4px);
+      overflow: hidden;
       .item {
         @include flex(column, space-between, center);
         width: 40px;
@@ -235,12 +239,27 @@ section {
           transform: translate(-50%, -50%);
           content: ' ';
           display: block;
-          width: 48px;
+          width: 100%;
           height: 48px;
-          background-size: cover;
-          z-index: 0;
-          filter: blur(12.35px);
-          background-image: url('data:image/svg+xml,<svg width="89" height="89" viewBox="0 0 89 89" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_35)"><circle cx="44.6919" cy="44.5" r="19.5" fill="%23FFF500"/></g><defs><filter id="filter0_f_674_35" x="0.491894" y="0.299999" width="88.4" height="88.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="12.35" result="effect1_foregroundBlur_674_35"/></filter></defs></svg>')
+          //background-size: cover;
+          //z-index: 0;
+          //filter: blur(12.35px);
+          //background-image: url('data:image/svg+xml,<svg width="89" height="89" viewBox="0 0 89 89" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_35)"><circle cx="44.6919" cy="44.5" r="19.5" fill="%23FFF500"/></g><defs><filter id="filter0_f_674_35" x="0.491894" y="0.299999" width="88.4" height="88.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="12.35" result="effect1_foregroundBlur_674_35"/></filter></defs></svg>')
+          background: #FFE833;
+          filter: blur(16.55px);
+          z-index: -1;
+        }
+
+        &.energy-wrapper {
+          flex-direction: row;
+          width: 80px;
+          pointer-events: none;
+          .energy-value {
+            @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
+            z-index: 1;
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+          }
         }
 
         .title {

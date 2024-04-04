@@ -13,6 +13,7 @@ const tg = window.Telegram.WebApp
 
 passportStore().userAuth()
 // const id = '286133104'
+// const id = '2'
 // passportStore().setTgUserId(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 
