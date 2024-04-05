@@ -16,6 +16,7 @@ passportStore().userAuth()
 // const id = '286133104'
 // const id = '2'
 // passportStore().setTgUserId(id)
+// userStore().loadReferrals(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
 </script>
@@ -37,7 +38,7 @@ main {
   min-height: 100vh;
   //height: 100vh;
   padding-top: 0;
-  //overflow: hidden;
+  overflow: hidden;
 }
 
 .fade-enter-active,
