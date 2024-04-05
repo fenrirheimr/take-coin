@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import { ref } from 'vue'
 import { passportStore } from '@/store/passport'
+import {userStore} from "@/store/user.js";
 
 defineProps({
   title: String,
@@ -16,7 +17,7 @@ passportStore().userAuth()
 // const id = '2'
 // passportStore().setTgUserId(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
-
+userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
 </script>
 
 <template>

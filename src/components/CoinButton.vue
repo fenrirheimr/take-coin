@@ -14,6 +14,16 @@ function animateNums(e) {
   const pos = coinButton.value.getBoundingClientRect()
 
   coinButton.value.classList.add('animated')
+
+  // if ( 150 >= Math.sqrt( Math.pow( e.touches[0].clientX - pos.left, 2 ) + Math.pow( e.touches[0].clientY - pos.top, 2 ) ) ) {
+  //   console.log('inside')
+  // }
+  // let centerX = e.touches[0].offsetLeft + e.touches[0].offsetWidth / 2;
+  // let centerY = e.touches[0].offsetTop + e.touches[0].offsetHeight / 2;
+  //
+  // console.log('inside', e.touches[0])
+  // console.log('inside', centerX, centerY)
+
   nums.value.push({
     x: e.touches[0].clientX - pos.left,
     y: e.touches[0].clientY - pos.top,

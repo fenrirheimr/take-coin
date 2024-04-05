@@ -36,6 +36,7 @@ const toggleModal = (data) => {
 
 const handleInviteFriends = () => {
   console.log('handleInviteFriends')
+  window.location.href = userStore().getUserData.ref_link
   toggleModal()
 }
 
@@ -55,6 +56,9 @@ const modalData2 = {
     handleInviteFriends();
   },
 }
+
+const referrals = userStore().getReferrals
+console.log('referrals', referrals);
 
 </script>
 

@@ -9,6 +9,7 @@ export const userStore = defineStore('user', {
       error: false,
       loaded: false,
       user: null,
+      referrals: null
     }
   },
   getters: {
@@ -26,6 +27,9 @@ export const userStore = defineStore('user', {
     },
     getToken() {
       return passportStore()?.getAuthData?.access_token
+    },
+    getReferrals(state) {
+      return state.referrals
     },
   },
   actions: {
@@ -52,6 +56,18 @@ export const userStore = defineStore('user', {
     setIsLoaded(loaded, error) {
       this.loaded = loaded
       this.error = error
+    },
+    async loadReferrals(tgUserId) {
+      const token = this.getToken
+      const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
+        params: {
+          user_id: tgUserId,
+          limit: 10,
+          offset: 0,
+        },
+      }))
+      this.referrals = {...data}
+      console.log('/api/user-referrals', data)
     }
   }
 })

@@ -47,6 +47,10 @@ const modalData = {
   hasButton: false,
 }
 
+const goToTakeVPN_bot = () => {
+  window.location.href = "https://t.me/TakeVPN_bot"
+}
+
 </script>
 
 <template>
@@ -120,7 +124,7 @@ const modalData = {
       </div>
 
       <div class="bonuses-wrapper">
-        <div class="bonuses-item">
+        <div class="bonuses-item" @click="goToTakeVPN_bot">
           <div class="blurred blurred-planet">
             <div class="icon icon-planet" />
           </div>
@@ -132,18 +136,18 @@ const modalData = {
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
-        <div class="bonuses-item">
-          <div class="blurred blurred-money">
-            <div class="icon icon-robot" />
-          </div>
-          <div class="bonuses-info">
-            <div class="title">RocketGPT</div>
-            <div class="text">
-              ChatGPT в вашем Telegram - интеллектуальный помощник рядом
-            </div>
-          </div>
-          <ArrowLeft class="arrow" :width="8" :height="12" />
-        </div>
+<!--        <div class="bonuses-item">-->
+<!--          <div class="blurred blurred-money">-->
+<!--            <div class="icon icon-robot" />-->
+<!--          </div>-->
+<!--          <div class="bonuses-info">-->
+<!--            <div class="title">RocketGPT</div>-->
+<!--            <div class="text">-->
+<!--              ChatGPT в вашем Telegram - интеллектуальный помощник рядом-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <ArrowLeft class="arrow" :width="8" :height="12" />-->
+<!--        </div>-->
       </div>
     </div>
   </section>
@@ -244,7 +248,7 @@ section {
             border-color: rgba(255,255,255, .72);
           }
           //&:active,
-          &:focus, {
+          &:active, {
             animation: blink .5s both
           }
         }
