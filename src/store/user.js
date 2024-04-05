@@ -62,12 +62,24 @@ export const userStore = defineStore('user', {
       const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
         params: {
           user_id: tgUserId,
-          limit: 10,
+          limit: 6,
           offset: 0,
         },
       }))
-      this.referrals = {...data}
+      this.referrals = [...data.items]
       console.log('/api/user-referrals', data)
+    },
+    async loadMoreReferrals(tgUserId) {
+      const token = this.getToken
+      const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
+        params: {
+          user_id: tgUserId,
+          limit: 6,
+          offset: 6,
+        },
+      }))
+      this.referrals = [...this.referrals, ...data.items]
+      // console.log('/api/user-referrals', data)
     }
   }
 })

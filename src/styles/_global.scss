@@ -7,6 +7,7 @@
 html, body {
   overflow: hidden;
   min-height: 100vh;
+  height: 100%;
   overflow-y: overlay;
   margin: 0;
   padding: 0;
@@ -16,19 +17,20 @@ html, body {
   font-weight: normal;
   font-style: normal;
   background: #010201 !important;
+  touch-action: none !important;
 }
 
 html {
-  height: 100%;
-  overflow: hidden !important;
-  overflow-y: auto !important;
+  //height: 100%;
+  //overflow: hidden !important;
+  //overflow-y: auto !important;
 }
 
 body {
   //@include scrollable(#352E2E, transparent);
-  overflow: hidden !important;
-  overflow-y: auto !important;
-  touch-action: none !important;
+  //overflow: hidden !important;
+  //overflow-y: auto !important;
+  //touch-action: none !important;
 }
 
 #app {

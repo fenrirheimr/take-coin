@@ -23,6 +23,12 @@ const tgUserId = passportStore().getTgUserId
 
 const root = document.querySelector('#app')
 
+const tg = window.Telegram.WebApp
+// const id = '286133104'
+// const id = '2'
+// userStore().loadReferrals(id)
+userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
+
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
@@ -58,8 +64,41 @@ const modalData2 = {
   },
 }
 
-const referrals = userStore().getReferrals
-console.log('referrals', referrals);
+const dropHMS = (date) => {
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0, 0);
+}
+
+const showMessageDateTime = (dateTime) => {
+
+  let today = new Date(),           // присвоение и форматированние текущей даты
+      yesterday = new Date(),             // присвоение и форматирование текущей даты - 1 день
+      thisDate = new Date(dateTime);           // присвоение и форматирование даты последнего сообщения комнаты
+
+  yesterday.setDate(today.getDate() -1);
+
+  dropHMS(today);
+  dropHMS(yesterday);
+  dropHMS(thisDate );
+
+  if (dateTime) {
+    if (today.getTime() === thisDate.getTime()) {
+      return 'сегодня'
+    } else if (yesterday.getTime() === thisDate.getTime()) {
+      return 'вчера'
+    } else {
+      return 'давно';
+    }
+  }
+}
+
+const refTable = ref(null)
+const onScroll = () => {
+  if( refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight)) {
+    userStore().loadMoreReferrals(id)
+  }
+}
 
 </script>
 
@@ -145,33 +184,21 @@ console.log('referrals', referrals);
         <div class="friend-table__col fourth">Статус подписки</div>
         <div class="friend-table__col fifth">Последняя добыча</div>
       </div>
-      <div class="friend-table__row">
-        <div class="friend-table__col first">№000001</div>
-        <div class="friend-table__col second">153</div>
-        <div class="friend-table__col third">5</div>
-        <div class="friend-table__col fourth">-</div>
-        <div class="friend-table__col fifth">вчера</div>
-      </div>
-      <div class="friend-table__row">
-        <div class="friend-table__col first">№000001</div>
-        <div class="friend-table__col second">153</div>
-        <div class="friend-table__col third">5</div>
-        <div class="friend-table__col fourth">-</div>
-        <div class="friend-table__col fifth">вчера</div>
-      </div>
-      <div class="friend-table__row">
-        <div class="friend-table__col first">№000001</div>
-        <div class="friend-table__col second">153</div>
-        <div class="friend-table__col third">5</div>
-        <div class="friend-table__col fourth">-</div>
-        <div class="friend-table__col fifth">вчера</div>
-      </div>
-      <div class="friend-table__row">
-        <div class="friend-table__col first">№000001</div>
-        <div class="friend-table__col second">153</div>
-        <div class="friend-table__col third">5</div>
-        <div class="friend-table__col fourth">-</div>
-        <div class="friend-table__col fifth">вчера</div>
+      <div  class="friend-table__body" @scroll="onScroll" ref="refTable">
+        <div class="friend-table__row" v-for="item in userStore().getReferrals">
+          <div class="friend-table__col first">{{ item.ref_id }}</div>
+          <div class="friend-table__col second">{{ item.mined_money }}</div>
+          <div class="friend-table__col third">{{ item.vpn_mined_money }}</div>
+          <div class="friend-table__col fourth">
+            <span v-if="item.vpn_is_active">активна</span>
+            <span v-else>-</span>
+          </div>
+          <div class="friend-table__col fifth">
+            <span v-if="item.last_mine">{{ showMessageDateTime(item.last_mine) }}</span>
+<!--            <span v-if="item.last_mine">{{ new Date(item.last_mine).toLocaleDateString("ru") }}</span>-->
+            <span v-else>-</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="invite-button-wrapper">
@@ -313,6 +340,12 @@ section {
     @include flex(column, center, center);
     width: 100%;
     margin-bottom: 50px;
+    .friend-table__body {
+      width: 100%;
+      height: 110px;
+      overflow: hidden;
+      overflow-y: overlay;
+    }
     .friend-table__row {
       @include flex(row, space-between, center);
       width: 100%;
@@ -322,16 +355,18 @@ section {
         padding: 7px 7px 0;
         text-align: center;
         border-left: 1px solid #fff;
+        overflow: hidden;
+        text-overflow: ellipsis;
         &.first {
           border-left: 0;
           padding-left: 0;
-          min-width: 65px;
-          width: 18.0055401662%;
+          min-width: 72px;
+          width: 20.0055401662%;
           text-align: left;
         }
         &.second {
           min-width: 70px;
-          width: 19.3905817175%;
+          width: 17.3905817175%;
         }
         &.third {
           min-width: 75px;
