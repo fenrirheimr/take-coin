@@ -45,6 +45,7 @@ const handleInviteFriends = () => {
   // window.location.href = userStore().getUserData.ref_link
   window.location.href = 'https://t.me/takecoin_farm_bot?start=ref_system'
   toggleModal()
+  tg.close()
 }
 
 const modalData = {
@@ -96,7 +97,8 @@ const showMessageDateTime = (dateTime) => {
 const refTable = ref(null)
 const onScroll = () => {
   if( refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight)) {
-    userStore().loadMoreReferrals(id)
+    // userStore().loadMoreReferrals(id)
+    userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
   }
 }
 
@@ -339,10 +341,10 @@ section {
   .friend-table {
     @include flex(column, center, center);
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 32px;
     .friend-table__body {
       width: 100%;
-      height: 110px;
+      max-height: 110px;
       overflow: hidden;
       overflow-y: overlay;
     }

@@ -14,7 +14,8 @@ const tg = window.Telegram.WebApp
 // let tg2 = window.Telegram.WebView; //получаем объект webapp телеграма
 
 tg.expand() // расширяем на все окно/
-tg.isClosingConfirmationEnabled = true;
+// tg.isClosingConfirmationEnabled = true;
+// tg.isClosingConfirmationEnabled = true;
 // tg.initData //получаем данные от пользователя в виде строки (работает только при запуске из меню команд бота).
 // tg.initDataUnsafe // получаем данные от пользователя в виде объекта (работает только при запуске из меню команд бота).
 // tg.isExpanded // возвращает true, если приложение открыто на всю высоту, false - если нет.
@@ -33,7 +34,7 @@ passportStore().userAuth()
 // userStore().loadReferrals(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
-console.log(">>>", tg)
+// console.log(">>>", tg)
 
 
 </script>
