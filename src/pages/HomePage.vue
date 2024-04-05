@@ -134,7 +134,9 @@ const goToFaq = () => {
 section {
   @include flex(column, flex-start, center);
   width: 100%;
-  min-height: 100vh;
+  //min-height: 100vh;
+  min-height: 100%;
+  height: 100%;
   padding: 10px 25px 35px;
   background-size: cover;
   position: relative;

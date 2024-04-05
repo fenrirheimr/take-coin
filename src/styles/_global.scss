@@ -1,12 +1,13 @@
 
 * {
   font-feature-settings: 'liga' 1;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 html, body {
   overflow: hidden;
-  min-height: 100vh;
+  //min-height: 100vh;
+  min-height: 100%;
   height: 100%;
   overflow-y: overlay;
   margin: 0;

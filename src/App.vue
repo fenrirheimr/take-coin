@@ -53,7 +53,8 @@ userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
 main {
   background: #010201;
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100%;
+  height: 100%;
   //height: 100vh;
   padding-top: 0;
   overflow: hidden;

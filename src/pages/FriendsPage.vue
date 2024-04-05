@@ -97,8 +97,8 @@ const showMessageDateTime = (dateTime) => {
 const refTable = ref(null)
 const onScroll = () => {
   if( refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight)) {
-    // userStore().loadMoreReferrals(id)
-    userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
+    userStore().loadMoreReferrals(id)
+    // userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
   }
 }
 
@@ -214,7 +214,9 @@ const onScroll = () => {
 section {
   @include flex(column, flex-start, flex-start);
   width: 100%;
-  min-height: 100vh;
+  //min-height: 100vh;
+  min-height: 100%;
+  height: 100%;
   padding: 0 25px 35px;
   background-size: cover;
   position: relative;
