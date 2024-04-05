@@ -36,7 +36,8 @@ const toggleModal = (data) => {
 
 const handleInviteFriends = () => {
   console.log('handleInviteFriends')
-  window.location.href = userStore().getUserData.ref_link
+  // window.location.href = userStore().getUserData.ref_link
+  window.location.href = 'https://t.me/takecoin_farm_bot?start=ref_system'
   toggleModal()
 }
 
