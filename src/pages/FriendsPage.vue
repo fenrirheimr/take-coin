@@ -152,6 +152,7 @@ const goToTakeVPN_bot = () => {
               Приглашайте друзей и получайте <br /><span class="colored">10% от всех добытых монет друга</span>
             </div>
           </div>
+          <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
         <div class="bonuses-item">
 <!--          <div class="open-modal-link" @click="toggleModal(modalData2)">-->
