@@ -234,6 +234,19 @@ section {
         height: 50px;
         cursor: pointer;
         position: relative;
+        //&:before {
+        //  position: absolute;
+        //  top: 50%;
+        //  left: 50%;
+        //  transform: translate(-50%, -50%);
+        //  content: ' ';
+        //  display: block;
+        //  width: 100%;
+        //  height: 48px;
+        //  background: #FFE833;
+        //  filter: blur(20.55px);
+        //  z-index: -1;
+        //}
         &:before {
           position: absolute;
           top: 50%;
@@ -241,15 +254,13 @@ section {
           transform: translate(-50%, -50%);
           content: ' ';
           display: block;
-          width: 100%;
-          height: 48px;
-          //background-size: cover;
-          //z-index: 0;
-          //filter: blur(12.35px);
-          //background-image: url('data:image/svg+xml,<svg width="89" height="89" viewBox="0 0 89 89" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_35)"><circle cx="44.6919" cy="44.5" r="19.5" fill="%23FFF500"/></g><defs><filter id="filter0_f_674_35" x="0.491894" y="0.299999" width="88.4" height="88.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="12.35" result="effect1_foregroundBlur_674_35"/></filter></defs></svg>')
-          background: #FFE833;
-          filter: blur(20.55px);
-          z-index: -1;
+          width: 58px;
+          height: 58px;
+          background-size: cover;
+          z-index: 0;
+          background: #9EFF00;
+          filter: blur(12.35px);
+          opacity: 0.45;
         }
 
         &.energy-wrapper {

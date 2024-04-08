@@ -334,19 +334,19 @@ section {
     margin-bottom: 40px;
     & > .title {
       @include font-style($font-size: 26px, $font-weight: 800, $color: #fff);
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .coming-soon {
       @include flex(row, center, center);
       @include font-style($font-size: 26px, $font-weight: 800, $color: #545548);
       width: 100%;
-      height: 15vh;
+      height: 20vh;
       border: 1px solid rgba(255,255,255, .72);
       border-radius: 5px;
       backdrop-filter: blur(20.4px);
       background: rgba(255, 255, 255, 0.12);
-      margin-bottom: 12px;
+      margin-bottom: 24px;
     }
     .open-modal-link {
       @include flex(row, center, center);

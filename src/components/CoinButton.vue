@@ -32,7 +32,7 @@ function animateNums(e) {
   setTimeout(() => {
 
   // }, 100000)
-  }, 350)
+  }, 550)
 }
 function animateNumsEnd(i) {
   nums.value[i].show = false
@@ -86,8 +86,8 @@ onMounted(() => {
     user-select: none;
     touch-action: none;
     -webkit-tap-highlight-color: transparent;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 340px;
+    max-height: 340px;
     width: 100%;
     aspect-ratio : 1 / 1;
     &:before {
@@ -175,15 +175,14 @@ onMounted(() => {
 }
 
 .num {
-  @include font-style($font-size: 35px, $font-weight: 800, $color: #fff);
+  @include font-style($font-size: 30px, $font-weight: 800, $color: #fff);
   //display: none;
   position: absolute;
   z-index: 9;
   border-radius: 50%;
   transform: translateX(-100%) translateY(-100%);
   mix-blend-mode: screen;
-  opacity: 1 !important;
-  animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 500ms ease-out both;
+  animation: slide-out-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 500ms ease-out both;
 }
 
 @keyframes scale-up-center {
@@ -207,10 +206,10 @@ onMounted(() => {
     opacity: .5;
   }
   80% {
-    opacity: .1;
+    opacity: .2;
   }
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(-200vh);
     opacity: 0;
   }
 }

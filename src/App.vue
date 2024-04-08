@@ -29,7 +29,7 @@ tg.headerColor = '#010201'
 
 passportStore().userAuth()
 // const id = '286133104'
-const id = '2'
+// const id = '2'
 // passportStore().setTgUserId(id)
 // userStore().loadReferrals(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
