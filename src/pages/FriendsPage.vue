@@ -102,6 +102,14 @@ const onScroll = () => {
   }
 }
 
+function numberWithSpaces(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+const goToTakeVPN_bot = () => {
+  window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
+}
+
 </script>
 
 <template>
@@ -117,7 +125,7 @@ const onScroll = () => {
           <div class="blurred blurred-planet">
             <div class="icon icon-planet" />
           </div>
-          <div class="bonuses-info">
+          <div class="bonuses-info" @click="goToTakeVPN_bot">
             <div class="title">20% за подписку TakeVPN</div>
             <div class="text">
               Получайте <span class="colored">20% за каждую покупку<br />друга</span> в боте TakeVPN
@@ -155,7 +163,7 @@ const onScroll = () => {
             Друзей<br />приведено
           </div>
           <div class="value">
-            {{ userStore().getUserData.friends_invited }}
+            {{ numberWithSpaces(userStore().getUserData.friends_invited) }}
           </div>
         </div>
         <div class="divider" />
@@ -164,7 +172,7 @@ const onScroll = () => {
             Начислено с<br />добычи монет
           </div>
           <div class="value">
-            {{ userStore().getUserData.balance_friends }}
+            {{ numberWithSpaces(userStore().getUserData.balance_friends) }}
           </div>
         </div>
         <div class="divider" />
@@ -173,7 +181,7 @@ const onScroll = () => {
             Начислено с<br />покупок TakeVPN
           </div>
           <div class="value">
-            {{ userStore().getUserData.balance_subscribes }}
+            {{ numberWithSpaces(userStore().getUserData.balance_subscribes) }}
           </div>
         </div>
       </div>
@@ -189,15 +197,14 @@ const onScroll = () => {
       <div  class="friend-table__body" @scroll="onScroll" ref="refTable">
         <div class="friend-table__row" v-for="item in userStore().getReferrals">
           <div class="friend-table__col first">{{ item.ref_id }}</div>
-          <div class="friend-table__col second">{{ item.mined_money }}</div>
-          <div class="friend-table__col third">{{ item.vpn_mined_money }}</div>
+          <div class="friend-table__col second">{{ numberWithSpaces(item.mined_money) }}</div>
+          <div class="friend-table__col third">{{ numberWithSpaces(item.vpn_mined_money) }}</div>
           <div class="friend-table__col fourth">
             <span v-if="item.vpn_is_active">активна</span>
             <span v-else>-</span>
           </div>
           <div class="friend-table__col fifth">
             <span v-if="item.last_mine">{{ showMessageDateTime(item.last_mine) }}</span>
-<!--            <span v-if="item.last_mine">{{ new Date(item.last_mine).toLocaleDateString("ru") }}</span>-->
             <span v-else>-</span>
           </div>
         </div>

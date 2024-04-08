@@ -47,8 +47,16 @@ const modalData = {
   hasButton: false,
 }
 
+// const goToTakeVPN_bot = () => {
+//   window.location.href = "https://t.me/TakeVPN_bot"
+// }
+
 const goToTakeVPN_bot = () => {
-  window.location.href = "https://t.me/TakeVPN_bot"
+  window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
+}
+
+function numberWithSpaces(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
 </script>
@@ -63,7 +71,7 @@ const goToTakeVPN_bot = () => {
       <div class="counter-wrapper">
         <div class="coin" />
         <div class="counter-value">
-          {{ userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes }}
+          {{ numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes) }}
         </div>
       </div>
     </div>
@@ -74,7 +82,7 @@ const goToTakeVPN_bot = () => {
           <div class="value">
             <div class="coin" />
             <div class="text">
-              {{ userStore().getCoinsValue }}
+              {{ numberWithSpaces(userStore().getCoinsValue) }}
             </div>
           </div>
           <div class="title">
@@ -86,7 +94,7 @@ const goToTakeVPN_bot = () => {
           <div class="value">
             <div class="coin" />
             <div class="text">
-              {{ userStore().getUserData.balance_friends }}
+              {{ numberWithSpaces(userStore().getUserData.balance_friends) }}
             </div>
           </div>
           <div class="title">
@@ -98,7 +106,7 @@ const goToTakeVPN_bot = () => {
           <div class="value">
             <div class="coin" />
             <div class="text">
-              {{ userStore().getUserData.balance_subscribes }}
+              {{ numberWithSpaces(userStore().getUserData.balance_subscribes) }}
             </div>
           </div>
           <div class="title">

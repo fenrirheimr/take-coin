@@ -43,6 +43,15 @@ const goToFaq = () => {
   window.location.href = "https://takecoin.notion.site/Takecoin-f971d96521da4247866d199f40f3acd7"
 }
 
+function numberWithSpaces(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+console.log(numberWithSpaces(10000));
+// console.log(numberWithSpaces(100));
+// console.log(numberWithSpaces(10000));
+// console.log(numberWithSpaces(1000000));
+// console.log(numberWithSpaces(100000000));
+
 // import axios from 'axios';
 //
 // const response = await axios.get('https://api.notion.com/v1/blocks/f971d965-21da-4247-866d-199f40f3acd7/children', {
@@ -75,7 +84,7 @@ const goToFaq = () => {
       <div class="counter-wrapper">
         <div class="coin" />
         <div class="counter-value">
-          {{ userStore().getCoinsValue }}
+          {{ numberWithSpaces(userStore().getCoinsValue) }}
         </div>
       </div>
 

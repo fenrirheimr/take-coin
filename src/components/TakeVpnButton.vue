@@ -7,7 +7,7 @@ defineProps({
 })
 
 const goToTakeVPN_bot = () => {
-  window.location.href = "https://t.me/TakeVPN_bot"
+  window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
 }
 </script>
 

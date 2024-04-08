@@ -182,7 +182,7 @@ onMounted(() => {
   border-radius: 50%;
   transform: translateX(-100%) translateY(-100%);
   mix-blend-mode: screen;
-  animation: slide-out-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 500ms ease-out both;
+  animation: slide-out-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 700ms ease-out both;
 }
 
 @keyframes scale-up-center {
@@ -197,20 +197,20 @@ onMounted(() => {
 @keyframes slide-out-top {
   0% {
     transform: translateY(0);
-    opacity: 1;
+    //opacity: 1;
   }
-  20% {
-    opacity: .8;
-  }
-  50% {
-    opacity: .5;
-  }
-  80% {
-    opacity: .2;
-  }
+  //20% {
+  //  opacity: .9;
+  //}
+  //50% {
+  //  opacity: .6;
+  //}
+  //80% {
+  //  opacity: .2;
+  //}
   100% {
-    transform: translateY(-200vh);
-    opacity: 0;
+    transform: translateY(-70vh);
+    //opacity: 0;
   }
 }
 
