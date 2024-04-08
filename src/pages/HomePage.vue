@@ -84,7 +84,7 @@ const goToFaq = () => {
       </div>
     </div>
 
-<!--    <CoinButton @touchstart="handleCoin" />-->
+    <CoinButton @touchstart="handleCoin" />
 
     <div class="navigation-wrapper">
 <!--      <div class="energy-wrapper">-->

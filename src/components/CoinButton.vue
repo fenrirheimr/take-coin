@@ -175,6 +175,7 @@ onMounted(() => {
 
 .num {
   @include font-style($font-size: 35px, $font-weight: 800, $color: #fff);
+  display: none;
   position: absolute;
   z-index: 9;
   border-radius: 50%;
