@@ -37,7 +37,7 @@ function closeModal() {
           <div class="text" v-html="modalStore().getModalData.text" />
 
           <div class="button-wrapper" v-if="modalStore().getModalData.hasButton">
-            <ActionButton @click="modalStore().getModalData.callback()" size="medium" />
+            <ActionButton @click="modalStore().getModalData.callback()" size="medium" :title="modalStore().getModalData.buttonText" />
           </div>
 
         </div>

@@ -2,6 +2,7 @@
 
 defineProps({
   size: String,
+  title: String
 })
 
 </script>
@@ -12,7 +13,7 @@ defineProps({
       'size-medium': size === 'medium',
       'size-large': size === 'large',
     }">
-    <div class="text">Пригласить друга</div>
+    <div class="text">{{ title || 'Пригласить друга' }}</div>
   </div>
 </template>
 

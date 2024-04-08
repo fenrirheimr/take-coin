@@ -49,16 +49,25 @@ const handleInviteFriends = () => {
 }
 
 const modalData = {
-  title: 'Получайте больше монет',
-  text: 'Получайте <span class="colored">в 2 раза больше</span>, если ваши приглашенные друзья активируют подписку TakeVPN',
+  title: 'Максимальное количество бонусов',
+  text: '<p>Получайте <span class="colored">10% со всех добытых монет другом!</span></p><p>Помни, не пригласишь друга ты - пригласит кто-то другой. Просто поделись ссылкой!</p>',
   hasButton: true,
   callback: () => {
     handleInviteFriends();
   },
 }
 const modalData2 = {
-  title: 'Максимальное количество бонусов',
-  text: 'Приглашенные друзья уже активировали подписку TakeVPN - вы получается максимальное количество дополнительных коинов',
+  title: 'Получайте больше монет',
+  text: '<p>Получайте <span class="colored">20% в монетах</span>, с каждой покупки друзей в TakeVPN.</p><p>! Получите свою реферальную ссылку в личном кабинете TakeVPN</p>',
+  hasButton: true,
+  buttonText: 'Перейти в TakeVPN',
+  callback: () => {
+    goToTakeVPN_bot();
+  },
+}
+const modalData3 = {
+  title: 'Получайте больше монет',
+  text: 'Получайте <span class="colored">10% в монетах с каждой добычи друзей</span>, в прилоджении Takecoin',
   hasButton: true,
   callback: () => {
     handleInviteFriends();
@@ -125,7 +134,7 @@ const goToTakeVPN_bot = () => {
           <div class="blurred blurred-planet">
             <div class="icon icon-planet" />
           </div>
-          <div class="bonuses-info" @click="goToTakeVPN_bot">
+          <div class="bonuses-info" @click="toggleModal(modalData2)">
             <div class="title">20% за подписку TakeVPN</div>
             <div class="text">
               Получайте <span class="colored">20% за каждую покупку<br />друга</span> в боте TakeVPN
@@ -133,7 +142,7 @@ const goToTakeVPN_bot = () => {
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
-        <div class="bonuses-item">
+        <div class="bonuses-item" @click="toggleModal(modalData3)">
           <div class="blurred blurred-money">
             <div class="icon icon-money" />
           </div>
@@ -145,9 +154,9 @@ const goToTakeVPN_bot = () => {
           </div>
         </div>
         <div class="bonuses-item">
-          <div class="open-modal-link" @click="toggleModal(modalData2)">
-            <Alert :width="10" :height="10"/> как получать больше?
-          </div>
+<!--          <div class="open-modal-link" @click="toggleModal(modalData2)">-->
+<!--            <Alert :width="10" :height="10"/> как получать больше?-->
+<!--          </div>-->
         </div>
       </div>
     </div>
