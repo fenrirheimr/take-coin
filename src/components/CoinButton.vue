@@ -31,6 +31,7 @@ function animateNums(e) {
   })
   setTimeout(() => {
 
+  // }, 100000)
   }, 350)
 }
 function animateNumsEnd(i) {
@@ -50,7 +51,7 @@ onMounted(() => {
 <template>
   <div class="root-coin-button">
     <div class="coin-button" ref="coinButton" @touchstart="animateNums">
-      <transition-group v-for="(val, i) in nums">
+      <transition v-for="(val, i) in nums">
       <span
           v-if="val.show === true"
           :ref="`num-${i}`"
@@ -60,7 +61,7 @@ onMounted(() => {
       >
         +1
       </span>
-      </transition-group>
+      </transition>
     </div>
   </div>
 </template>
@@ -175,12 +176,13 @@ onMounted(() => {
 
 .num {
   @include font-style($font-size: 35px, $font-weight: 800, $color: #fff);
-  display: none;
+  //display: none;
   position: absolute;
   z-index: 9;
   border-radius: 50%;
   transform: translateX(-100%) translateY(-100%);
   mix-blend-mode: screen;
+  opacity: 1 !important;
   animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 500ms ease-out both;
 }
 
