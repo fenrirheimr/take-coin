@@ -172,7 +172,6 @@ function numberWithSpaces(num) {
 section {
   @include flex(column, flex-start, flex-start);
   width: 100%;
-  //min-height: 100vh;
   min-height: 100%;
   height: 100%;
   padding: 0 25px 35px;
@@ -297,7 +296,7 @@ section {
           text-align: center;
         }
         .value {
-          @include flex(row, center, center);
+          @include flex(row, flex-start, center);
           gap: 15px;
           z-index: 1;
           width: 100%;
@@ -334,7 +333,6 @@ section {
             width: 22px;
             min-height: 22px;
             aspect-ratio: 1 / 1;
-            margin-bottom: 5px;
             background-size: contain;
             background-image: url('@/assets/img/btn-yellow.png');
             z-index: 2;
