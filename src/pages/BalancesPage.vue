@@ -70,7 +70,10 @@ function numberWithSpaces(num) {
       </div>
       <div class="counter-wrapper">
         <div class="coin" />
-        <div class="counter-value">
+        <div class="counter-value" v-if="userStore().getUserData.wasted">
+          {{ numberWithSpaces((userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes) - userStore().getUserData.wasted) }}
+        </div>
+        <div v-else class="counter-value">
           {{ numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes) }}
         </div>
       </div>
@@ -86,7 +89,7 @@ function numberWithSpaces(num) {
             </div>
           </div>
           <div class="title">
-            собственная<br />добыча
+            собственная добыча
           </div>
         </div>
 
@@ -98,7 +101,7 @@ function numberWithSpaces(num) {
             </div>
           </div>
           <div class="title">
-            от добычи<br />друзей
+            от добычи друзей
           </div>
         </div>
 
@@ -110,7 +113,19 @@ function numberWithSpaces(num) {
             </div>
           </div>
           <div class="title">
-            от подписки<br />друзей
+            от подписки друзей
+          </div>
+        </div>
+        <div class="item wasted" v-if="userStore().getUserData.wasted">
+          <div class="value">
+            <div class="coin" />
+            <div class="text">
+<!--              - {{ numberWithSpaces(userStore().getUserData.wasted) }}-->
+              - 200
+            </div>
+          </div>
+          <div class="title">
+            потрачено
           </div>
         </div>
       </div>
@@ -257,7 +272,6 @@ section {
             background: rgba(255,255,255, .12);
             border-color: rgba(255,255,255, .72);
           }
-          //&:active,
           &:active, {
             animation: blink .5s both
           }
@@ -278,26 +292,29 @@ section {
     .stat-summary {
       @include flex(row, space-between, center);
       width: 100%;
-      column-gap: 8px;
+      gap: 10px;
+      flex-wrap: wrap;
       .item {
         @include flex(column, space-between, center);
-        width: 33.3%;
+        width: 48%;
+        //width: 33.3%;
         backdrop-filter: none;
 
         .title {
-          @include font-style($font-size: 10px, $font-weight: 500, $color: #fff);
+          @include font-style($font-size: 12px, $font-weight: 500, $color: #fff);
           z-index: 1;
           text-align: center;
         }
         .value {
-          @include flex(column, space-between, center);
+          @include flex(row, flex-start, center);
+          gap: 15px;
           z-index: 1;
           width: 100%;
-          height: 60px;
+          height: 45px;
           border: 1px solid rgba(255,255,255, .72);
           border-radius: 5px;
           margin-bottom: 5px;
-          padding: 5px;
+          padding: 5px 20px;
           backdrop-filter: blur(20.4px);
           background: rgba(255, 255, 255, 0.07);
           overflow: hidden;
@@ -309,8 +326,8 @@ section {
             transform: translate(-50%, -50%);
             content: ' ';
             display: block;
-            width: 58px;
-            height: 58px;
+            width: 80%;
+            height: 45px;
             background-size: cover;
             z-index: 0;
             background: #9EFF00;
@@ -318,7 +335,7 @@ section {
             opacity: 0.45;
           }
           .text {
-            @include font-style($font-size: 18px, $font-weight: 500, $color: #fff);
+            @include font-style($font-size: 20px, $font-weight: 600, $color: #fff);
             z-index: 2;
             text-align: center;
           }
@@ -330,6 +347,13 @@ section {
             background-size: contain;
             background-image: url('@/assets/img/btn-yellow.png');
             z-index: 2;
+          }
+        }
+        &.wasted {
+          .value {
+            &:before {
+              background: #FF0000;
+            }
           }
         }
       }

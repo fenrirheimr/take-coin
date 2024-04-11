@@ -34,12 +34,6 @@ export const userStore = defineStore('user', {
     },
   },
   actions: {
-
-    async userFetch(tgUserId) {
-      console.log('>>>')
-
-
-    },
     async userData(tgUserId) {
       const token = this.getToken
       try {
