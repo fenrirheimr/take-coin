@@ -373,7 +373,7 @@ section {
       @include flex(row, center, center);
       @include font-style($font-size: 26px, $font-weight: 800, $color: #545548);
       width: 100%;
-      height: 20vh;
+      height: 15vh;
       border: 1px solid rgba(255,255,255, .72);
       border-radius: 5px;
       backdrop-filter: blur(20.4px);
