@@ -152,9 +152,6 @@ const goToTakeVPN_bot = () => {
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
         <div class="bonuses-item">
-<!--          <div class="open-modal-link" @click="toggleModal(modalData2)">-->
-<!--            <Alert :width="10" :height="10"/> как получать больше?-->
-<!--          </div>-->
         </div>
       </div>
     </div>
@@ -228,7 +225,6 @@ const goToTakeVPN_bot = () => {
 section {
   @include flex(column, flex-start, flex-start);
   width: 100%;
-  //min-height: 100vh;
   min-height: 100%;
   height: 100%;
   padding: 0 25px 35px;
@@ -310,7 +306,7 @@ section {
       @include flex(row, space-between, center);
       width: 100%;
       margin-left: auto;
-      border: 1px solid rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .4);
       border-radius: 5px;
       padding: 5px;
       background: rgba(255, 255, 255, 0.07);
@@ -349,7 +345,7 @@ section {
       .divider {
         width: 1px;
         height: 50px;
-        background: #fff;
+        background: rgba(255,255,255, .4);
       }
     }
   }

@@ -260,7 +260,7 @@ section {
 
           &:hover {
             background: rgba(255,255,255, .12);
-            border-color: rgba(255,255,255, .72);
+            border-color: rgba(255,255,255, .4);
           }
           &:active, {
             animation: blink .5s both
@@ -301,7 +301,7 @@ section {
           z-index: 1;
           width: 100%;
           height: 45px;
-          border: 1px solid rgba(255,255,255, .72);
+          border: 1px solid rgba(255,255,255, .4);
           border-radius: 5px;
           margin-bottom: 5px;
           padding: 5px 20px;
@@ -363,7 +363,7 @@ section {
       @include font-style($font-size: 26px, $font-weight: 800, $color: #545548);
       width: 100%;
       height: 15vh;
-      border: 1px solid rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .4);
       border-radius: 5px;
       backdrop-filter: blur(20.4px);
       background: rgba(255, 255, 255, 0.12);

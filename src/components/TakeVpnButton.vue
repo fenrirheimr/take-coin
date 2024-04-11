@@ -27,7 +27,7 @@ const goToTakeVPN_bot = () => {
   width: 100%;
   height: 55px;
   background: rgba(255,255,255, .17);
-  border: 1px solid rgba(255,255,255, .72);
+  border: 1px solid rgba(255,255,255, .4);
   border-radius: 8px;
   margin: 0 auto;
 

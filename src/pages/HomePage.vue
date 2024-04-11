@@ -183,7 +183,7 @@ section {
       @include flex(row, space-between, center);
       width: 100%;
       margin-left: auto;
-      border: 1px solid rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .4);
       border-radius: 5px;
       padding: 5px 20px;
       background: rgba(255, 255, 255, 0.07);
@@ -231,7 +231,7 @@ section {
       .divider {
         width: 1px;
         height: 50px;
-        background: #fff;
+        background: rgba(255,255,255, .4);
       }
     }
   }
