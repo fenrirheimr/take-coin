@@ -7,7 +7,6 @@ import { userStore } from '@/store/user'
 import { modalStore } from '@/store/modal'
 
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
-import Alert from '@/components/icons/Alert.vue'
 import GoBackButton from "@/components/GoBackButton.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import Modal from '@/components/Modal.vue'
@@ -41,8 +40,6 @@ const toggleModal = (data) => {
 }
 
 const handleInviteFriends = () => {
-  console.log('handleInviteFriends')
-  // window.location.href = userStore().getUserData.ref_link
   window.location.href = 'https://t.me/takecoin_farm_bot?start=ref_system'
   toggleModal()
   tg.close()

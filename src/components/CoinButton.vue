@@ -30,8 +30,6 @@ function animateNums(e) {
     show: true,
   })
   setTimeout(() => {
-
-  // }, 100000)
   }, 550)
 }
 function animateNumsEnd(i) {
@@ -78,7 +76,6 @@ onMounted(() => {
   user-select: none;
 
   .coin-button {
-    //@include flex(row, center, center);
     position: relative;
     cursor: pointer;
     opacity: 0;
@@ -97,7 +94,6 @@ onMounted(() => {
       background-size: contain;
       background-image: url('@/assets/img/btn-yellow.png');
       z-index: 1;
-      //border-radius: 50%;
 
       max-width: 367px;
       max-height: 367px;
@@ -106,8 +102,6 @@ onMounted(() => {
 
       user-select: none;
       touch-action: none;
-
-      //box-shadow: 0 40px 270px 60px #fdb623;
     }
     &:after {
       display: block;
@@ -197,20 +191,9 @@ onMounted(() => {
 @keyframes slide-out-top {
   0% {
     transform: translateY(0);
-    //opacity: 1;
   }
-  //20% {
-  //  opacity: .9;
-  //}
-  //50% {
-  //  opacity: .6;
-  //}
-  //80% {
-  //  opacity: .2;
-  //}
   100% {
     transform: translateY(-70vh);
-    //opacity: 0;
   }
 }
 

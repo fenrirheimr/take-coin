@@ -9,7 +9,6 @@ import { modalStore } from '@/store/modal'
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
 import Alert from '@/components/icons/Alert.vue'
 import GoBackButton from "@/components/GoBackButton.vue";
-import ActionButton from "@/components/ActionButton.vue";
 import Modal from '@/components/Modal.vue'
 
 
@@ -26,8 +25,6 @@ const root = document.querySelector('#app')
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
-  // console.log('>>>', userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes)
-  // console.log('>>>', typeof userStore().getCoinsValue)
 })
 
 const toggleModal = (data) => {
@@ -46,11 +43,6 @@ const modalData = {
   text: '<p>Сейчас мы установили цену в 100 монет за 1 рубль, и ты можешь их потратить в наших сервисах</p><p>Сколько может стоить Takecoin? Возможно ничего, а возможно миллионы. Пока не думай об этом и просто добывай!</p><p>Есть друзья? Зови и получай больше монет!</p>',
   hasButton: false,
 }
-
-// const goToTakeVPN_bot = () => {
-//   window.location.href = "https://t.me/TakeVPN_bot"
-// }
-
 const goToTakeVPN_bot = () => {
   window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
 }
@@ -120,8 +112,7 @@ function numberWithSpaces(num) {
           <div class="value">
             <div class="coin" />
             <div class="text">
-<!--              - {{ numberWithSpaces(userStore().getUserData.wasted) }}-->
-              - 200
+              - {{ numberWithSpaces(userStore().getUserData.wasted) }}
             </div>
           </div>
           <div class="title">
@@ -306,7 +297,7 @@ section {
           text-align: center;
         }
         .value {
-          @include flex(row, flex-start, center);
+          @include flex(row, center, center);
           gap: 15px;
           z-index: 1;
           width: 100%;

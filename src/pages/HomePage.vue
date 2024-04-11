@@ -22,7 +22,6 @@ onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
   isError.value = userStore().isError
-  // checkIsError()
   coinStore().calculateLimit()
 })
 function checkIsError() {
@@ -46,27 +45,6 @@ const goToFaq = () => {
 function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
-console.log(numberWithSpaces(10000));
-// console.log(numberWithSpaces(100));
-// console.log(numberWithSpaces(10000));
-// console.log(numberWithSpaces(1000000));
-// console.log(numberWithSpaces(100000000));
-
-// import axios from 'axios';
-//
-// const response = await axios.get('https://api.notion.com/v1/blocks/f971d965-21da-4247-866d-199f40f3acd7/children', {
-//   params: {
-//     'page_size': '100'
-//   },
-//   withCredentials: false,
-//   headers: {
-//     'Authorization': 'Bearer 91nIVJlI6ISeyRnb192YiwiIwkTMukDNuYDMy4SNiojIwlmIsIiNz4yNzUzLpJXYmF2UgAjLw4CMukDMx8SZt9mcoNEIp82ajV2RgU2apxGIswUTUh0SoAiNz4yNzUzL0l2SiV2VlxGcwFEIpQjNfZDO4BCe15WaMByOxEDWoACMuUzLhxGbpp3bNJiOiQnbldWYfJXZzVnI7pjIzRGbllmRkVmdpJXZENXdvlmdlJHciwiIyImakJiOig2chhmIsUWdyRnOiMXY0xWZEN3clN2byBlbhNmIsAjM3cTM0IjNxETM3EjOiUWbpRVZj5WazJCL9JSOzE2NiZGZiRTZ5MTL0gDOi1iMlJGNtETM3ITLmVzN2QGNiJjI6ICRJVGbiFGdzJCLiAjLzQjL0IiOi42bpNnclZ1akNnIsICduVWasNWLzpmI6ISZwlHVrR2cisnOiEGdhRWY0VWTnl2c0FGdzJCL91nIu9Wa0NWdk9mcwJiOiIXZpRnI7pjI05WZt52bylmduV0ZpNHdhR3ciwSf7pjIzVGd1JWayRHdBVGdhZXayBnIs03e6IycElUbvR3c1NmIs0XZzxWYmpjIklkclN3dvJnQzFGaiwSZ1JHd6IiclN3dvJnQw9GdrNXZENXaiwSZzxWYmpjIlxWai9WTzlmIsUWdyRnOiIXZzd3byJ0cpJCLlNHbhZmOiIXZzd3byJUZslmYv10cpJCLlNHbhZmOiUmdpRXYOVGbpJ2bNNXaiwSZzxWYmpjIu9mc0NWZsV0cpJCLicDNx4CMuMTMuMjMiojIu9WazJXZWRnbllGbjJye6ISbvR3c1NmI7pjIyV2c1Jye',
-//     "Notion-Version": "2022-06-28",
-//     "Content-Type": "application/json",
-//   }
-// });
-
-// console.log('response', response)
 
 </script>
 
@@ -96,13 +74,6 @@ console.log(numberWithSpaces(10000));
     <CoinButton @touchstart="handleCoin" />
 
     <div class="navigation-wrapper">
-<!--      <div class="energy-wrapper">-->
-<!--        <div class="icon icon-energy" />-->
-<!--        <div class="energy-value">-->
-<!--          {{ coinStore().dayLimit }}-->
-<!--        </div>-->
-<!--      </div>-->
-
       <div class="navigation">
         <div class="item energy-wrapper">
           <div class="icon icon-energy" />
@@ -208,25 +179,6 @@ section {
     width: 100%;
     margin-top: auto;
 
-    //.energy-wrapper {
-    //  @include flex(row, center, center);
-    //  .icon-energy {
-    //    position: relative;
-    //    &:before {
-    //      position: absolute;
-    //      top: 50%;
-    //      left: 50%;
-    //      transform: translate(-50%, -50%);
-    //      content: ' ';
-    //      display: block;
-    //      width: 48px;
-    //      height: 48px;
-    //      background-size: cover;
-    //      background-image: url('data:image/svg+xml,<svg width="104" height="116" viewBox="0 0 104 116" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_44)"><circle cx="46.1919" cy="58" r="24" fill="%23FFE833"/></g><defs><filter id="filter0_f_674_44" x="-10.9081" y="0.900002" width="114.2" height="114.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="16.55" result="effect1_foregroundBlur_674_44"/></filter></defs></svg>');
-    //    }
-    //  }
-    //}
-
     .navigation {
       @include flex(row, space-between, center);
       width: 100%;
@@ -243,19 +195,6 @@ section {
         height: 50px;
         cursor: pointer;
         position: relative;
-        //&:before {
-        //  position: absolute;
-        //  top: 50%;
-        //  left: 50%;
-        //  transform: translate(-50%, -50%);
-        //  content: ' ';
-        //  display: block;
-        //  width: 100%;
-        //  height: 48px;
-        //  background: #FFE833;
-        //  filter: blur(20.55px);
-        //  z-index: -1;
-        //}
         &:before {
           position: absolute;
           top: 50%;

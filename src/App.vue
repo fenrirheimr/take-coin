@@ -34,7 +34,6 @@ passportStore().userAuth()
 // userStore().loadReferrals(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
-// console.log(">>>", tg)
 
 
 </script>
