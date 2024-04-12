@@ -176,7 +176,7 @@ onMounted(() => {
   border-radius: 50%;
   transform: translateX(-100%) translateY(-100%);
   mix-blend-mode: screen;
-  animation: slide-out-top 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 700ms ease-out both;
+  animation: slide-out-top 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, fade 1500ms ease-out both;
 }
 
 @keyframes scale-up-center {
