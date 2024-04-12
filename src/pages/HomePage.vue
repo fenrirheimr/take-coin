@@ -154,7 +154,8 @@ section {
         height: 48px;
         margin-right: 5px;
         background-size: contain;
-        background-image: url('@/assets/img/btn-yellow.png');
+        //background-image: url('@/assets/img/btn-yellow.png');
+        background-image: url('@/assets/img/coin-mini.png');
       }
       .counter-value {
         @include font-style($font-size: 50px, $font-weight: 800, $color: #fff);
