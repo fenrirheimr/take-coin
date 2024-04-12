@@ -13,10 +13,6 @@ const routes = [
       spinner: true,
       duration: 1500,
     },
-    children: [
-      // { path: 'scss', component: ScssView }, // default tab that shows on /about route
-      // { path: 'js', component: JsView },
-    ],
   },
   {
     path: '/friends',

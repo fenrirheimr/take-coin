@@ -63,7 +63,6 @@ export const userStore = defineStore('user', {
       }))
       this.loadedItems = data.items.length
       this.referrals = [...data.items]
-      console.log('/api/user-referrals', data)
     },
     async loadMoreReferrals(tgUserId) {
       const token = this.getToken
@@ -78,7 +77,6 @@ export const userStore = defineStore('user', {
         this.loadedItems = data.items.length
         this.referrals = [...this.referrals, ...data.items]
       }
-      // console.log('/api/user-referrals', data)
     }
   }
 })

@@ -108,11 +108,14 @@ function numberWithSpaces(num) {
             от подписки друзей
           </div>
         </div>
-        <div class="item wasted" v-if="userStore().getUserData.wasted">
+        <div class="item wasted">
           <div class="value">
             <div class="coin" />
-            <div class="text">
+            <div class="text" v-if="userStore().getUserData.wasted">
               - {{ numberWithSpaces(userStore().getUserData.wasted) }}
+            </div>
+            <div v-else class="text">
+              0
             </div>
           </div>
           <div class="title">

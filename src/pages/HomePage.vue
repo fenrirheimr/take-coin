@@ -18,7 +18,6 @@ let isError = ref(false)
 const tgUserId = passportStore().getTgUserId
 
 onMounted(async () => {
-  console.log('mounted', tgUserId)
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
   isError.value = userStore().isError
@@ -124,7 +123,7 @@ section {
   overflow-y: auto !important;
 
   &:before {
-    display: none;
+    display: block;
     content: ' ';
     width: 100%;
     height: 90vh;

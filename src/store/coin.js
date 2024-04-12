@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import debounce from 'lodash/debounce.js'
 import { userStore } from './user'
 import { passportStore } from './passport'
 import { BACKEND, withAuthorization } from '@/remotes'
@@ -9,9 +8,7 @@ export const coinStore = defineStore('coin', {
   state: () => {
     return {
       coinsValue: 0,
-      // initLimit: userStore().getUserData.limit,
       dayLimit: userStore().getUserData.limit,
-      // limit: JSON.parse(localStorage.getItem('dayLimitValue') || 1000),
       totalCoinsValue: 10000,
       counter: null,
       counterRun: false
@@ -23,9 +20,6 @@ export const coinStore = defineStore('coin', {
     },
   },
   actions: {
-    setCoinsValue() {
-      return userStore().getCoinsValue
-    },
     async incrementCoinsValue() {
       this.coinsValue++
 
@@ -43,7 +37,6 @@ export const coinStore = defineStore('coin', {
       this.dayLimit--
       const userId = userStore().getUserData.user_id
 
-      console.log('dayLimit', this.dayLimit)
       await userStore().userData(userId)
       if (this.dayLimit < userStore().getUserData.limit && !this.counterRun) {
         this.counterRun = true
@@ -51,7 +44,6 @@ export const coinStore = defineStore('coin', {
       }
     },
     calculateLimit() {
-      console.log("calculateLimit")
       this.counter = setInterval(() => {
         if (this.dayLimit < userStore().getUserData.limit) {
           this.dayLimit++

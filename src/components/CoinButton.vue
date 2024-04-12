@@ -92,7 +92,7 @@ onMounted(() => {
       content: ' ';
       position: absolute;
       background-size: contain;
-      background-image: url('@/assets/img/btn-yellow.png');
+      background-image: url('@/assets/img/0001.png');
       z-index: 1;
 
       max-width: 367px;
@@ -104,7 +104,7 @@ onMounted(() => {
       touch-action: none;
     }
     &:after {
-      display: block;
+      display: none;
       content: ' ';
       position: absolute;
       top: 50%;

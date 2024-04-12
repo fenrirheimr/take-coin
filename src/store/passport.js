@@ -20,8 +20,6 @@ export const passportStore = defineStore('passport', {
   },
   actions: {
     async userAuth() {
-      // userId = '2'
-      // const password = '111111'
       const userId = '2'
       const password = '111111'
 
@@ -33,7 +31,6 @@ export const passportStore = defineStore('passport', {
       this.auth = { ...data }
     },
     setTgUserId(id) {
-      console.log('setTgUserId', id)
       this.tgUserId = id
     }
   },
