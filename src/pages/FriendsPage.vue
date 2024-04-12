@@ -311,6 +311,7 @@ section {
       padding: 5px;
       background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(20.4px);
+      overflow: hidden;
       .item {
         @include flex(column, space-between, center);
         width: 33.3333333%;
@@ -323,7 +324,7 @@ section {
           transform: translate(-50%, -50%);
           content: ' ';
           display: block;
-          width: 58px;
+          width: 100%;
           height: 58px;
           background-size: cover;
           z-index: 0;

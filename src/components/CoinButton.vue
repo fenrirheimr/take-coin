@@ -83,8 +83,8 @@ onMounted(() => {
     user-select: none;
     touch-action: none;
     -webkit-tap-highlight-color: transparent;
-    max-width: 370px;
-    max-height: 370px;
+    max-width: 330px;
+    max-height: 330px;
     width: 100%;
     aspect-ratio : 1 / 1;
     &:before {
@@ -96,8 +96,6 @@ onMounted(() => {
       background-repeat: no-repeat;
       background-position-x: 8px;
       z-index: 1;
-
-      max-width: 367px;
       max-height: 367px;
       width: 100%;
       aspect-ratio : 1 / 1;
