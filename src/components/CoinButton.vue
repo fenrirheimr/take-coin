@@ -30,7 +30,7 @@ function animateNums(e) {
     show: true,
   })
   setTimeout(() => {
-  }, 550)
+  }, 1000)
 }
 function animateNumsEnd(i) {
   nums.value[i].show = false
@@ -38,7 +38,7 @@ function animateNumsEnd(i) {
 const isLoaded = debounce(() => {
   coinButton.value.classList.add('loaded')
   coinButton.value.classList.add('active')
-}, 500)
+}, 1000)
 
 onMounted(() => {
   isLoaded()
