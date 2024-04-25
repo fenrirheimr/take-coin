@@ -19,6 +19,7 @@ let isLoaded = ref(false)
 let showModal = ref(false)
 
 const tgUserId = passportStore().getTgUserId
+// const tgUserId = '2'
 
 const root = document.querySelector('#app')
 

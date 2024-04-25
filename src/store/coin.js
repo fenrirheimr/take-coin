@@ -11,10 +11,14 @@ export const coinStore = defineStore('coin', {
       dayLimit: userStore().getUserData.limit,
       totalCoinsValue: 10000,
       counter: null,
-      counterRun: false
+      counterRun: false,
+      flash: false
     }
   },
   getters: {
+    getFlash(state) {
+      return state.flash
+    },
     getCoinsValue(state) {
       return state.coinsValue
     },
@@ -25,15 +29,24 @@ export const coinStore = defineStore('coin', {
 
       const token = passportStore().getAuthData.access_token
       const userId = userStore().getUserData.user_id
-
-      await BACKEND.post('/api/update-personal-balance', {
-        user_id: userId,
-        amount: 1
-      }, withAuthorization(token))
+      if(this.dayLimit === 1) {
+        await BACKEND.post('/api/update-personal-balance', {
+          user_id: userId,
+          amount: 1000
+        }, withAuthorization(token))
+      } else {
+        await BACKEND.post('/api/update-personal-balance', {
+          user_id: userId,
+          amount: 1
+        }, withAuthorization(token))
+      }
 
       await userStore().userData(userId)
     },
     async decrementLimitValue() {
+      setTimeout(() => {
+        this.flash = false
+      }, 700)
       this.dayLimit--
       const userId = userStore().getUserData.user_id
 
@@ -42,13 +55,21 @@ export const coinStore = defineStore('coin', {
         this.counterRun = true
         this.calculateLimit()
       }
+      if (this.dayLimit === 0) {
+        this.counterRun = false
+        this.flash = true
+        clearInterval(this.counter)
+        this.dayLimit = userStore().getUserData.limit
+        console.log('dayLimit end')
+      }
+      // this.flash = false
     },
     calculateLimit() {
       this.counter = setInterval(() => {
         if (this.dayLimit < userStore().getUserData.limit) {
           this.dayLimit++
         } else {
-          clearInterval(this.counter);
+          clearInterval(this.counter)
         }
         },1000,
       );
