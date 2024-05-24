@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 import debounce from 'lodash/debounce.js'
 import {coinStore} from "@/store/coin.js";
 
-const nums = ref([])
+let nums = ref([])
 const coinButton = ref(null)
 
 function animateNums(e) {
@@ -16,25 +16,25 @@ function animateNums(e) {
 
   coinButton.value.classList.add('animated')
 
-  // if ( 150 >= Math.sqrt( Math.pow( e.touches[0].clientX - pos.left, 2 ) + Math.pow( e.touches[0].clientY - pos.top, 2 ) ) ) {
-  //   console.log('inside')
-  // }
-  // let centerX = e.touches[0].offsetLeft + e.touches[0].offsetWidth / 2;
-  // let centerY = e.touches[0].offsetTop + e.touches[0].offsetHeight / 2;
-  //
-  // console.log('inside', e.touches[0])
-  // console.log('inside', centerX, centerY)
-
   nums.value.push({
     x: e.touches[0].clientX - pos.left,
     y: e.touches[0].clientY - pos.top,
     show: true,
   })
+
+  // if(coinStore().dayLimit > 992) {
+  //
+  // } else {
+  //   nums = ref([])
+  //   console.log('>>>', nums.value.length)
+  //   e.preventDefault()
+  // }
   setTimeout(() => {
   }, 1000)
 }
 function animateNumsEnd(i) {
-  nums.value[i].show = false
+  // nums.value[i].show = false
+  nums.value.splice(i, 1)
 }
 const isLoaded = debounce(() => {
   coinButton.value.classList.add('loaded')
@@ -50,24 +50,22 @@ onMounted(() => {
 <template>
   <div class="root-coin-button">
     <div class="coin-button" ref="coinButton" @touchstart="animateNums">
-      <transition-group v-for="(val, i) in nums">
-      <span v-if="val.show === true && coinStore().dayLimit === 0"
-          :ref="`num-${i}`"
-          class="num"
-          :style="{ top: `${val.y}px`, left: `${val.x}px` }"
-          @animationend="animateNumsEnd(i)"
-      >
+<!--      v-if="coinStore().dayLimit === 990"-->
+      <transition v-show="coinStore().dayLimit === 990">
+        <span class="slide-in-fwd-center">
         +1000
         <div class="icon icon-energy" />
       </span>
+      </transition>
+      <transition-group v-for="(val, i) in nums">
       <span
-          v-if="val.show === true"
+          v-if="val.show === true && coinStore().dayLimit > 991"
           :ref="`num-${i}`"
           class="num"
           :style="{ top: `${val.y}px`, left: `${val.x}px` }"
           @animationend="animateNumsEnd(i)"
       >
-        +1
+        <span>+1</span>
       </span>
       </transition-group>
     </div>
@@ -190,7 +188,6 @@ onMounted(() => {
 .num {
   @include flex(row, space-between, center);
   @include font-style($font-size: 30px, $font-weight: 800, $color: #fff);
-  //display: none;
   position: absolute;
   z-index: 9;
   border-radius: 50%;
@@ -220,5 +217,62 @@ onMounted(() => {
 @keyframes fade {
   0%   { opacity: 1; }
   100% { opacity: 0; }
+}
+
+.slide-in-fwd-center {
+  @include flex(row, space-between, center);
+  @include font-style($font-size: 30px, $font-weight: 800, $color: #fff);
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: slide-in-fwd-center .6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-in-fwd-center {
+  0% {
+    transform: translate(-50%, -50%)  scale(0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-50%, -50%)  scale(1);
+    opacity: 0.2;
+  }
+  20% {
+    transform: translate(-50%, -50%)  scale(2);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translate(-50%, -50%)  scale(3);
+    opacity: 0.6;
+  }
+  40% {
+    transform: translate(-50%, -50%)  scale(4);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(6);
+    opacity: 0.8;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(7);
+    opacity: 0.6;
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(8);
+    opacity: 0.4;
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(9);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+  }
 }
 </style>
