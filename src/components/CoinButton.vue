@@ -21,19 +21,8 @@ function animateNums(e) {
     y: e.touches[0].clientY - pos.top,
     show: true,
   })
-
-  // if(coinStore().dayLimit > 992) {
-  //
-  // } else {
-  //   nums = ref([])
-  //   console.log('>>>', nums.value.length)
-  //   e.preventDefault()
-  // }
-  setTimeout(() => {
-  }, 1000)
 }
 function animateNumsEnd(i) {
-  // nums.value[i].show = false
   nums.value.splice(i, 1)
 }
 const isLoaded = debounce(() => {
@@ -50,8 +39,7 @@ onMounted(() => {
 <template>
   <div class="root-coin-button">
     <div class="coin-button" ref="coinButton" @touchstart="animateNums">
-<!--      v-if="coinStore().dayLimit === 990"-->
-      <transition v-show="coinStore().dayLimit === 990">
+      <transition v-show="coinStore().dayLimit === 0">
         <span class="slide-in-fwd-center">
         +1000
         <div class="icon icon-energy" />
@@ -59,7 +47,7 @@ onMounted(() => {
       </transition>
       <transition-group v-for="(val, i) in nums">
       <span
-          v-if="val.show === true && coinStore().dayLimit > 991"
+          v-if="val.show === true && coinStore().dayLimit > 1"
           :ref="`num-${i}`"
           class="num"
           :style="{ top: `${val.y}px`, left: `${val.x}px` }"

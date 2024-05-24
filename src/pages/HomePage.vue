@@ -81,9 +81,6 @@ function numberWithSpaces(num) {
       <div class="navigation">
         <div class="item energy-wrapper">
           <div class="icon icon-energy" />
-<!--          <div v-if="coinStore().dayLimit === 991" class="energy-value" :class="coinStore().dayLimit === 991 ? 'flash':'noflash'">-->
-<!--            +1000-->
-<!--          </div>-->
           <div class="energy-value">
             {{ coinStore().dayLimit }}
           </div>
