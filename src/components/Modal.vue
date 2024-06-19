@@ -1,9 +1,9 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import { ref } from 'vue'
 import debounce from 'lodash/debounce'
 
 import Close from '@/components/icons/Close.vue'
-import ActionButton from "@/components/ActionButton.vue";
+import ActionButton from '@/components/ActionButton.vue'
 
 import { modalStore } from '@/store/modal'
 
@@ -22,7 +22,6 @@ function closeModal() {
   modal.value.classList.add('removing')
   removed()
 }
-
 </script>
 
 <template>
@@ -33,13 +32,14 @@ function closeModal() {
           <div class="close-modal">
             <Close :width="24" :height="24" @click="closeModal" />
           </div>
-          <div class="title">{{ modalStore().getModalData.title }}</div>
+          <div class="title">
+            {{ modalStore().getModalData.title }}
+          </div>
           <div class="text" v-html="modalStore().getModalData.text" />
 
-          <div class="button-wrapper" v-if="modalStore().getModalData.hasButton">
-            <ActionButton @click="modalStore().getModalData.callback()" size="medium" :title="modalStore().getModalData.buttonText" />
+          <div v-if="modalStore().getModalData.hasButton" class="button-wrapper">
+            <ActionButton size="medium" :title="modalStore().getModalData.buttonText" @click="modalStore().getModalData.callback()" />
           </div>
-
         </div>
       </div>
     </div>
@@ -101,8 +101,6 @@ function closeModal() {
     }
   }
 }
-
-
 
 @keyframes slide-in-blurred-top {
   0% {

@@ -6,11 +6,10 @@ defineProps({
   route: Object,
 })
 
-const goToTakeVPN_bot = () => {
-  window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
+function goToTakeVPN_bot() {
+  window.location.href = 'https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin'
 }
 </script>
-
 
 <template>
   <div class="root-take-vpn-button" @click="goToTakeVPN_bot">
@@ -33,7 +32,7 @@ const goToTakeVPN_bot = () => {
 
   cursor: pointer;
   &:active,
-  &:focus, {
+  &:focus {
     animation: blink .5s both
   }
 }

@@ -4,17 +4,8 @@ const endpoint = {
   baseURL: 'https://balance.rgwebservice.ru',
 }
 
-// export function withAuthorization(token, config = {}) {
-//   return {
-//     ...config,
-//     headers: {
-//       ...config.headers,
-//       'x-apikey': token,
-//     },
-//   }
-// }
-
 export function withAuthorization(authorization, config = {}) {
+  console.log('withAuthorization', authorization)
   return {
     ...config,
     headers: {
@@ -24,5 +15,4 @@ export function withAuthorization(authorization, config = {}) {
   }
 }
 
-// export const PORTFOLIO = axios.create(endpoint)
 export const BACKEND = axios.create(endpoint)

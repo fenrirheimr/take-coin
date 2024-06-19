@@ -1,24 +1,25 @@
 <script setup>
-
 defineProps({
   size: String,
-  title: String
+  title: String,
 })
-
 </script>
 
 <template>
-  <div class="root-action-button" :class="{
+  <div
+    class="root-action-button" :class="{
       'size-small': size === 'small',
       'size-medium': size === 'medium',
       'size-large': size === 'large',
-    }">
-    <div class="text">{{ title || 'Пригласить друга' }}</div>
+    }"
+  >
+    <div class="text">
+      {{ title || 'Пригласить друга' }}
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .root-action-button {
   @include flex(row, center, center);
   width: 100%;
@@ -49,5 +50,4 @@ defineProps({
     }
   }
 }
-
 </style>

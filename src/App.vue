@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import { ref } from 'vue'
 import { passportStore } from '@/store/passport'
-import {userStore} from "@/store/user.js";
+import { userStore } from '@/store/user.js'
 
 defineProps({
   title: String,
@@ -34,17 +34,15 @@ passportStore().userAuth()
 // userStore().loadReferrals(id)
 passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
-
-
 </script>
 
 <template>
   <main ref="main">
-    <router-view v-slot="{ Component }">
+    <RouterView v-slot="{ Component }">
       <transition name="fade">
-          <component :is="Component" />
+        <component :is="Component" />
       </transition>
-    </router-view>
+    </RouterView>
   </main>
 </template>
 

@@ -7,7 +7,6 @@ defineProps({
   route: Object,
 })
 const router = useRouter()
-
 </script>
 
 <template>
@@ -28,7 +27,7 @@ const router = useRouter()
   margin-bottom: 10px;
   cursor: pointer;
   &:active,
-  &:focus, {
+  &:focus {
     animation: blink .5s both
   }
 }

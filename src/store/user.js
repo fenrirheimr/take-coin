@@ -42,9 +42,10 @@ export const userStore = defineStore('user', {
             user_id: tgUserId,
           },
         }))
-        this.user = {...data}
+        this.user = { ...data }
         this.setIsLoaded(true, false)
-      } catch (error) {
+      }
+      catch (error) {
         this.setIsLoaded(false, true)
       }
     },
@@ -66,7 +67,7 @@ export const userStore = defineStore('user', {
     },
     async loadMoreReferrals(tgUserId) {
       const token = this.getToken
-      if(this.loadedItems === 10) {
+      if (this.loadedItems === 10) {
         const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
           params: {
             user_id: tgUserId,
@@ -77,6 +78,6 @@ export const userStore = defineStore('user', {
         this.loadedItems = data.items.length
         this.referrals = [...this.referrals, ...data.items]
       }
-    }
-  }
+    },
+  },
 })

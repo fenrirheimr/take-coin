@@ -1,22 +1,20 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import {passportStore} from "@/store/passport.js";
+import { passportStore } from '@/store/passport.js'
 import { userStore } from '@/store/user'
 import { modalStore } from '@/store/modal'
 
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
 import Alert from '@/components/icons/Alert.vue'
-import GoBackButton from "@/components/GoBackButton.vue";
+import GoBackButton from '@/components/GoBackButton.vue'
 import Modal from '@/components/Modal.vue'
-
-
 
 const route = useRoute()
 
-let isLoaded = ref(false)
-let showModal = ref(false)
+const isLoaded = ref(false)
+const showModal = ref(false)
 
 const tgUserId = passportStore().getTgUserId
 // const tgUserId = '2'
@@ -28,13 +26,13 @@ onMounted(async () => {
   isLoaded.value = userStore().isLoaded
 })
 
-const toggleModal = (data) => {
+function toggleModal(data) {
   modalStore().setModalData(data)
   showModal.value = !showModal.value
   root.classList.toggle('blurred')
 }
 
-const handleInviteFriends = () => {
+function handleInviteFriends() {
   console.log('handleInviteFriends')
   toggleModal()
 }
@@ -44,14 +42,13 @@ const modalData = {
   text: '<p>Сейчас мы установили цену в 100 монет за 1 рубль, и ты можешь их потратить в наших сервисах</p><p>Сколько может стоить Takecoin? Возможно ничего, а возможно миллионы. Пока не думай об этом и просто добывай!</p><p>Есть друзья? Зови и получай больше монет!</p>',
   hasButton: false,
 }
-const goToTakeVPN_bot = () => {
-  window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
+function goToTakeVPN_bot() {
+  window.location.href = 'https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin'
 }
 
 function numberWithSpaces(num) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
-
 </script>
 
 <template>
@@ -63,7 +60,7 @@ function numberWithSpaces(num) {
       </div>
       <div class="counter-wrapper">
         <div class="coin" />
-        <div class="counter-value" v-if="userStore().getUserData.wasted">
+        <div v-if="userStore().getUserData.wasted" class="counter-value">
           {{ numberWithSpaces((userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes) - userStore().getUserData.wasted) }}
         </div>
         <div v-else class="counter-value">
@@ -112,7 +109,7 @@ function numberWithSpaces(num) {
         <div class="item wasted">
           <div class="value">
             <div class="coin" />
-            <div class="text" v-if="userStore().getUserData.wasted">
+            <div v-if="userStore().getUserData.wasted" class="text">
               - {{ numberWithSpaces(userStore().getUserData.wasted) }}
             </div>
             <div v-else class="text">
@@ -127,12 +124,14 @@ function numberWithSpaces(num) {
     </div>
 
     <div class="withdrawal-wrapper">
-      <div class="title">Доступно к выводу</div>
+      <div class="title">
+        Доступно к выводу
+      </div>
       <div class="coming-soon">
         Coming soon...
       </div>
       <div class="open-modal-link" @click="toggleModal(modalData)">
-        <Alert :width="16" :height="16"/> Сколько стоит Takecoin?
+        <Alert :width="16" :height="16" /> Сколько стоит Takecoin?
       </div>
     </div>
 
@@ -147,25 +146,27 @@ function numberWithSpaces(num) {
             <div class="icon icon-planet" />
           </div>
           <div class="bonuses-info">
-            <div class="title">TakeVPN</div>
+            <div class="title">
+              TakeVPN
+            </div>
             <div class="text">
               TakeVPN - быстрое и безопасное соединения для вас
             </div>
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
-<!--        <div class="bonuses-item">-->
-<!--          <div class="blurred blurred-money">-->
-<!--            <div class="icon icon-robot" />-->
-<!--          </div>-->
-<!--          <div class="bonuses-info">-->
-<!--            <div class="title">RocketGPT</div>-->
-<!--            <div class="text">-->
-<!--              ChatGPT в вашем Telegram - интеллектуальный помощник рядом-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <ArrowLeft class="arrow" :width="8" :height="12" />-->
-<!--        </div>-->
+        <!--        <div class="bonuses-item"> -->
+        <!--          <div class="blurred blurred-money"> -->
+        <!--            <div class="icon icon-robot" /> -->
+        <!--          </div> -->
+        <!--          <div class="bonuses-info"> -->
+        <!--            <div class="title">RocketGPT</div> -->
+        <!--            <div class="text"> -->
+        <!--              ChatGPT в вашем Telegram - интеллектуальный помощник рядом -->
+        <!--            </div> -->
+        <!--          </div> -->
+        <!--          <ArrowLeft class="arrow" :width="8" :height="12" /> -->
+        <!--        </div> -->
       </div>
     </div>
   </section>
@@ -267,7 +268,7 @@ section {
             background: rgba(255,255,255, .12);
             border-color: rgba(255,255,255, .4);
           }
-          &:active, {
+          &:active {
             animation: blink .5s both
           }
         }
@@ -387,7 +388,6 @@ section {
       }
     }
   }
-
 
   .icon {
     width: 33px;

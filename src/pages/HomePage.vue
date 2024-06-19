@@ -12,8 +12,8 @@ import CoinButton from '@/components/CoinButton.vue'
 const router = useRouter()
 let counter
 
-let isLoaded = ref(false)
-let isError = ref(false)
+const isLoaded = ref(false)
+const isError = ref(false)
 
 const tgUserId = passportStore().getTgUserId
 
@@ -27,29 +27,26 @@ onMounted(async () => {
 function checkIsError() {
   if (isError.value === true) {
     counter = setInterval(async () => {
-      await userStore().userData(tgUserId)},1000,);
-  } else {
-    clearInterval(counter);
+      await userStore().userData(tgUserId)
+    }, 1000)
+  }
+  else {
+    clearInterval(counter)
   }
 }
 
-const handleCoin = () => {
-  if (!coinStore().getFlash) {
-
-  }
+function handleCoin() {
   coinStore().incrementCoinsValue()
   coinStore().decrementLimitValue()
-  // console.log('>>>', )
 }
 
-const goToFaq = () => {
-  window.location.href = "https://takecoin.notion.site/Takecoin-f971d96521da4247866d199f40f3acd7"
+function goToFaq() {
+  window.location.href = 'https://takecoin.notion.site/Takecoin-f971d96521da4247866d199f40f3acd7'
 }
 
 function numberWithSpaces(num) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
-
 </script>
 
 <template>

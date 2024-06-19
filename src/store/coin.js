@@ -12,7 +12,7 @@ export const coinStore = defineStore('coin', {
       totalCoinsValue: 10000,
       counter: null,
       counterRun: false,
-      flash: false
+      flash: false,
     }
   },
   getters: {
@@ -30,15 +30,16 @@ export const coinStore = defineStore('coin', {
       const token = passportStore().getAuthData.access_token
       const userId = userStore().getUserData.user_id
 
-      if(this.dayLimit === 1) {
+      if (this.dayLimit === 1) {
         await BACKEND.post('/api/update-personal-balance', {
           user_id: userId,
-          amount: 1000
+          amount: 1000,
         }, withAuthorization(token))
-      } else {
+      }
+      else {
         await BACKEND.post('/api/update-personal-balance', {
           user_id: userId,
-          amount: 1
+          amount: 1,
         }, withAuthorization(token))
       }
 
@@ -66,11 +67,10 @@ export const coinStore = defineStore('coin', {
       this.counter = setInterval(() => {
         if (this.dayLimit < userStore().getUserData.limit) {
           this.dayLimit++
-        } else {
-          clearInterval(this.counter)
         }
-        },1000,
-      );
-    }
-  }
+        else
+          clearInterval(this.counter)
+      }, 1000)
+    },
+  },
 })

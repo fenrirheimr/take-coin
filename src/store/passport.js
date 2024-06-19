@@ -6,7 +6,7 @@ export const passportStore = defineStore('passport', {
   state: () => {
     return {
       auth: null,
-      tgUserId: null
+      tgUserId: null,
     }
   },
   getters: {
@@ -32,6 +32,6 @@ export const passportStore = defineStore('passport', {
     },
     setTgUserId(id) {
       this.tgUserId = id
-    }
+    },
   },
 })

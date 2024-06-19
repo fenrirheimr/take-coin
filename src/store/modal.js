@@ -15,7 +15,7 @@ export const modalStore = defineStore('modal', {
   actions: {
     setModalData(data) {
       this.data = null
-      this.data = {...data}
-    }
-  }
+      this.data = { ...data }
+    },
+  },
 })

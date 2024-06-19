@@ -1,22 +1,20 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import {passportStore} from "@/store/passport.js";
+import { passportStore } from '@/store/passport.js'
 import { userStore } from '@/store/user'
 import { modalStore } from '@/store/modal'
 
 import ArrowLeft from '@/components/icons/ArrowLeft.vue'
-import GoBackButton from "@/components/GoBackButton.vue";
-import ActionButton from "@/components/ActionButton.vue";
+import GoBackButton from '@/components/GoBackButton.vue'
+import ActionButton from '@/components/ActionButton.vue'
 import Modal from '@/components/Modal.vue'
-
-
 
 const route = useRoute()
 
-let isLoaded = ref(false)
-let showModal = ref(false)
+const isLoaded = ref(false)
+const showModal = ref(false)
 
 const tgUserId = passportStore().getTgUserId
 
@@ -33,13 +31,13 @@ onMounted(async () => {
   isLoaded.value = userStore().isLoaded
 })
 
-const toggleModal = (data) => {
+function toggleModal(data) {
   modalStore().setModalData(data)
   showModal.value = !showModal.value
   root.classList.toggle('blurred')
 }
 
-const handleInviteFriends = () => {
+function handleInviteFriends() {
   window.location.href = 'https://t.me/takecoin_farm_bot?start=ref_system'
   toggleModal()
   tg.close()
@@ -50,7 +48,7 @@ const modalData = {
   text: '<p>Получайте <span class="colored">10% со всех добытых монет другом!</span></p><p>Помни, не пригласишь друга ты - пригласит кто-то другой. Просто поделись ссылкой!</p>',
   hasButton: true,
   callback: () => {
-    handleInviteFriends();
+    handleInviteFriends()
   },
 }
 const modalData2 = {
@@ -59,7 +57,7 @@ const modalData2 = {
   hasButton: true,
   buttonText: 'Перейти в TakeVPN',
   callback: () => {
-    goToTakeVPN_bot();
+    goToTakeVPN_bot()
   },
 }
 const modalData3 = {
@@ -67,55 +65,51 @@ const modalData3 = {
   text: 'Получайте <span class="colored">10% в монетах с каждой добычи друзей</span>, в прилоджении Takecoin',
   hasButton: true,
   callback: () => {
-    handleInviteFriends();
+    handleInviteFriends()
   },
 }
 
-const dropHMS = (date) => {
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(0, 0);
+function dropHMS(date) {
+  date.setHours(0)
+  date.setMinutes(0)
+  date.setSeconds(0, 0)
 }
 
-const showMessageDateTime = (dateTime) => {
+function showMessageDateTime(dateTime) {
+  const today = new Date() // присвоение и форматированние текущей даты
+  const yesterday = new Date() // присвоение и форматирование текущей даты - 1 день
+  const thisDate = new Date(dateTime) // присвоение и форматирование даты последнего сообщения комнаты
 
-  let today = new Date(),           // присвоение и форматированние текущей даты
-      yesterday = new Date(),             // присвоение и форматирование текущей даты - 1 день
-      thisDate = new Date(dateTime);           // присвоение и форматирование даты последнего сообщения комнаты
+  yesterday.setDate(today.getDate() - 1)
 
-  yesterday.setDate(today.getDate() -1);
-
-  dropHMS(today);
-  dropHMS(yesterday);
-  dropHMS(thisDate );
+  dropHMS(today)
+  dropHMS(yesterday)
+  dropHMS(thisDate)
 
   if (dateTime) {
-    if (today.getTime() === thisDate.getTime()) {
+    if (today.getTime() === thisDate.getTime())
       return 'сегодня'
-    } else if (yesterday.getTime() === thisDate.getTime()) {
+    else if (yesterday.getTime() === thisDate.getTime())
       return 'вчера'
-    } else {
-      return 'давно';
-    }
+    else
+      return 'давно'
   }
 }
 
 const refTable = ref(null)
-const onScroll = () => {
-  if( refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight)) {
+function onScroll() {
+  if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
     userStore().loadMoreReferrals(id)
     // userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
-  }
 }
 
 function numberWithSpaces(num) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 
-const goToTakeVPN_bot = () => {
-  window.location.href = "https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin"
+function goToTakeVPN_bot() {
+  window.location.href = 'https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin'
 }
-
 </script>
 
 <template>
@@ -132,9 +126,11 @@ const goToTakeVPN_bot = () => {
             <div class="icon icon-planet" />
           </div>
           <div class="bonuses-info" @click="toggleModal(modalData2)">
-            <div class="title">20% за подписку TakeVPN</div>
+            <div class="title">
+              20% за подписку TakeVPN
+            </div>
             <div class="text">
-              Получайте <span class="colored">20% за каждую покупку<br />друга</span> в боте TakeVPN
+              Получайте <span class="colored">20% за каждую покупку<br>друга</span> в боте TakeVPN
             </div>
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
@@ -144,15 +140,16 @@ const goToTakeVPN_bot = () => {
             <div class="icon icon-money" />
           </div>
           <div class="bonuses-info">
-            <div class="title">10% за монеты друга</div>
+            <div class="title">
+              10% за монеты друга
+            </div>
             <div class="text">
-              Приглашайте друзей и получайте <br /><span class="colored">10% от всех добытых монет друга</span>
+              Приглашайте друзей и получайте <br><span class="colored">10% от всех добытых монет друга</span>
             </div>
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
-        <div class="bonuses-item">
-        </div>
+        <div class="bonuses-item" />
       </div>
     </div>
 
@@ -164,7 +161,7 @@ const goToTakeVPN_bot = () => {
       <div class="stat-summary">
         <div class="item">
           <div class="title">
-            Друзей<br />приведено
+            Друзей<br>приведено
           </div>
           <div class="value">
             {{ numberWithSpaces(userStore().getUserData.friends_invited) }}
@@ -173,7 +170,7 @@ const goToTakeVPN_bot = () => {
         <div class="divider" />
         <div class="item">
           <div class="title">
-            Начислено с<br />добычи монет
+            Начислено с<br>добычи монет
           </div>
           <div class="value">
             {{ numberWithSpaces(userStore().getUserData.balance_friends) }}
@@ -182,7 +179,7 @@ const goToTakeVPN_bot = () => {
         <div class="divider" />
         <div class="item">
           <div class="title">
-            Начислено с<br />покупок TakeVPN
+            Начислено с<br>покупок TakeVPN
           </div>
           <div class="value">
             {{ numberWithSpaces(userStore().getUserData.balance_subscribes) }}
@@ -192,17 +189,33 @@ const goToTakeVPN_bot = () => {
     </div>
     <div class="friend-table">
       <div class="friend-table__row header">
-        <div class="friend-table__col first">Друг&nbsp;ID</div>
-        <div class="friend-table__col second">За&nbsp;добычу Takecoin</div>
-        <div class="friend-table__col third">За&nbsp;подписку TakeVPN</div>
-        <div class="friend-table__col fourth">Статус подписки</div>
-        <div class="friend-table__col fifth">Последняя добыча</div>
+        <div class="friend-table__col first">
+          Друг&nbsp;ID
+        </div>
+        <div class="friend-table__col second">
+          За&nbsp;добычу Takecoin
+        </div>
+        <div class="friend-table__col third">
+          За&nbsp;подписку TakeVPN
+        </div>
+        <div class="friend-table__col fourth">
+          Статус подписки
+        </div>
+        <div class="friend-table__col fifth">
+          Последняя добыча
+        </div>
       </div>
-      <div  class="friend-table__body" @scroll="onScroll" ref="refTable">
-        <div class="friend-table__row" v-for="item in userStore().getReferrals">
-          <div class="friend-table__col first">{{ item.ref_id }}</div>
-          <div class="friend-table__col second">{{ numberWithSpaces(item.mined_money) }}</div>
-          <div class="friend-table__col third">{{ numberWithSpaces(item.vpn_mined_money) }}</div>
+      <div ref="refTable" class="friend-table__body" @scroll="onScroll">
+        <div v-for="item in userStore().getReferrals" class="friend-table__row">
+          <div class="friend-table__col first">
+            {{ item.ref_id }}
+          </div>
+          <div class="friend-table__col second">
+            {{ numberWithSpaces(item.mined_money) }}
+          </div>
+          <div class="friend-table__col third">
+            {{ numberWithSpaces(item.vpn_mined_money) }}
+          </div>
           <div class="friend-table__col fourth">
             <span v-if="item.vpn_is_active">активна</span>
             <span v-else>-</span>
@@ -215,7 +228,7 @@ const goToTakeVPN_bot = () => {
       </div>
     </div>
     <div class="invite-button-wrapper">
-      <ActionButton @click="toggleModal(modalData)" size="large" />
+      <ActionButton size="large" @click="toggleModal(modalData)" />
     </div>
   </section>
   <Modal :show="showModal" @close="toggleModal" />
@@ -282,7 +295,7 @@ section {
         }
 
         &:active,
-        &:focus, {
+        &:focus {
           animation: blink .5s both
         }
         &:last-child {
