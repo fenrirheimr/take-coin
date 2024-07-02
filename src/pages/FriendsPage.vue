@@ -16,8 +16,6 @@ const route = useRoute()
 const isLoaded = ref(false)
 const showModal = ref(false)
 
-const tgUserId = passportStore().getTgUserId
-
 const root = document.querySelector('#app')
 
 const tg = window.Telegram.WebApp
@@ -25,11 +23,10 @@ const tg = window.Telegram.WebApp
 // const id = '2'
 // const id = '245757214' // Роман
 // console.log('?????', userStore().userId)
-userStore().loadReferrals('245757214')
-// userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
+userStore().loadReferrals(passportStore().getTgUserId)
 
 onMounted(async () => {
-  await userStore().userData(tgUserId)
+  await userStore().userData(passportStore().getTgUserId)
   isLoaded.value = userStore().isLoaded
   console.log('>>>>', userStore().userId)
 })
@@ -101,11 +98,9 @@ function showMessageDateTime(dateTime) {
 
 const refTable = ref(null)
 function onScroll() {
-  console.log('onScroll', refTable.value.scrollTop, (refTable.value.scrollHeight - refTable.value.offsetHeight))
-  // if (userStore().canLoadMore)
+  alert('scroll')
   if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
     userStore().loadMoreReferrals(passportStore().getTgUserId)
-    // userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
 }
 
 function numberWithSpaces(num) {
