@@ -47,7 +47,7 @@ onMounted(() => {
       </transition>
       <transition v-for="(val, i) in nums">
         <span
-          v-if="val.show === true && coinStore().dayLimit > 995"
+          v-if="val.show === true && coinStore().dayLimit > 1"
           :ref="`num-${i}`"
           class="num"
           :style="{ top: `${val.y}px`, left: `${val.x}px` }"
