@@ -57,7 +57,8 @@ function preventCollapse(event) {
 }
 
 // Attach the above function to the touchstart event handler of the scrollable element
-const scrollableElement = document.querySelector(".scrollable-element");
+const scrollableElement = document.querySelector("#app");
+console.log('scrollableElement', scrollableElement)
 scrollableElement.addEventListener("touchstart", preventCollapse);
 
 passportStore().userAuth()
@@ -71,7 +72,7 @@ userStore().loadReferrals(id)
 </script>
 
 <template>
-  <main ref="main">
+  <main ref="main" class="main">
     <RouterView v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
