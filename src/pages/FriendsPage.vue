@@ -28,7 +28,6 @@ userStore().loadReferrals(passportStore().getTgUserId)
 onMounted(async () => {
   await userStore().userData(passportStore().getTgUserId)
   isLoaded.value = userStore().isLoaded
-  console.log('>>>>', userStore().userId)
 })
 
 function toggleModal(data) {

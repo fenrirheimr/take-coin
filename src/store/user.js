@@ -94,6 +94,8 @@ export const userStore = defineStore('user', {
         this.offset = this.offset + data.items.length
   
         this.referrals = [...this.referrals, ...data.items]
+
+        alert('scroll2', this.offset)
       }
     },
   },
