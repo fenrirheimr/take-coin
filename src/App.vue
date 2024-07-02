@@ -32,7 +32,7 @@ passportStore().userAuth()
 // const id = '2'
 const id = '245757214'
 passportStore().setTgUserId(id)
-userStore().loadReferrals(id)
+// userStore().loadReferrals(id)
 // passportStore().setTgUserId(tg?.initDataUnsafe?.user?.id)
 // userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
 </script>

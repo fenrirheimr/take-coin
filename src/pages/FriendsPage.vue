@@ -24,7 +24,8 @@ const tg = window.Telegram.WebApp
 // const id = '286133104'
 // const id = '2'
 // const id = '245757214' // Роман
-userStore().loadReferrals(userStore().userId)
+// console.log('?????', userStore().userId)
+userStore().loadReferrals('245757214')
 // userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
 
 onMounted(async () => {
@@ -100,8 +101,10 @@ function showMessageDateTime(dateTime) {
 
 const refTable = ref(null)
 function onScroll() {
+  console.log('onScroll', refTable.value.scrollTop, (refTable.value.scrollHeight - refTable.value.offsetHeight))
+  // if (userStore().canLoadMore)
   if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
-    userStore().loadMoreReferrals(userStore().userId)
+    userStore().loadMoreReferrals(passportStore().getTgUserId)
     // userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
 }
 
@@ -379,6 +382,7 @@ section {
     .friend-table__row {
       @include flex(row, space-between, center);
       width: 100%;
+      height: 22px;
       flex-wrap: nowrap;
       .friend-table__col {
         @include font-style($font-size: 12px, $font-weight: 500, $color: rgba(255, 255, 255, 0.8));

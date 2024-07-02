@@ -11,7 +11,9 @@ export const userStore = defineStore('user', {
       user: null,
       referrals: null,
       loadedItems: null,
-      userId: null
+      userId: null,
+      canLoadMore: false,
+      offset: 0
     }
   },
   getters: {
@@ -65,24 +67,32 @@ export const userStore = defineStore('user', {
         params: {
           user_id: tgUserId,
           limit: 10,
-          offset: 0,
+          offset: this.offset,
         },
       }))
-      this.loadedItems = data.items.length
+      this.offset = this.offset + data.items.length
       this.referrals = [...data.items]
+      if (data.items.length >= 10) {
+        this.canLoadMore = true
+      }
     },
     async loadMoreReferrals(tgUserId) {
-      console.log('loadMoreReferrals')
+
       const token = this.getToken
-      if (this.loadedItems === 10) {
+      if (this.canLoadMore) {
+        console.log('I can load more')
         const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
           params: {
             user_id: tgUserId,
             limit: 10,
-            offset: 10,
+            offset: this.offset,
           },
         }))
-        this.loadedItems = data.items.length
+          
+        this.canLoadMore = data.items.length >= 10
+  
+        this.offset = this.offset + data.items.length
+  
         this.referrals = [...this.referrals, ...data.items]
       }
     },
