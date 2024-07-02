@@ -5,7 +5,7 @@ const endpoint = {
 }
 
 export function withAuthorization(authorization, config = {}) {
-  console.log('withAuthorization', authorization)
+  // console.log('withAuthorization', authorization)
   return {
     ...config,
     headers: {

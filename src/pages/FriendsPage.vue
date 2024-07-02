@@ -23,12 +23,14 @@ const root = document.querySelector('#app')
 const tg = window.Telegram.WebApp
 // const id = '286133104'
 // const id = '2'
-// userStore().loadReferrals(id)
-userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
+// const id = '245757214' // Роман
+userStore().loadReferrals(userStore().userId)
+// userStore().loadReferrals(tg?.initDataUnsafe?.user?.id)
 
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
+  console.log('>>>>', userStore().userId)
 })
 
 function toggleModal(data) {
@@ -99,7 +101,7 @@ function showMessageDateTime(dateTime) {
 const refTable = ref(null)
 function onScroll() {
   if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
-    userStore().loadMoreReferrals(id)
+    userStore().loadMoreReferrals(userStore().userId)
     // userStore().loadMoreReferrals(tg?.initDataUnsafe?.user?.id)
 }
 

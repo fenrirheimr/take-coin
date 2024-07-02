@@ -63,7 +63,8 @@ function numberWithSpaces(num) {
       <div class="counter-wrapper">
         <div class="coin" />
         <div class="counter-value">
-          {{ numberWithSpaces(userStore().getCoinsValue) }}
+          <!-- {{ numberWithSpaces(userStore().getCoinsValue) }} -->
+          {{ numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes) }}
         </div>
       </div>
 
