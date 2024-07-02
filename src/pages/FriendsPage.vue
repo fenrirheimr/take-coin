@@ -99,9 +99,9 @@ function showMessageDateTime(dateTime) {
 const refTable = ref(null)
 function onScroll() {
   if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
-  alert('scroll1')
+  // alert('scroll1')
     userStore().loadMoreReferrals(passportStore().getTgUserId)
-    alert('scroll2')
+    // alert('scroll2')
 }
 
 function numberWithSpaces(num) {
