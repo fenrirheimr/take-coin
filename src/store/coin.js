@@ -30,8 +30,8 @@ export const coinStore = defineStore('coin', {
       const token = passportStore().getAuthData.access_token
       const userId = userStore().getUserData.user_id
       // console.log('incrementCoinsValue', this.dayLimit)
-      if (this.dayLimit === 1) {
-        // console.log('this')
+      if (this.dayLimit === 995) {
+        console.log('this')
         await BACKEND.post('/api/update-personal-balance', {
           user_id: userId,
           amount: 1000,

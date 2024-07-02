@@ -39,7 +39,7 @@ onMounted(() => {
 <template>
   <div class="root-coin-button">
     <div ref="coinButton" class="coin-button" @touchstart="animateNums">
-      <transition v-show="coinStore().dayLimit === 0">
+      <transition v-show="coinStore().dayLimit === 995">
         <span class="slide-in-fwd-center">
           +1000
           <div class="icon icon-energy" />
@@ -47,7 +47,7 @@ onMounted(() => {
       </transition>
       <transition v-for="(val, i) in nums">
         <span
-          v-if="val.show === true && coinStore().dayLimit > 1"
+          v-if="val.show === true && coinStore().dayLimit > 995"
           :ref="`num-${i}`"
           class="num"
           :style="{ top: `${val.y}px`, left: `${val.x}px` }"
