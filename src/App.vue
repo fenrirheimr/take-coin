@@ -42,7 +42,7 @@ function ensureDocumentIsScrollable() {
     to make it scrollable.
     */
     document.documentElement.style.setProperty(
-      "height",
+      "min-height",
       "calc(100vh + 1px)",
       "important"
     );
