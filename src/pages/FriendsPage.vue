@@ -96,12 +96,12 @@ function showMessageDateTime(dateTime) {
 }
 
 const refTable = ref(null)
-function onScroll() {
-  if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
-  // alert('scroll1')
-    userStore().loadMoreReferrals(passportStore().getTgUserId)
-    // alert('scroll2')
-}
+// function onScroll() {
+//   if (refTable.value.scrollTop === (refTable.value.scrollHeight - refTable.value.offsetHeight))
+//   // alert('scroll1')
+//     userStore().loadMoreReferrals(passportStore().getTgUserId)
+//     // alert('scroll2')
+// }
 
 function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
@@ -205,7 +205,7 @@ function goToTakeVPN_bot() {
           Последняя добыча
         </div>
       </div>
-      <div ref="refTable" class="friend-table__body" @scroll="onScroll">
+      <div ref="refTable" class="friend-table__body">
         <div v-for="item in userStore().getReferrals" class="friend-table__row">
           <div class="friend-table__col first">
             {{ item.ref_id }}

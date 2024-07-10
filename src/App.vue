@@ -27,6 +27,9 @@ tg.expand() // расширяем на все окно/
 
 tg.headerColor = '#010201'
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Ensure the document is scrollable
 function ensureDocumentIsScrollable() {
   const isScrollable =
@@ -60,6 +63,9 @@ function preventCollapse(event) {
 const scrollableElement = document.querySelector("#app");
 console.log('scrollableElement', scrollableElement)
 scrollableElement.addEventListener("touchstart", preventCollapse);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 passportStore().userAuth()
 // const id = '286133104'

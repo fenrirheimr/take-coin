@@ -12,8 +12,8 @@ export const userStore = defineStore('user', {
       referrals: null,
       loadedItems: null,
       userId: null,
-      canLoadMore: false,
-      offset: 0
+      // canLoadMore: false,
+      // offset: 0
     }
   },
   getters: {
@@ -66,37 +66,37 @@ export const userStore = defineStore('user', {
       const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
         params: {
           user_id: tgUserId,
-          limit: 10,
+          limit: 30,
           offset: this.offset,
         },
       }))
-      this.offset = this.offset + data.items.length
-      this.referrals = [...data.items]
-      if (data.items.length >= 10) {
-        this.canLoadMore = true
-      }
-    },
-    async loadMoreReferrals(tgUserId) {
+      // this.offset = this.offset + data.items.length
+      this.referrals = [...data.items.sort((a, b) => b.mined_money - a.mined_money)]
 
-      const token = this.getToken
-      if (this.canLoadMore) {
-        console.log('I can load more')
-        const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
-          params: {
-            user_id: tgUserId,
-            limit: 10,
-            offset: this.offset,
-          },
-        }))
+      console.log('referrals', this.referrals)
+      // if (data.items.length >= 10) {
+      //   this.canLoadMore = true
+      // }
+    },
+    // async loadMoreReferrals(tgUserId) {
+
+    //   const token = this.getToken
+    //   if (this.canLoadMore) {
+    //     console.log('I can load more')
+    //     const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
+    //       params: {
+    //         user_id: tgUserId,
+    //         limit: 10,
+    //         offset: this.offset,
+    //       },
+    //     }))
           
-        this.canLoadMore = data.items.length >= 10
+    //     this.canLoadMore = data.items.length >= 10
   
-        this.offset = this.offset + data.items.length
+    //     this.offset = this.offset + data.items.length
   
-        this.referrals = [...this.referrals, ...data.items]
-
-        alert('scroll2', this.offset)
-      }
-    },
+    //     this.referrals = [...this.referrals, ...data.items]
+    //   }
+    // },
   },
 })
