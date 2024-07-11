@@ -5,6 +5,8 @@ import { userStore } from '@/store/user'
 import { passportStore } from '@/store/passport'
 import { coinStore } from '@/store/coin'
 
+import moment from 'moment';
+
 import Spinner from '@/components/Spinner.vue'
 import TakeVpnButton from '@/components/TakeVpnButton.vue'
 import CoinButton from '@/components/CoinButton.vue'
@@ -47,6 +49,32 @@ function goToFaq() {
 function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+let now = moment().format(); 
+
+let timer = ref(30)
+let timerIsVisible = ref(false)
+
+function getRocket() {
+  countdown()
+  // let randInt = Math.floor(Math.random() * Math.floor(10000));
+  console.log(now);
+}
+
+
+function countdown() {
+	timer.value--;
+  console.log('countdown')
+  timerIsVisible.value = true
+	if (timer.value > 0) {
+		setTimeout(countdown, 1000);
+	} else {
+    timerIsVisible.value = false
+  }
+};
+
 </script>
 
 <template>
@@ -72,6 +100,9 @@ function numberWithSpaces(num) {
         Рейтинг: <span>#{{ userStore().getUserData.rating }}</span>
       </div>
     </div>
+
+    <div class="rocket" @click="getRocket"></div>
+    <div class="rocket-time" v-if="timerIsVisible">0:{{ timer }}</div>
 
     <CoinButton @touchstart="handleCoin" />
 
@@ -135,6 +166,28 @@ section {
     top: 10vh;
     left: 0;
     z-index: 0;
+  }
+
+  .rocket {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: url('@/assets/img/1f680.gif') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    z-index: 999;
+  }
+
+  .rocket-time {
+    @include font-style($font-size: 36px, $font-weight: 500, $color: #fff);
+    display: block;
+    width: 70px;
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    z-index: 999;
   }
 
   .user-id {
