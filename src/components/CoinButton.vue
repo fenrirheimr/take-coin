@@ -6,6 +6,11 @@ import { coinStore } from '@/store/coin.js'
 const nums = ref([])
 const coinButton = ref(null)
 
+defineProps({
+  value: Number,
+})
+
+
 function animateNums(e) {
   if (coinButton.value.classList.contains('animated'))
     coinButton.value.classList.remove('animated')
@@ -39,7 +44,7 @@ onMounted(() => {
 <template>
   <div class="root-coin-button">
     <div ref="coinButton" class="coin-button" @touchstart="animateNums">
-      <transition v-show="coinStore().dayLimit === 995">
+      <transition v-show="coinStore().dayLimit === 1">
         <span class="slide-in-fwd-center">
           +1000
           <div class="icon icon-energy" />
@@ -53,7 +58,9 @@ onMounted(() => {
           :style="{ top: `${val.y}px`, left: `${val.x}px` }"
           @animationend="animateNumsEnd(i)"
         >
-          +1
+          +{{ value }} <span v-if="value > 1">🚀</span>
+          
+          <!-- <img src="@/assets/img/1f680.gif" width="20" height="20" /> -->
         </span>
       </transition>
     </div>

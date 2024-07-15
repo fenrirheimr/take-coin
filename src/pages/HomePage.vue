@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, onUpdated, onBeforeUnmount } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { userStore } from '@/store/user'
 import { passportStore } from '@/store/passport'
@@ -25,91 +25,45 @@ const tgUserId = passportStore().getTgUserId
 // 2) Начисления монет возрастают с каждый новым бустером. Первый бустер +2, второй +3 и тд
 // 3) При клиrе на бустер (ракета) запускается эвент в течении 1 минуты с доп начислениями и в этот момент появляется таймер +2
 
-// let firstStartTime
 
-let firstStartTime = moment();
-// let restart = moment(firstStartTime).add(3, 'minutes');
-
-// console.log('>>>>', firstStartTime < restart)
-let now = moment();
+let coinValue = ref(1)
+let tempCoinValue = ref(1)
 let timer = ref(10)
 let timerIsVisible = ref(false)
 let roketIsVisible = ref(false)
 
 // запускаем ивент
 function startEvent() {
-  // console.log('startTimer', moment())
   roketIsVisible.value = true
 }
-function reStartEvent(restartTime) {
-  console.log('reStartEvent', restartTime)
+function reStartEvent() {
   setTimeout(startEvent, 1 * 1000 * 6);
   timer.value = 10
-  // var min = 0,
-  //   max = 2;
-  // var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
-  // console.log('Wait for ' + rand + ' minutes');
-  // setTimeout(getStartTime, rand * 1000 * 60);
 }
 function getRocket() {
   countdown()
+  coinValue.value = coinValue.value + tempCoinValue.value
 }
 
-let restartTime
 
 function countdown() {
 	timer.value--;
   console.log('countdown')
 
   timerIsVisible.value = true
+
 	if (timer.value > 0) {
 		setTimeout(countdown, 1000);
 	} else {
     timerIsVisible.value = false
     roketIsVisible.value = false
 
-    now = moment();
-    restartTime = moment(now).add(3, 'minutes');
-
-
-    reStartEvent(restartTime)
-    console.log('>>>>', now, restartTime)
+    reStartEvent()
+    coinValue.value = 1
+    tempCoinValue.value = tempCoinValue.value + 1
   }
 };
 
-// function currentTime(now, restart) {
-//   console.log('currentTime', currentTime)
-// }
-
-watch: {
-}
-
-// function useCurrentTime() {
-//   const currentTime = ref(new Date());
-//   const updateCurrentTime = () => {
-//     currentTime.value = new Date();
-//   };
-//   const updateTimeInterval = setInterval(updateCurrentTime, 1000);
-//   onBeforeUnmount(() => {
-//     clearInterval(updateTimeInterval);
-//   });
-//   return currentTime.value;
-// }
-// const currentTime = ref(moment().toISOString());
-// const updateCurrentTime = () => {
-//   currentTime.value = moment().toISOString();
-// };
-// const updateTimeInterval = setInterval(updateCurrentTime, 1000);
-// onBeforeUnmount(() => {
-//   clearInterval(updateTimeInterval);
-// });
-
-onUpdated(() => {
-  // now = moment();
-  // if (now) {}
-});
-
-// console.log('updated >>>', useCurrentTime().toLocaleTimeString());
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -144,8 +98,8 @@ function checkIsError() {
   }
 }
 
-function handleCoin() {
-  coinStore().incrementCoinsValue()
+function handleCoin(value) {
+  coinStore().incrementCoinsValue(value)
   coinStore().decrementLimitValue()
 }
 
@@ -186,7 +140,7 @@ function numberWithSpaces(num) {
     <div class="rocket" @click="getRocket" v-if="roketIsVisible"></div>
     <div class="rocket-time" v-if="timerIsVisible">0:{{ timer }}</div>
 
-    <CoinButton @touchstart="handleCoin" />
+    <CoinButton @touchstart="handleCoin(coinValue)" :value="coinValue"/>
 
     <div class="navigation-wrapper">
       <div class="navigation">
