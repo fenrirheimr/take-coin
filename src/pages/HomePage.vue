@@ -19,11 +19,72 @@ const isError = ref(false)
 
 const tgUserId = passportStore().getTgUserId
 
+///////////////////////////////////////////////////////////////////////////////////////
+
+// 1) Ракета появляется в течении 5 минут после запуска игры и далее повторяется каждые 5 минут.
+// 2) Начисления монет возрастают с каждый новым бустером. Первый бустер +2, второй +3 и тд
+// 3) При клиrе на бустер (ракета) запускается эвент в течении 1 минуты с доп начислениями и в этот момент появляется таймер +2
+
+// let firstStart
+
+// let now = moment().toISOString(); 
+// var returned_endate = moment(now).add(2, 'minutes').toISOString();
+
+let timer = ref(30)
+let timerIsVisible = ref(false)
+let roketIsVisible = ref(false)
+
+// запускаем ивент
+function startEvent() {
+  console.log('startTimer', moment())
+  roketIsVisible.value = true
+}
+// function getStartTime() {
+//   var min = 0,
+//     max = 2;
+//   var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
+//   console.log('Wait for ' + rand + ' minutes');
+//   // setTimeout(getStartTime, rand * 1000 * 60);
+// }
+function getRocket() {
+  countdown()
+  // myFunction()
+  // let randInt = Math.floor(Math.random() * Math.floor(10000));
+  // console.log(now, returned_endate);
+}
+
+
+function countdown() {
+	timer.value--;
+  console.log('countdown')
+  timerIsVisible.value = true
+	if (timer.value > 0) {
+		setTimeout(countdown, 1000);
+	} else {
+    timerIsVisible.value = false
+    roketIsVisible.value = false
+  }
+};
+
+///////////////////////////////////////////////////////////////////////////////////////
+
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
   isError.value = userStore().isError
   coinStore().calculateLimit()
+
+  //////
+
+  console.log('load', moment())
+
+  /// рандом запуска от 0 до 3 минут
+  const min = 1
+  const max = 3;
+
+  var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
+  console.log('startEvent',rand, rand * 1000, rand * 1000 * 6)
+  setTimeout(startEvent, rand * 1000 * 6);
 })
 
 function checkIsError() {
@@ -49,31 +110,6 @@ function goToFaq() {
 function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
-
-///////////////////////////////////////////////////////////////////////////////////////
-
-let now = moment().format(); 
-
-let timer = ref(30)
-let timerIsVisible = ref(false)
-
-function getRocket() {
-  countdown()
-  // let randInt = Math.floor(Math.random() * Math.floor(10000));
-  console.log(now);
-}
-
-
-function countdown() {
-	timer.value--;
-  console.log('countdown')
-  timerIsVisible.value = true
-	if (timer.value > 0) {
-		setTimeout(countdown, 1000);
-	} else {
-    timerIsVisible.value = false
-  }
-};
 
 </script>
 
@@ -101,7 +137,7 @@ function countdown() {
       </div>
     </div>
 
-    <div class="rocket" @click="getRocket"></div>
+    <div class="rocket" @click="getRocket" v-if="roketIsVisible"></div>
     <div class="rocket-time" v-if="timerIsVisible">0:{{ timer }}</div>
 
     <CoinButton @touchstart="handleCoin" />

@@ -73,7 +73,7 @@ export const userStore = defineStore('user', {
       // this.offset = this.offset + data.items.length
       this.referrals = [...data.items.sort((a, b) => b.mined_money - a.mined_money)]
 
-      console.log('referrals', this.referrals)
+      // console.log('referrals', this.referrals)
       // if (data.items.length >= 10) {
       //   this.canLoadMore = true
       // }
