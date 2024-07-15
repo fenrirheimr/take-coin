@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, onUpdated, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { userStore } from '@/store/user'
 import { passportStore } from '@/store/passport'
@@ -25,46 +25,91 @@ const tgUserId = passportStore().getTgUserId
 // 2) Начисления монет возрастают с каждый новым бустером. Первый бустер +2, второй +3 и тд
 // 3) При клиrе на бустер (ракета) запускается эвент в течении 1 минуты с доп начислениями и в этот момент появляется таймер +2
 
-// let firstStart
+// let firstStartTime
 
-// let now = moment().toISOString(); 
-// var returned_endate = moment(now).add(2, 'minutes').toISOString();
+let firstStartTime = moment();
+// let restart = moment(firstStartTime).add(3, 'minutes');
 
-let timer = ref(30)
+// console.log('>>>>', firstStartTime < restart)
+let now = moment();
+let timer = ref(10)
 let timerIsVisible = ref(false)
 let roketIsVisible = ref(false)
 
 // запускаем ивент
 function startEvent() {
-  console.log('startTimer', moment())
+  // console.log('startTimer', moment())
   roketIsVisible.value = true
 }
-// function getStartTime() {
-//   var min = 0,
-//     max = 2;
-//   var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
-//   console.log('Wait for ' + rand + ' minutes');
-//   // setTimeout(getStartTime, rand * 1000 * 60);
-// }
+function reStartEvent(restartTime) {
+  console.log('reStartEvent', restartTime)
+  setTimeout(startEvent, 1 * 1000 * 6);
+  timer.value = 10
+  // var min = 0,
+  //   max = 2;
+  // var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
+  // console.log('Wait for ' + rand + ' minutes');
+  // setTimeout(getStartTime, rand * 1000 * 60);
+}
 function getRocket() {
   countdown()
-  // myFunction()
-  // let randInt = Math.floor(Math.random() * Math.floor(10000));
-  // console.log(now, returned_endate);
 }
 
+let restartTime
 
 function countdown() {
 	timer.value--;
   console.log('countdown')
+
   timerIsVisible.value = true
 	if (timer.value > 0) {
 		setTimeout(countdown, 1000);
 	} else {
     timerIsVisible.value = false
     roketIsVisible.value = false
+
+    now = moment();
+    restartTime = moment(now).add(3, 'minutes');
+
+
+    reStartEvent(restartTime)
+    console.log('>>>>', now, restartTime)
   }
 };
+
+// function currentTime(now, restart) {
+//   console.log('currentTime', currentTime)
+// }
+
+watch: {
+}
+
+// function useCurrentTime() {
+//   const currentTime = ref(new Date());
+//   const updateCurrentTime = () => {
+//     currentTime.value = new Date();
+//   };
+//   const updateTimeInterval = setInterval(updateCurrentTime, 1000);
+//   onBeforeUnmount(() => {
+//     clearInterval(updateTimeInterval);
+//   });
+//   return currentTime.value;
+// }
+// const currentTime = ref(moment().toISOString());
+// const updateCurrentTime = () => {
+//   currentTime.value = moment().toISOString();
+// };
+// const updateTimeInterval = setInterval(updateCurrentTime, 1000);
+// onBeforeUnmount(() => {
+//   clearInterval(updateTimeInterval);
+// });
+
+onUpdated(() => {
+  // now = moment();
+  // if (now) {}
+});
+
+// console.log('updated >>>', useCurrentTime().toLocaleTimeString());
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -86,6 +131,7 @@ onMounted(async () => {
   console.log('startEvent',rand, rand * 1000, rand * 1000 * 6)
   setTimeout(startEvent, rand * 1000 * 6);
 })
+
 
 function checkIsError() {
   if (isError.value === true) {
