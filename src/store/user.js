@@ -79,7 +79,7 @@ export const userStore = defineStore('user', {
       const { data } = await BACKEND.get('/api/check_subscription', withAuthorization(null, {
         params: {
           user_id: this.userId,
-          telegram_channel_id: -100199577512,
+          telegram_channel_id: -1001999577512,
         },
       }))
 
