@@ -129,17 +129,19 @@ onMounted(async () => {
   coinStore().calculateLimit()
 
   /// рандом запуска от 2 до 3 минут
-  const min = 100
-  const max = 1100;
+  // const min = 1
+  // const max = 60000;
 
-  var rand = Math.floor(Math.random() * (max - min + 1) + min);
-  console.log('startEvent in',rand, 'minutes')
-  setTimeout(startEvent, rand * 60);
+  // var rand = Math.floor(Math.random() * (max - min + 1) + min);
+  // console.log('startEvent in',rand, 'minutes')
+  setTimeout(startEvent, 60000 );
 
   setTimeout(() => {
 
     userStore().chekUserSubscription()
-    toggleModal(modalData)
+    if(userStore().getUserSubscription !== true) {
+      toggleModal(modalData)
+    }
 
   }, 5000);
 })
