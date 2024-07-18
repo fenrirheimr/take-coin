@@ -50,8 +50,10 @@ function justTakeNetwork() {
   userStore().chekUserSubscription()
   if (userStore().getUserSubscription === true) {
     showModal.value = !showModal.value
+    root.classList.remove('blurred')
   } else {
     window.location.href = 'https://t.me/+Yo3ifqMOxhg1MDc6'
+    root.classList.remove('blurred')
   }
 }
 
