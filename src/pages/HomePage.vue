@@ -42,7 +42,12 @@ const modalData = {
 
 function justTakeNetwork() {
   console.log('justTakeNetwork')
-  window.location.href = 'https://t.me/+Yo3ifqMOxhg1MDc6'
+  userStore().chekUserSubscription()
+  if (userStore().getUserSubscription === true) {
+    showModal.value = !showModal.value
+  } else {
+    window.location.href = 'https://t.me/+Yo3ifqMOxhg1MDc6'
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +95,6 @@ function getRocket() {
     roketAnimation.value = true
     coinValue.value = coinValue.value + tempCoinValue.value
   } else {
-    console.log('!!!!!!!')
     toggleModal(modalData)
   }
 
