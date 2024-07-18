@@ -13,7 +13,6 @@ const props = defineProps({
 
 
 function animateNums(e) {
-  console.log('animateNums', props.disabled)
   if (props.disabled) {
     return false
   } else {
@@ -46,7 +45,6 @@ const isLoaded = debounce(() => {
 
 onMounted(() => {
   isLoaded()
-  console.log('onMounted btn', props.disabled)
 })
 </script>
 

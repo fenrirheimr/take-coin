@@ -28,6 +28,11 @@ function toggleModal(data) {
   modalStore().setModalData(data)
   showModal.value = !showModal.value
   root.classList.toggle('blurred')
+
+  
+  if (!userStore().getUserSubscription === true) {
+    starIsVisible.value = true
+  }
 }
 
 const modalData = {
@@ -59,7 +64,7 @@ function justTakeNetwork() {
 
 let coinValue = ref(1)
 let tempCoinValue = ref(1)
-let timer = ref(60)
+let timer = ref(10)
 let timerIsVisible = ref(false)
 let roketIsVisible = ref(false)
 let roketAnimation = ref(false)
@@ -81,14 +86,14 @@ function startEvent() {
   // }, 0.5 * 1000 * 60);
 }
 function reStartEvent() {
-  timer.value = 60
+  timer.value = 10
   timerIsVisible.value = false
   roketIsVisible.value = false
   roketAnimation.value = false
 
   coinValue.value = 1
   tempCoinValue.value = tempCoinValue.value + 1
-  setTimeout(startEvent, 1 * 1000 * 6);
+  setTimeout(startEvent, 1000 * 60);
 }
 function getRocket() {
   if (userStore().getUserSubscription === true) {
@@ -122,12 +127,12 @@ onMounted(async () => {
   coinStore().calculateLimit()
 
   /// рандом запуска от 2 до 3 минут
-  const min = 2
-  const max = 3;
+  const min = 100
+  const max = 1100;
 
   var rand = Math.floor(Math.random() * (max - min + 1) + min);
   console.log('startEvent in',rand, 'minutes')
-  setTimeout(startEvent, rand * 1000 * 6);
+  setTimeout(startEvent, rand * 60);
 
   setTimeout(() => {
 
