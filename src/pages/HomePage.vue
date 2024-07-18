@@ -113,6 +113,8 @@ function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 
+console.log('>', numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends +  userStore().getUserData.balance_subscribes - userStore().getUserData.wasted))
+
 </script>
 
 <template>
@@ -130,7 +132,7 @@ function numberWithSpaces(num) {
         <div class="coin" />
         <div class="counter-value">
           <!-- {{ numberWithSpaces(userStore().getCoinsValue) }} -->
-          {{ numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends + userStore().getUserData.balance_subscribes) }}
+          {{ numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends +  userStore().getUserData.balance_subscribes - userStore().getUserData.wasted) }}
         </div>
       </div>
 
