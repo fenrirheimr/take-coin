@@ -5,8 +5,6 @@ import { userStore } from '@/store/user'
 import { passportStore } from '@/store/passport'
 import { coinStore } from '@/store/coin'
 
-import moment from 'moment';
-
 import Spinner from '@/components/Spinner.vue'
 import TakeVpnButton from '@/components/TakeVpnButton.vue'
 import CoinButton from '@/components/CoinButton.vue'
@@ -28,17 +26,26 @@ const tgUserId = passportStore().getTgUserId
 
 let coinValue = ref(1)
 let tempCoinValue = ref(1)
-let timer = ref(10)
+let timer = ref(60)
 let timerIsVisible = ref(false)
 let roketIsVisible = ref(false)
 
 // запускаем ивент
 function startEvent() {
   roketIsVisible.value = true
+  setTimeout(() => {
+    if(timerIsVisible.value === false) {
+      roketIsVisible.value = false
+    }
+  }, 1 * 1000 * 60);
 }
 function reStartEvent() {
-  setTimeout(startEvent, 1 * 1000 * 6);
-  timer.value = 10
+  timer.value = 60
+  timerIsVisible.value = false
+  roketIsVisible.value = false
+  coinValue.value = 1
+  tempCoinValue.value = tempCoinValue.value + 1
+  setTimeout(startEvent, 5 * 1000 * 60);
 }
 function getRocket() {
   countdown()
@@ -48,19 +55,18 @@ function getRocket() {
 
 function countdown() {
 	timer.value--;
-  console.log('countdown')
 
   timerIsVisible.value = true
 
 	if (timer.value > 0) {
 		setTimeout(countdown, 1000);
 	} else {
-    timerIsVisible.value = false
-    roketIsVisible.value = false
+    console.log('tempCoinValue 1 >>>>>>>>>>>>', tempCoinValue.value)
+    
 
     reStartEvent()
-    coinValue.value = 1
-    tempCoinValue.value = tempCoinValue.value + 1
+  
+    console.log('tempCoinValue 2 >>>>>>>>>>>>', tempCoinValue.value)
   }
 };
 
@@ -73,17 +79,13 @@ onMounted(async () => {
   isError.value = userStore().isError
   coinStore().calculateLimit()
 
-  //////
+  /// рандом запуска от 2 до 5 минут
+  const min = 2
+  const max = 5;
 
-  console.log('load', moment())
-
-  /// рандом запуска от 0 до 3 минут
-  const min = 1
-  const max = 3;
-
-  var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
-  console.log('startEvent',rand, rand * 1000, rand * 1000 * 6)
-  setTimeout(startEvent, rand * 1000 * 6);
+  var rand = Math.floor(Math.random() * (max - min + 1) + min);
+  console.log('startEvent in',rand, 'minutes')
+  setTimeout(startEvent, rand * 1000 * 60);
 })
 
 

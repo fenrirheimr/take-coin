@@ -61,7 +61,7 @@ function preventCollapse(event) {
 
 // Attach the above function to the touchstart event handler of the scrollable element
 const scrollableElement = document.querySelector("#app");
-console.log('scrollableElement', scrollableElement)
+// console.log('scrollableElement', scrollableElement)
 scrollableElement.addEventListener("touchstart", preventCollapse);
 
 
