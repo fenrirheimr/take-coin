@@ -12,6 +12,7 @@ export const userStore = defineStore('user', {
       referrals: null,
       loadedItems: null,
       userId: null,
+      subscribed: true
       // canLoadMore: false,
       // offset: 0
     }
@@ -35,9 +36,11 @@ export const userStore = defineStore('user', {
     getReferrals(state) {
       return state.referrals
     },
-
     getUserId(state) {
       return state.userId
+    },
+    getUserSubscription(state) {
+      return state.subscribed
     },
   },
   actions: {
@@ -70,33 +73,18 @@ export const userStore = defineStore('user', {
           offset: this.offset,
         },
       }))
-      // this.offset = this.offset + data.items.length
       this.referrals = [...data.items.sort((a, b) => b.mined_money - a.mined_money)]
-
-      // console.log('referrals', this.referrals)
-      // if (data.items.length >= 10) {
-      //   this.canLoadMore = true
-      // }
     },
-    // async loadMoreReferrals(tgUserId) {
+    async chekUserSubscription() {
+      const { data } = await BACKEND.get('/api/check_subscription', withAuthorization(null, {
+        params: {
+          user_id: this.userId,
+          telegram_channel_id: -100199577512,
+        },
+      }))
 
-    //   const token = this.getToken
-    //   if (this.canLoadMore) {
-    //     console.log('I can load more')
-    //     const { data } = await BACKEND.get('/api/user-referrals', withAuthorization(token, {
-    //       params: {
-    //         user_id: tgUserId,
-    //         limit: 10,
-    //         offset: this.offset,
-    //       },
-    //     }))
-          
-    //     this.canLoadMore = data.items.length >= 10
-  
-    //     this.offset = this.offset + data.items.length
-  
-    //     this.referrals = [...this.referrals, ...data.items]
-    //   }
-    // },
+      console.log('chekUserSubscription', data.subscribed)
+      this.subscribed = data.subscribed
+    }
   },
 })

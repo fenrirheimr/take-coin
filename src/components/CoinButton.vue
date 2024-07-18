@@ -6,27 +6,35 @@ import { coinStore } from '@/store/coin.js'
 const nums = ref([])
 const coinButton = ref(null)
 
-defineProps({
+const props = defineProps({
   value: Number,
+  disabled: Boolean
 })
 
 
 function animateNums(e) {
-  if (coinButton.value.classList.contains('animated'))
+  console.log('animateNums', props.disabled)
+  if (props.disabled) {
+    return false
+  } else {
+
+    if (coinButton.value.classList.contains('animated'))
     coinButton.value.classList.remove('animated')
 
-  coinButton.value.classList.remove('loaded')
-  const pos = coinButton.value.getBoundingClientRect()
+    coinButton.value.classList.remove('loaded')
+    const pos = coinButton.value.getBoundingClientRect()
 
-  coinButton.value.classList.add('animated')
+    coinButton.value.classList.add('animated')
 
-  nums.value.push({
-    x: e.touches[0].clientX - pos.left,
-    y: e.touches[0].clientY - pos.top,
-    show: true,
-  })
-  setTimeout(() => {
-  }, 1000)
+    nums.value.push({
+      x: e.touches[0].clientX - pos.left,
+      y: e.touches[0].clientY - pos.top,
+      show: true,
+    })
+    setTimeout(() => {
+    }, 1000)
+    
+  }
 }
 function animateNumsEnd(i) {
   nums.value[i].show = false
@@ -38,12 +46,13 @@ const isLoaded = debounce(() => {
 
 onMounted(() => {
   isLoaded()
+  console.log('onMounted btn', props.disabled)
 })
 </script>
 
 <template>
   <div class="root-coin-button">
-    <div ref="coinButton" class="coin-button" @touchstart="animateNums">
+    <div ref="coinButton" class="coin-button" @touchstart="animateNums" :class="{ 'disabled': props.disabled }">
       <transition v-show="coinStore().dayLimit === 1">
         <span class="slide-in-fwd-center">
           +1000
@@ -151,6 +160,14 @@ onMounted(() => {
     &.animated {
       &:before {
         animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      }
+    }
+
+    &.disabled {
+      touch-action: none !important;
+      opacity: 1;
+      &:before {
+        animation: none !important
       }
     }
   }

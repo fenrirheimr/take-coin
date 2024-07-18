@@ -4,10 +4,12 @@ import { useRouter } from 'vue-router'
 import { userStore } from '@/store/user'
 import { passportStore } from '@/store/passport'
 import { coinStore } from '@/store/coin'
+import { modalStore } from '@/store/modal'
 
 import Spinner from '@/components/Spinner.vue'
 import TakeVpnButton from '@/components/TakeVpnButton.vue'
 import CoinButton from '@/components/CoinButton.vue'
+import Modal from '@/components/Modal.vue'
 
 const router = useRouter()
 let counter
@@ -16,6 +18,32 @@ const isLoaded = ref(false)
 const isError = ref(false)
 
 const tgUserId = passportStore().getTgUserId
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+const root = document.querySelector('#app')
+const showModal = ref(false)
+
+function toggleModal(data) {
+  modalStore().setModalData(data)
+  showModal.value = !showModal.value
+  root.classList.toggle('blurred')
+}
+
+const modalData = {
+  title: 'Открой доступ ко всем возможностям игры 👾',
+  text: '<p>Стань важной частью нашего сервиса, подпишись на закрытое комьюнити <span class="colored">TAKE</span> 🫶</p>',
+  hasButton: true,
+  buttonText: 'Выполнить задание 🌟',
+  callback: () => {
+    justTakeNetwork()
+  },
+}
+
+function justTakeNetwork() {
+  console.log('justTakeNetwork')
+  window.location.href = 'https://t.me/+Yo3ifqMOxhg1MDc6'
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,44 +57,54 @@ let tempCoinValue = ref(1)
 let timer = ref(60)
 let timerIsVisible = ref(false)
 let roketIsVisible = ref(false)
+let roketAnimation = ref(false)
+let starIsVisible = ref(false)
 
 // запускаем ивент
 function startEvent() {
-  roketIsVisible.value = true
-  setTimeout(() => {
-    if(timerIsVisible.value === false) {
-      roketIsVisible.value = false
-    }
-  }, 1 * 1000 * 60);
+  if (userStore().getUserSubscription === true) {
+    roketIsVisible.value = true
+    timerIsVisible.value = true
+    countdown()
+  } else {
+    starIsVisible.value = true
+  }
+  // setTimeout(() => {
+  //   if(timerIsVisible.value === false) {
+  //     roketIsVisible.value = false
+  //   }
+  // }, 0.5 * 1000 * 60);
 }
 function reStartEvent() {
   timer.value = 60
   timerIsVisible.value = false
   roketIsVisible.value = false
+  roketAnimation.value = false
+
   coinValue.value = 1
   tempCoinValue.value = tempCoinValue.value + 1
-  setTimeout(startEvent, 5 * 1000 * 60);
+  setTimeout(startEvent, 1 * 1000 * 6);
 }
 function getRocket() {
-  countdown()
-  coinValue.value = coinValue.value + tempCoinValue.value
+  if (userStore().getUserSubscription === true) {
+    roketAnimation.value = true
+    coinValue.value = coinValue.value + tempCoinValue.value
+  } else {
+    console.log('!!!!!!!')
+    toggleModal(modalData)
+  }
+
+  
 }
 
 
 function countdown() {
 	timer.value--;
 
-  timerIsVisible.value = true
-
 	if (timer.value > 0) {
 		setTimeout(countdown, 1000);
 	} else {
-    console.log('tempCoinValue 1 >>>>>>>>>>>>', tempCoinValue.value)
-    
-
     reStartEvent()
-  
-    console.log('tempCoinValue 2 >>>>>>>>>>>>', tempCoinValue.value)
   }
 };
 
@@ -79,13 +117,20 @@ onMounted(async () => {
   isError.value = userStore().isError
   coinStore().calculateLimit()
 
-  /// рандом запуска от 2 до 5 минут
+  /// рандом запуска от 2 до 3 минут
   const min = 2
-  const max = 5;
+  const max = 3;
 
   var rand = Math.floor(Math.random() * (max - min + 1) + min);
   console.log('startEvent in',rand, 'minutes')
-  setTimeout(startEvent, rand * 1000 * 60);
+  setTimeout(startEvent, rand * 1000 * 6);
+
+  setTimeout(() => {
+
+    userStore().chekUserSubscription()
+    toggleModal(modalData)
+
+  }, 5000);
 })
 
 
@@ -101,8 +146,10 @@ function checkIsError() {
 }
 
 function handleCoin(value) {
-  coinStore().incrementCoinsValue(value)
-  coinStore().decrementLimitValue()
+  if (userStore().getUserSubscription === true) {
+    coinStore().incrementCoinsValue(value)
+    coinStore().decrementLimitValue()
+  }
 }
 
 function goToFaq() {
@@ -112,8 +159,6 @@ function goToFaq() {
 function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
-
-// console.log('>', numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends +  userStore().getUserData.balance_subscribes - userStore().getUserData.wasted))
 
 </script>
 
@@ -131,7 +176,6 @@ function numberWithSpaces(num) {
       <div class="counter-wrapper">
         <div class="coin" />
         <div class="counter-value">
-          <!-- {{ numberWithSpaces(userStore().getCoinsValue) }} -->
           {{ numberWithSpaces(userStore().getCoinsValue + userStore().getUserData.balance_friends +  userStore().getUserData.balance_subscribes - userStore().getUserData.wasted) }}
         </div>
       </div>
@@ -141,10 +185,16 @@ function numberWithSpaces(num) {
       </div>
     </div>
 
-    <div class="rocket" @click="getRocket" v-if="roketIsVisible"></div>
+    <div class="rocket" :class="{ 'active': roketAnimation }" @click="getRocket" v-if="roketIsVisible"></div>
     <div class="rocket-time" v-if="timerIsVisible">0:{{ timer }}</div>
+    <div class="star" @click="getRocket" v-if="starIsVisible">⚠️</div>
+    <!-- <div class="rocket-time">timerIsVisible.value</div> -->
 
-    <CoinButton @touchstart="handleCoin(coinValue)" :value="coinValue"/>
+    <CoinButton 
+      @touchstart="handleCoin(coinValue)" 
+      :value="coinValue"
+      :disabled="!userStore().getUserSubscription"
+    />
 
     <div class="navigation-wrapper">
       <div class="navigation">
@@ -181,6 +231,7 @@ function numberWithSpaces(num) {
   <section v-else>
     <Spinner />
   </section>
+  <Modal :show="showModal" @close="toggleModal" />
 </template>
 
 <style scoped lang="scss">
@@ -212,12 +263,25 @@ section {
     display: block;
     width: 100px;
     height: 100px;
-    background: url('@/assets/img/1f680.gif') no-repeat center;
+    background: url('@/assets/img/1f680-1.png') no-repeat center;
     background-size: contain;
     position: absolute;
     top: 30%;
     left: 5%;
     z-index: 999;
+    &.active {
+      background: url('@/assets/img/1f680.gif') no-repeat center;
+      background-size: contain;
+    }
+  }
+
+  .star {
+    display: block;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    z-index: 999;
+    font-size: 30px;
   }
 
   .rocket-time {

@@ -20,6 +20,7 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
+
 .root-action-button {
   @include flex(row, center, center);
   width: 100%;
@@ -29,6 +30,7 @@ defineProps({
   padding: 16px 0;
   cursor: pointer;
   user-select: none;
+
   .text {
     @include font-style($font-size: 24px, $font-weight: 800, $color: #fff);
   }
@@ -38,7 +40,7 @@ defineProps({
     animation: blink .5s both
   }
 
-  &.size-small {}
+  // &.size-small {}
   &.size-medium {
     .text {
       @include font-style($font-size: 18px, $font-weight: 700, $color: #fff);
@@ -50,4 +52,5 @@ defineProps({
     }
   }
 }
+
 </style>
