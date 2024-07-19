@@ -137,13 +137,13 @@ onMounted(async () => {
 
   // console.log('onMounted')
 
-  setTimeout(() => {
+  setTimeout(async () => {
     // console.log('onMounted setTimeout 1')
 
-    const subscribed = userStore().chekUserSubscription()
+    const subscribed = await userStore().chekUserSubscription()
 
-    // console.log('onMounted setTimeout 2', userStore().getUserSubscription)
-    if(subscribed) {
+    // console.log('onMounted setTimeout 2', subscribed)
+    if(!subscribed) {
       // console.log('getUserSubscription false')
       toggleModal(modalData)
     }
