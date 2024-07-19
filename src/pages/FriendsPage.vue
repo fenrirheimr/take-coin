@@ -263,7 +263,7 @@ section {
   .content-wrapper {
     @include flex(column, flex-start, flex-start);
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 
     & > .title {
       @include font-style($font-size: 32px, $font-weight: 800, $color: #fff);
@@ -413,6 +413,7 @@ section {
       }
       &.header {
         border-bottom: 1px solid #fff;
+        height: 38px;
         .friend-table__col {
           font-size: 10px;
           color: #fff;
