@@ -66,7 +66,7 @@ function justTakeNetwork() {
 
 let coinValue = ref(1)
 let tempCoinValue = ref(1)
-let timer = ref(10)
+let timer = ref(11)
 let timerIsVisible = ref(false)
 let roketIsVisible = ref(false)
 let roketAnimation = ref(false)
@@ -104,8 +104,6 @@ function getRocket() {
   } else {
     toggleModal(modalData)
   }
-
-  
 }
 
 

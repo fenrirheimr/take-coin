@@ -51,8 +51,8 @@ onMounted(() => {
 <template>
   <div class="root-coin-button">
     <div ref="coinButton" class="coin-button" @touchstart="animateNums" :class="{ 'disabled': props.disabled }">
-      <transition v-show="coinStore().dayLimit === 1">
-        <span class="slide-in-fwd-center">
+      <transition >
+        <span class="slide-in-fwd-center" v-show="coinStore().dayLimit === 1">
           +1000
           <div class="icon icon-energy" />
         </span>

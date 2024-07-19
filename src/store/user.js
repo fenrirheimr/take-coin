@@ -13,8 +13,6 @@ export const userStore = defineStore('user', {
       loadedItems: null,
       userId: null,
       subscribed: true
-      // canLoadMore: false,
-      // offset: 0
     }
   },
   getters: {

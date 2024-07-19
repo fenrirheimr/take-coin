@@ -9,16 +9,12 @@ export const coinStore = defineStore('coin', {
     return {
       coinsValue: 0,
       dayLimit: userStore().getUserData.limit,
-      totalCoinsValue: 10000,
+      // dayLimit: 10,
       counter: null,
       counterRun: false,
-      flash: false,
     }
   },
   getters: {
-    getFlash(state) {
-      return state.flash
-    },
     getCoinsValue(state) {
       return state.coinsValue
     },
@@ -31,6 +27,7 @@ export const coinStore = defineStore('coin', {
       const userId = userStore().getUserData.user_id
       // console.log('incrementCoinsValue', this.dayLimit)
       if (this.dayLimit === 1) {
+        // console.log('this +1000', value)
         await BACKEND.post('/api/update-personal-balance', {
           user_id: userId,
           amount: 1000,
@@ -54,14 +51,12 @@ export const coinStore = defineStore('coin', {
         this.counterRun = true
         this.calculateLimit()
       }
-      if (this.dayLimit === 1) {
+      if (this.dayLimit === 0) {
         this.counterRun = false
-        // this.flash = true
         clearInterval(this.counter)
         this.dayLimit = userStore().getUserData.limit
         console.log('dayLimit end')
       }
-      // this.flash = false
     },
     calculateLimit() {
       this.counter = setInterval(() => {
