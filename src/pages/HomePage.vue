@@ -121,6 +121,15 @@ function countdown() {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
+async function checkubscription() {
+  console.log('>>>')
+  const subscribed = await userStore().chekUserSubscription()
+  if(!subscribed) {
+    setTimeout(checkubscription, 1000 );
+    
+  }
+}
+
 onMounted(async () => {
   await userStore().userData(tgUserId)
   isLoaded.value = userStore().isLoaded
@@ -135,17 +144,13 @@ onMounted(async () => {
   // console.log('startEvent in',rand, 'minutes')
   setTimeout(startEvent, 60000 );
 
-  // console.log('onMounted')
-
   setTimeout(async () => {
-    // console.log('onMounted setTimeout 1')
 
     const subscribed = await userStore().chekUserSubscription()
 
-    // console.log('onMounted setTimeout 2', subscribed)
     if(!subscribed) {
-      // console.log('getUserSubscription false')
       toggleModal(modalData)
+      checkubscription()
     }
 
   }, 5000);
