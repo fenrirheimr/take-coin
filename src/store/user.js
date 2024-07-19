@@ -38,6 +38,7 @@ export const userStore = defineStore('user', {
       return state.userId
     },
     getUserSubscription(state) {
+      // console.log('1')
       return state.subscribed
     },
   },
@@ -74,15 +75,17 @@ export const userStore = defineStore('user', {
       this.referrals = [...data.items.sort((a, b) => b.mined_money - a.mined_money)]
     },
     async chekUserSubscription() {
+      // console.log('2')
       const { data } = await BACKEND.get('/api/check_subscription', withAuthorization(null, {
         params: {
           user_id: this.userId,
           telegram_channel_id: -1001999577512,
         },
       }))
-
-      console.log('chekUserSubscription', data.subscribed)
+      // console.log('3', data.subscribed)
+      // console.log('chekUserSubscription', data.subscribed)
       this.subscribed = data.subscribed
+      return data.subscribed
     }
   },
 })

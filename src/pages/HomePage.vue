@@ -74,6 +74,7 @@ let starIsVisible = ref(false)
 
 // запускаем ивент
 function startEvent() {
+  console.log('startEvent')
   if (userStore().getUserSubscription === true) {
     roketIsVisible.value = true
     timerIsVisible.value = true
@@ -134,10 +135,16 @@ onMounted(async () => {
   // console.log('startEvent in',rand, 'minutes')
   setTimeout(startEvent, 60000 );
 
-  setTimeout(() => {
+  // console.log('onMounted')
 
-    userStore().chekUserSubscription()
-    if(userStore().getUserSubscription !== true) {
+  setTimeout(() => {
+    // console.log('onMounted setTimeout 1')
+
+    const subscribed = userStore().chekUserSubscription()
+
+    // console.log('onMounted setTimeout 2', userStore().getUserSubscription)
+    if(subscribed) {
+      // console.log('getUserSubscription false')
       toggleModal(modalData)
     }
 
