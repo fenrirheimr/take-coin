@@ -46,6 +46,15 @@ function goToTakeVPN_bot() {
   window.location.href = 'https://t.me/TakeVPN_bot?start=utm=telegram_app_takecoin'
 }
 
+function goToChatGPT_bot() {
+  window.location.href = 'https://t.me/Take_chat_GPT_bot'
+}
+
+function goToTakeRound_bot() {
+  window.location.href = 'https://t.me/Take_round_bot'
+}
+
+
 function numberWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
@@ -155,7 +164,7 @@ function numberWithSpaces(num) {
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
-        <div class="bonuses-item" @click="goToTakeVPN_bot">
+        <div class="bonuses-item" @click="goToChatGPT_bot">
           <div class="blurred emoji">
             <!-- <div class="icon icon-robot" /> -->
             🤖
@@ -170,7 +179,7 @@ function numberWithSpaces(num) {
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
-        <div class="bonuses-item" @click="goToTakeVPN_bot">
+        <div class="bonuses-item" @click="goToTakeRound_bot">
           <div class="blurred emoji">
             <!-- <div class="icon icon-planet" /> -->
             🙃
