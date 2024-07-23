@@ -201,9 +201,9 @@ function goToTakeVPN_bot() {
         <div class="friend-table__col fourth">
           Статус подписки
         </div>
-        <div class="friend-table__col fifth">
+        <!-- <div class="friend-table__col fifth">
           Последняя добыча
-        </div>
+        </div> -->
       </div>
       <div ref="refTable" class="friend-table__body">
         <div v-for="item in userStore().getReferrals" class="friend-table__row">
@@ -220,10 +220,10 @@ function goToTakeVPN_bot() {
             <span v-if="item.vpn_is_active">активна</span>
             <span v-else>-</span>
           </div>
-          <div class="friend-table__col fifth">
+          <!-- <div class="friend-table__col fifth">
             <span v-if="item.last_mine">{{ showMessageDateTime(item.last_mine) }}</span>
             <span v-else>-</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -394,8 +394,8 @@ section {
           text-align: left;
         }
         &.second {
-          min-width: 70px;
-          width: 17.3905817175%;
+          min-width: 120px;
+          width: 30.3905817175%;
         }
         &.third {
           min-width: 75px;

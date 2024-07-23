@@ -69,9 +69,10 @@ export const userStore = defineStore('user', {
         params: {
           user_id: tgUserId,
           limit: 30,
-          offset: this.offset,
+          offset: 0,
         },
       }))
+      // console.log('loadReferrals', data.items)
       this.referrals = [...data.items.sort((a, b) => b.mined_money - a.mined_money)]
     },
     async chekUserSubscription() {

@@ -39,7 +39,7 @@ function handleInviteFriends() {
 
 const modalData = {
   title: 'Сколько стоит Takecoin?',
-  text: '<p>Сейчас мы установили цену в 100 монет за 1 рубль, и ты можешь их потратить в наших сервисах</p><p>Сколько может стоить Takecoin? Возможно ничего, а возможно миллионы. Пока не думай об этом и просто добывай!</p><p>Есть друзья? Зови и получай больше монет!</p>',
+  text: '<p>Сколько может стоить Takecoin? Возможно ничего, а возможно миллионы. Пока не думай об этом и просто добывай!</p><p>Есть друзья? Зови и получай больше монет!</p>',
   hasButton: false,
 }
 function goToTakeVPN_bot() {
@@ -124,12 +124,12 @@ function numberWithSpaces(num) {
     </div>
 
     <div class="withdrawal-wrapper">
-      <div class="title">
+      <!-- <div class="title">
         Доступно к выводу
-      </div>
-      <div class="coming-soon">
+      </div> -->
+      <!-- <div class="coming-soon">
         Coming soon...
-      </div>
+      </div> -->
       <div class="open-modal-link" @click="toggleModal(modalData)">
         <Alert :width="16" :height="16" /> Сколько стоит Takecoin?
       </div>
@@ -155,6 +155,37 @@ function numberWithSpaces(num) {
           </div>
           <ArrowLeft class="arrow" :width="8" :height="12" />
         </div>
+        <div class="bonuses-item" @click="goToTakeVPN_bot">
+          <div class="blurred emoji">
+            <!-- <div class="icon icon-robot" /> -->
+            🤖
+          </div>
+          <div class="bonuses-info">
+            <div class="title">
+              ChatGPT
+            </div>
+            <div class="text">
+              Доступ к последней версии GPT прямо в телеграм 
+            </div>
+          </div>
+          <ArrowLeft class="arrow" :width="8" :height="12" />
+        </div>
+        <div class="bonuses-item" @click="goToTakeVPN_bot">
+          <div class="blurred emoji">
+            <!-- <div class="icon icon-planet" /> -->
+            🙃
+          </div>
+          <div class="bonuses-info">
+            <div class="title">
+              Закругляйся
+            </div>
+            <div class="text">
+              Создавай кружочки телеграмм из любого видео
+            </div>
+          </div>
+          <ArrowLeft class="arrow" :width="8" :height="12" />
+        </div>
+        
         <!--        <div class="bonuses-item"> -->
         <!--          <div class="blurred blurred-money"> -->
         <!--            <div class="icon icon-robot" /> -->
@@ -365,17 +396,17 @@ section {
       margin-bottom: 24px;
     }
 
-    .coming-soon {
-      @include flex(row, center, center);
-      @include font-style($font-size: 26px, $font-weight: 800, $color: #545548);
-      width: 100%;
-      height: 15vh;
-      border: 1px solid rgba(255,255,255, .4);
-      border-radius: 5px;
-      backdrop-filter: blur(20.4px);
-      background: rgba(255, 255, 255, 0.12);
-      margin-bottom: 24px;
-    }
+    // .coming-soon {
+    //   @include flex(row, center, center);
+    //   @include font-style($font-size: 26px, $font-weight: 800, $color: #545548);
+    //   width: 100%;
+    //   height: 15vh;
+    //   border: 1px solid rgba(255,255,255, .4);
+    //   border-radius: 5px;
+    //   backdrop-filter: blur(20.4px);
+    //   background: rgba(255, 255, 255, 0.12);
+    //   margin-bottom: 24px;
+    // }
     .open-modal-link {
       @include flex(row, center, center);
       @include font-style($font-size: 16px, $font-weight: 500, $color: #fff);
@@ -441,6 +472,12 @@ section {
       &:before {
         background-image: url('data:image/svg+xml,<svg width="73" height="73" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_674_115)"><circle cx="36.5" cy="36.5" r="17.5" fill="%23C69A28"/></g><defs><filter id="filter0_f_674_115" x="0.6" y="0.6" width="71.8" height="71.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="9.2" result="effect1_foregroundBlur_674_115"/></filter></defs></svg>');
       }
+    }
+    &.emoji {
+      min-width: 43px;
+      font-size: 40px;
+      margin-left: -6px;
+      margin-right: 9px;
     }
   }
 

@@ -224,6 +224,7 @@ function numberWithSpaces(num) {
         <div class="item energy-wrapper">
           <div class="icon icon-energy" />
           <div class="energy-value">
+            <!-- Math.abs(x) -->
             {{ coinStore().dayLimit }}
           </div>
         </div>
