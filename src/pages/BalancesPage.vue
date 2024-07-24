@@ -47,11 +47,11 @@ function goToTakeVPN_bot() {
 }
 
 function goToChatGPT_bot() {
-  window.location.href = 'https://t.me/Take_chat_GPT_bot'
+  window.location.href = 'https://t.me/Take_chat_GPT_bot?start=utm=takecoin'
 }
 
 function goToTakeRound_bot() {
-  window.location.href = 'https://t.me/Take_round_bot'
+  window.location.href = 'https://t.me/Take_round_bot?start=utm=takecoin'
 }
 
 
